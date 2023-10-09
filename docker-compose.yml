@@ -1,0 +1,123 @@
+version: '3'
+
+networks:
+  huohuade:
+
+
+services:
+  app:
+    build:
+      context: ./dockerfiles
+      dockerfile: nginx.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    ports:
+      - "80:80"
+    container_name: app
+    volumes:
+      - ./src:/var/www/huohuade:delegated
+    depends_on:
+      - php
+      - redis
+      - mysql
+      - mailhog
+    networks:
+      - huohuade
+
+  mysql:
+    image: mariadb:latest
+    restart: always
+    tty: true
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: huohuade
+      MYSQL_USER: huohuade
+      MYSQL_PASSWORD: huohuade
+      MYSQL_ROOT_PASSWORD: huohuade
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - huohuade
+
+  php:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    container_name: php
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./src:/var/www/huohuade:delegated
+    networks:
+      - huohuade
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - huohuade
+
+  composer:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    container_name: composer
+    volumes:
+      - ./src:/var/www/huohuade
+    depends_on:
+      - php
+    entrypoint: [ 'composer', '--ignore-platform-reqs' ]
+    networks:
+      - huohuade
+
+  npm:
+    image: node:current-alpine
+    container_name: npm
+    volumes:
+      - ./src:/var/www/huohuade
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "5173:5173"
+    working_dir: /var/www/huohuade
+    entrypoint: [ 'npm' ]
+    networks:
+      - huohuade
+
+  artisan:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    container_name: artisan
+    volumes:
+      - ./src:/var/www/huohuade:delegated
+    depends_on:
+      - mysql
+    entrypoint: [ 'php', '/var/www/huohuade/artisan' ]
+    networks:
+      - huohuade
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - huohuade
