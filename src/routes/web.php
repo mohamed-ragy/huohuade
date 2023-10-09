@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return 'الدوكر علي بتاعي';
+    return '';
     return view('welcome');
 });
