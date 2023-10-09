@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return 'all good -- database is up';
+    return 'الدوكر علي بتاعي';
     return view('welcome');
 });
