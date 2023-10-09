@@ -31,6 +31,8 @@ services:
     tty: true
     ports:
       - "3307:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
     container_name: mysql
     environment:
       MYSQL_DATABASE: huohuade
