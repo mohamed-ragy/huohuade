@@ -102,7 +102,7 @@ services:
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
-    artisan: npm
+    container_name: artisan
     volumes:
       - ./src:/var/www/huohuade:delegated
     depends_on:
