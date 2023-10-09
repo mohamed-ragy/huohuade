@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return 'all good';
+    return 'all good -- database is up';
     return view('welcome');
 });
