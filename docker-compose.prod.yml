@@ -14,6 +14,7 @@ services:
         - GID=${GID:-1000}
     ports:
       - "8080:80"
+    container_name: app
     volumes:
       - ./src:/var/www/huohuade:delegated
     depends_on:
@@ -30,6 +31,7 @@ services:
     tty: true
     ports:
       - "3307:3306"
+    container_name: mysql
     environment:
       MYSQL_DATABASE: huohuade
       MYSQL_USER: huohuade
@@ -47,6 +49,7 @@ services:
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
+    container_name: php
     ports:
       - "9000:9000"
     volumes:
@@ -69,6 +72,7 @@ services:
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
+    container_name: composer
     volumes:
       - ./src:/var/www/huohuade
     depends_on:
@@ -79,6 +83,7 @@ services:
 
   npm:
     image: node:current-alpine
+    container_name: npm
     volumes:
       - ./src:/var/www/huohuade
     ports:
@@ -97,6 +102,7 @@ services:
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
+    artisan: npm
     volumes:
       - ./src:/var/www/huohuade:delegated
     depends_on:
@@ -107,6 +113,7 @@ services:
 
   mailhog:
     image: mailhog/mailhog:latest
+    mailhog: npm
     ports:
       - "1025:1025"
       - "8025:8025"
