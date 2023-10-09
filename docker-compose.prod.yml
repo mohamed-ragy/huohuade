@@ -37,9 +37,9 @@ services:
     environment:
       MYSQL_DATABASE: huohuade
       MYSQL_USER: huohuade
-      MYSQL_PASSWORD: huohuade
-      MYSQL_ROOT_PASSWORD: huohuade
-      SERVICE_TAGS: dev
+      MYSQL_PASSWORD: kjashdfpiownvpojb9234b8#^#&#^!#%DFGHHi23bgf2487b2o8QG#Y
+      MYSQL_ROOT_PASSWORD: kjashdfpiownvpojb9234b8#^#&#^!#%DFGHHi23bgf2487b2o8QG#Y
+      SERVICE_TAGS: prod
       SERVICE_NAME: mysql
     networks:
       - huohuade
