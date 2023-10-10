@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\coach;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class coachController extends Controller
 {
@@ -21,16 +22,27 @@ class coachController extends Controller
                 return redirect()->route('coach.home');
             }
             return $next($request);
-        })->only(['home']);
+        })->only(['login']);
 
     }
     public function home(Request $request){
-        dd(coach::get());
+        return view('coach.home',[
+            'text' => collect(Lang::get('coach/coach')),
+        ]);
     }
     public function login(Request $request){
-        return view('coach.login');
+        return view('coach.login',[
+            'text'=> collect(Lang::get('coach/login')),
+        ]);
     }
-    public function dologin(Request $request){
-
+    public function coach(Request $request){
+        if($request->has('login')){
+            if(Auth::guard('coach')->attempt(['login_name'=>$request->login_name,'password'=>$request->password])){
+                return response(['status'=>1]);
+            }else{
+                return response(['status'=>0]);
+            }
+            // return response($request);
+        }
     }
 }

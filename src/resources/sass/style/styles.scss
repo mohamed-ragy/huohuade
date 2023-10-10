@@ -8,17 +8,20 @@
     src: url('/storage/font/Inter.ttf') format("truetype");
 }
 @import './display.scss';
+@import './positions.scss';
 @import './margin.scss';
 @import './padding.scss';
 @import './width.scss';
 @import './height.scss';
 @import './fontSizes.scss';
+@import'./colors.scss';
 
 @import './shadows.scss';
 @import './borderRadius.scss';
 
 @import './inputTxt.scss';
 @import './btn.scss';
+@import './loadingBar.scss';
 html{
 
 }
@@ -30,4 +33,5 @@ body{
     color:#515151;
     height:100%;
     width:100%;
+    user-select: none;
 }

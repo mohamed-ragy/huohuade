@@ -20,7 +20,7 @@ Route::domain('coach.'.env('APP_URL'))->group(function(){
     Route::get('/login',[coachController::class,'login'])->name('coach.login');
 
 
-    Route::get('/api/dologin',[coachController::class,'dologin']);
+    Route::put('/api/coach',[coachController::class,'coach']);
 });
 $homeRoutes = function(){
     Route::get('/',function(){

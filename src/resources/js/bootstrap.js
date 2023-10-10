@@ -30,3 +30,7 @@
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+window.$ = require("jquery");
+window.loadTouchEvents = require('jquery-touch-events');
+loadTouchEvents($);
+require('./scripts/scripts')

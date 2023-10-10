@@ -26,6 +26,22 @@
   justify-content: center;
 }
 
+.none {
+  display: none;
+}
+
+.tac {
+  text-align: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.ovh {
+  overflow: hidden;
+}
+
 .m5 {
   margin: 5px;
 }
@@ -78,6 +94,18 @@
   width: 100%;
 }
 
+.w400 {
+  width: 400px;
+}
+
+.mxw400 {
+  max-width: 400px;
+}
+
+.mxw100p-60 {
+  max-width: calc(100% - 60px);
+}
+
 .h100p {
   height: 100%;
 }
@@ -90,12 +118,36 @@
   height: 30px;
 }
 
+.fs09 {
+  font-size: 0.9em;
+}
+
 .fs102 {
   font-size: 1.2em;
 }
 
 .fs103 {
   font-size: 1.3em;
+}
+
+.c_huohuade {
+  color: var(--c-huohuade);
+}
+
+.c_huohuade_light {
+  color: var(--c-huohuade-light);
+}
+
+.c_border {
+  color: var(--c-border);
+}
+
+.c_red {
+  color: rgb(213, 30, 30);
+}
+
+.c_green {
+  color: rgb(11, 105, 74);
 }
 
 .shdow1 {
@@ -153,13 +205,15 @@ input::-webkit-inner-spin-button {
 
 .inputText:-moz-read-only {
   cursor: not-allowed;
+  border: 1px solid var(--c-border);
 }
 
 .inputText:read-only {
   cursor: not-allowed;
+  border: 1px solid var(--c-border);
 }
 
-.btnContainer {
+.btn_container {
   margin: 10px;
   width: calc(100% - 20px);
   text-align: end;
@@ -185,6 +239,25 @@ input::-webkit-inner-spin-button {
   cursor: not-allowed;
 }
 
+.loadingBar {
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--c-huohuade-light);
+}
+
+.loadingBar_load {
+  transition-duration: 2000ms;
+  width: 80%;
+}
+
+.loadingBar_loaded {
+  transition-duration: 500ms;
+  width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -193,16 +266,17 @@ body {
   color: #515151;
   height: 100%;
   width: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
-.loginForm {
-  width: -moz-fit-content;
-  width: fit-content;
+.login_form {
   margin: 0 auto;
   margin-top: 200px;
 }
 @media (max-height: 500px) {
-  .loginForm {
+  .login_form {
     margin-top: 10px;
   }
 }

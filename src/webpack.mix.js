@@ -12,8 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix
-.sass('resources/sass/coach/login.scss', 'public/css/coach')
+.js('resources/js/scripts/scripts.js', 'public/js/scripts')
 .sass('resources/sass/style/styles.scss', 'public/css/style')
+
+.js('resources/js/coach/login.js', 'public/js/coach')
+.sass('resources/sass/coach/login.scss', 'public/css/coach')
 
 .js('resources/js/install/script.js', 'public/js/install')
 .sass('resources/sass/install/style.scss', 'public/css/install')
