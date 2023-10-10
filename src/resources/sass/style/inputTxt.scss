@@ -1,0 +1,35 @@
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.inputText{
+    padding: 8px;
+    height:15px;
+    width:300px;
+    @media (max-width:500px) {
+        width:250px;
+    }
+    max-width:calc(100% - 16px);
+    background-color: transparent;
+    border:none;
+    font-size: .9em;
+    border-radius: 0;
+    margin:0;
+    user-select: auto;
+    border:1px solid var(--c-border);
+    border-radius: 3px;
+    margin:5px;
+}
+.inputText:focus {
+    outline:none;
+    border-color: var(--c-huohuade);
+}
+.inputText::placeholder{
+    color:var(--c-border);
+}
+.inputText:read-only{
+    cursor: not-allowed;
+}

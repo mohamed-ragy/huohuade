@@ -11,6 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .sourceMaps();
+mix
+.sass('resources/sass/coach/login.scss', 'public/css/coach')
+.sass('resources/sass/style/styles.scss', 'public/css/style')
+
+.js('resources/js/install/script.js', 'public/js/install')
+.sass('resources/sass/install/style.scss', 'public/css/install')
+.sourceMaps();

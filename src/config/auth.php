@@ -36,10 +36,11 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'coach' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'coaches',
         ],
+
     ],
 
     /*
@@ -60,15 +61,11 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'coaches' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\coach::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -91,12 +88,12 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_reset_tokens',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+        // 'users' => [
+        //     'provider' => 'users',
+        //     'table' => 'password_reset_tokens',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
     ],
 
     /*

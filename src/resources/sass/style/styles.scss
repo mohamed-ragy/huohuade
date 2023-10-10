@@ -1,0 +1,33 @@
+:root{
+    --c-huohuade:#978344;
+    --c-huohuade-light:#af9b58;
+    --c-border:#c9c9c9;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('/storage/font/Inter.ttf') format("truetype");
+}
+@import './display.scss';
+@import './margin.scss';
+@import './padding.scss';
+@import './width.scss';
+@import './height.scss';
+@import './fontSizes.scss';
+
+@import './shadows.scss';
+@import './borderRadius.scss';
+
+@import './inputTxt.scss';
+@import './btn.scss';
+html{
+
+}
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Inter';
+    background-color: #ffffff;
+    color:#515151;
+    height:100%;
+    width:100%;
+}

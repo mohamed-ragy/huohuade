@@ -1,0 +1,22 @@
+.btnContainer{
+    margin:10px;
+    width:calc(100% - 20px);
+    text-align: end;
+}
+.btn{
+    background-color: var(--c-huohuade);
+    font-size: 1.2em;
+    padding:5px 15px;
+    color: #fff;
+    border-radius: 3px;
+    border:none;
+    outline: none;
+    cursor: pointer;
+}
+.btn:active{
+    background-color: var(--c-huohuade-light);
+}
+.btn:disabled{
+    background-color:var(--c-border);
+    cursor: not-allowed;
+}
