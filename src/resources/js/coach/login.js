@@ -6,6 +6,7 @@ $('html,body').on('click','#loginBtn',function(e){
     $('#login_name').prop('readonly',true);
     $('#password').prop('readonly',true);
     showLoadingBar($('#loginLoadingBar'));
+    $('.login_msg').removeClass('none c_red c_green').addClass('none').text('')
     $.ajax({
         url:'./api/coach',
         type:'put',
@@ -25,10 +26,10 @@ $('html,body').on('click','#loginBtn',function(e){
             $('#loginBtn').addClass('none')
             $('#login_name').addClass('none')
             $('#password').addClass('none')
+            $('.login_msg').removeClass('none c_red c_green').addClass('c_green').text(window.text.loginSuccess)
             setTimeout(() => {
-                $('.login_msg').removeClass('none c_red c_green').addClass('c_green').text(window.text.loginSuccess)
+                window.location.href = '/'
             }, 1000);
-            window.location.href = '/'
         }else if(r.status == 0){
             $('.login_msg').removeClass('none c_red c_green').addClass('c_red').text(window.text.loginFail)
         }
