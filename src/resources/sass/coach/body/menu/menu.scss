@@ -1,0 +1,114 @@
+.menu_container{
+    margin:10px;
+    padding:10px 0;
+    height:calc(100% - 40px);
+    border-radius: 5px;
+    position: relative;
+    text-align: start;
+    // box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px, rgba(0, 0, 0, 0.05) 0px 0px 4px;
+    width:40px;
+    // transition-duration: 200ms;
+    // overflow: hidden;
+}
+.menu_container_expanded{
+    width:calc(100% - 50px);
+    .menu_coach_name{display: block;}
+    .menu_coach_jobtitle{display: block;}
+    .menu_elem_txt{display: block;}
+    // .menu_elem{min-width: 100px;}
+    // .menu_elem{justify-content: flex-start;}
+    // .menu_elem_img{margin-inline-end: 10px;}
+    // .menu_logo{display:block}
+    // .menu_huohuade{display: block;}
+
+}
+.menu_huohuade{
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-inline-start: 5px;
+    white-space: nowrap;
+    // display: none;
+}
+.menu_logo{
+    width: 25px;
+    // display: none;
+    margin-inline-start:5px;
+}
+.menu_icon_img{
+    background: url("/storage/icons/menu.svg") top right/cover;
+    width:25px;
+    height:25px;
+}
+
+.menu_coach_img{
+    border-radius: 50%;
+    border-end-end-radius: 10px;
+    box-shadow: rgba(60, 64, 67, 0.4) 0px 0px 5px 0px;
+    border:1px solid #fff;
+    height:50px;
+    width:50px;
+    object-fit: cover;
+}
+.menu_coach_name{
+    font-size: 1em;
+    font-weight: bold;
+    margin-inline-start: 10px;
+    display: none;
+    white-space: nowrap;
+    // visibility: hidden;
+    // transition-duration: 100ms;
+}
+.menu_coach_jobtitle{
+    margin-top:2px;
+    margin-inline-start: 10px;
+    font-size: .8em;;
+    white-space: nowrap;
+    display: none;
+    // visibility: hidden;
+    // transition-duration: 100ms;
+}
+.menu_elem{
+    width:calc(100% - 10px);
+    // height:calc(100% - 30px);
+    padding:10px;
+    margin:10px 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border:1px solid transparent;
+    transition-duration: 200ms;
+}
+.menu_elem:hover{
+    // background-color: var(--c-gray-light);
+    // box-shadow: rgba(60, 64, 67, 0.2) 0px 0px 2px 0px;
+    border:1px solid var(--c-huohuade-light);
+}
+.menu_elem_selected{
+    // background-color: var(--c-gray-light);
+    // box-shadow: rgba(60, 64, 67, 0.2) 0px 0px 2px 0px;
+    border:1px solid var(--c-huohuade-light);
+}
+.menu_elem_img{
+    width:30px;
+    height:30px;
+}
+.menu_elem_txt{
+    display: none;
+    margin-inline-start: 10px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+
+//
+.menu_elem_img_calendar{background: url("/storage/icons/calendar.svg") top right/cover;}
+.menu_elem_img_coach{background: url("/storage/icons/coach.svg") top right/cover;}
+.menu_elem_img_location{background: url("/storage/icons/location.svg") top right/cover;}
+.menu_elem_img_player{background: url("/storage/icons/player.svg") top right/cover;}
+.menu_elem_img_insights{background: url("/storage/icons/insights.svg") top right/cover;}
+
+

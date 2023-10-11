@@ -18,6 +18,10 @@ mix
 .js('resources/js/coach/login.js', 'public/js/coach')
 .sass('resources/sass/coach/login.scss', 'public/css/coach')
 
+.js('resources/js/coach/home.js', 'public/js/coach')
+.sass('resources/sass/coach/home.scss', 'public/css/coach')
+
+
 .js('resources/js/install/script.js', 'public/js/install')
 .sass('resources/sass/install/style.scss', 'public/css/install')
 .sourceMaps();

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\coach;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Lang;
 
 class coachController extends Controller
@@ -12,14 +14,19 @@ class coachController extends Controller
     public function __construct(Request $request)
     {
         $this->middleware(function ($request, $next) {
+            // if( == en)
+            App::setLocale($request->lang);
+            return $next($request);
+        });
+        $this->middleware(function ($request, $next) {
             if(!Auth::guard('coach')->check()){
-                return redirect()->route('coach.login');
+                return redirect()->route('coach.login', ['lang' => Cookie::get('lang') ?? 'ch']);
             }
             return $next($request);
         })->only(['home']);
         $this->middleware(function ($request, $next) {
             if(Auth::guard('coach')->check()){
-                return redirect()->route('coach.home');
+                return redirect()->route('coach.home', ['lang' => Cookie::get('lang') ?? 'ch']);
             }
             return $next($request);
         })->only(['login']);
@@ -28,6 +35,7 @@ class coachController extends Controller
     public function home(Request $request){
         return view('coach.home',[
             'text' => collect(Lang::get('coach/coach')),
+            'lang' => $request->lang,
         ]);
     }
     public function login(Request $request){

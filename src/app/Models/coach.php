@@ -14,9 +14,11 @@ class coach extends Authenticatable
     protected $fillable = [
         'login_name',
         'password',
+        'profile_picture',
         'name_en',
         'name_ch',
-        'job_title',
+        'job_title_en',
+        'job_title_ch',
         'is_master',
         'authorities',
         'salary',

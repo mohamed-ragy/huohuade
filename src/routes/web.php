@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::domain('coach.'.env('APP_URL'))->group(function(){
-    Route::get('/install',[installController::class,'install'])->name('coach.install');
-    Route::get('/',[coachController::class,'home'])->name('coach.home');
-    Route::get('/login',[coachController::class,'login'])->name('coach.login');
+    Route::get('/', function (){
+        return redirect()->route('coach.home', ['lang' => Cookie::get('lang') ?? 'ch']);
+    })->name('root');
+
+    Route::get('{lang}/install',[installController::class,'install'])->name('coach.install');
+    Route::get('{lang}/',[coachController::class,'home'])->name('coach.home');
+    Route::get('{lang}/login',[coachController::class,'login'])->name('coach.login');
 
 
     Route::put('/api/coach',[coachController::class,'coach']);

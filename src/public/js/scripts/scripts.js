@@ -61,6 +61,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /***/ }),
 
+/***/ "./resources/sass/coach/home.scss":
+/*!****************************************!*\
+  !*** ./resources/sass/coach/home.scss ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvc2Fzcy9jb2FjaC9ob21lLnNjc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL3Nhc3MvY29hY2gvaG9tZS5zY3NzP2ZlNGYiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/sass/coach/home.scss\n");
+
+/***/ }),
+
 /***/ "./resources/sass/install/style.scss":
 /*!*******************************************!*\
   !*** ./resources/sass/install/style.scss ***!
@@ -68,7 +79,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvc2Fzcy9pbnN0YWxsL3N0eWxlLnNjc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL3Nhc3MvaW5zdGFsbC9zdHlsZS5zY3NzPzBkNGIiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/sass/install/style.scss\n");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvc2Fzcy9pbnN0YWxsL3N0eWxlLnNjc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL3Nhc3MvaW5zdGFsbC9zdHlsZS5zY3NzP2Y4M2YiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/sass/install/style.scss\n");
 
 /***/ })
 
@@ -160,6 +171,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 		var installedChunks = {
 /******/ 			"/js/scripts/scripts": 0,
 /******/ 			"css/install/style": 0,
+/******/ 			"css/coach/home": 0,
 /******/ 			"css/coach/login": 0,
 /******/ 			"css/style/styles": 0
 /******/ 		};
@@ -211,10 +223,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/install/style","css/coach/login","css/style/styles"], () => (__webpack_require__("./resources/js/scripts/scripts.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/install/style","css/coach/login","css/style/styles"], () => (__webpack_require__("./resources/sass/style/styles.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/install/style","css/coach/login","css/style/styles"], () => (__webpack_require__("./resources/sass/coach/login.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/install/style","css/coach/login","css/style/styles"], () => (__webpack_require__("./resources/sass/install/style.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/install/style","css/coach/home","css/coach/login","css/style/styles"], () => (__webpack_require__("./resources/js/scripts/scripts.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/install/style","css/coach/home","css/coach/login","css/style/styles"], () => (__webpack_require__("./resources/sass/style/styles.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/install/style","css/coach/home","css/coach/login","css/style/styles"], () => (__webpack_require__("./resources/sass/coach/login.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/install/style","css/coach/home","css/coach/login","css/style/styles"], () => (__webpack_require__("./resources/sass/coach/home.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/install/style","css/coach/home","css/coach/login","css/style/styles"], () => (__webpack_require__("./resources/sass/install/style.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

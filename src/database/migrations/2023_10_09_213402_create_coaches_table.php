@@ -16,9 +16,11 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('login_name');
             $table->string('password');
+            $table->string('profile_picture');
             $table->string('name_en');
             $table->string('name_ch');
-            $table->string('job_title');
+            $table->string('job_title_en');
+            $table->string('job_title_ch');
             $table->boolean('is_master');
             $table->string('authorities');
             $table->string('salary')->nullable();
@@ -26,7 +28,7 @@ return new class extends Migration
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('coaches')->onDelete('set null');
             $table->boolean('is_deleted');
-            $table->string('language');
+            // $table->string('language');
 
         });
     }

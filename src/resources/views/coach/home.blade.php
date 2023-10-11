@@ -9,11 +9,11 @@
     <title>{{ trans('coach/coach.main.title') }}</title>
     <link rel="stylesheet" href="./css/coach/home.css">
 </head>
-<body>
-
-</body>
+<body></body>
 <script>
     window.text = {!! $text !!}
+    window.coach = {!! Auth::guard('coach')->user() !!}
+    window.lang = "{{ $lang }}"
 </script>
 <script src="./js/coach/home.js"></script>
 </html>

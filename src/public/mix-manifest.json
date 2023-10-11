@@ -1,8 +1,10 @@
 {
     "/js/scripts/scripts.js": "/js/scripts/scripts.js",
     "/js/coach/login.js": "/js/coach/login.js",
+    "/js/coach/home.js": "/js/coach/home.js",
     "/js/install/script.js": "/js/install/script.js",
     "/css/install/style.css": "/css/install/style.css",
+    "/css/coach/home.css": "/css/coach/home.css",
     "/css/coach/login.css": "/css/coach/login.css",
     "/css/style/styles.css": "/css/style/styles.css"
 }
