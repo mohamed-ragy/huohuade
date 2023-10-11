@@ -14,7 +14,11 @@ class coachController extends Controller
     public function __construct(Request $request)
     {
         $this->middleware(function ($request, $next) {
-            // if( == en)
+            if($request->lang == 'en'){
+                Cookie::queue(Cookie::make('lang','en',9999999999));
+            }else if($request->lang == 'ch'){
+                Cookie::queue(Cookie::make('lang','ch',9999999999));
+            }
             App::setLocale($request->lang);
             return $next($request);
         });

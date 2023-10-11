@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ trans('coach/login.title') }}</title>
-    <link rel="stylesheet" href="../css/coach/login.css">
+    <link rel="stylesheet" href="../css/coach/login.min.css">
 </head>
 <body class="">
     <div class="relative ovh m10 p20 w400 mxw100p-60 login_form shdow1 br5 column alnC jstfyC">
@@ -27,5 +27,5 @@
 <script>
     window.text = {!! $text !!}
 </script>
-<script src="../js/coach/login.js"></script>
+<script src="../js/coach/login.min.js"></script>
 </html>

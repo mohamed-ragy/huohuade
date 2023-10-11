@@ -1,7 +1,7 @@
 drawbody = function(){
-    $('body').append(
+    $('body').text('').append(
         $('<div/>',{class:'row alnS jstfyS w100p h100p'}).append(
-            $('<div/>',{class:'shrink0'}).append(
+            $('<div/>',{id:'menu',class:'shrink0'}).append(
                 $('<div/>',{class:'menu_container menu_container_expanded'}).append(
                     $('<div/>',{class:'row alnC jstfyS mB20'}).append(
                         $('<div/>',{class:'menu_icon btn_icon_25'}).append($('<div/>',{class:'menu_icon_img'})),
@@ -39,8 +39,9 @@ drawbody = function(){
                     ),
                 )
             ),
-            $('<div/',{id:'body',class:'grow2 shrink0',style:'background-color:red'}),
+            $('<div/>',{id:'body',class:'grow2 shrink0'}),
         )
     )
 
 }
+

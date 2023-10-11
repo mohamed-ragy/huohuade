@@ -12,9 +12,6 @@ const mix = require('laravel-mix');
  */
 
 mix
-.js('resources/js/scripts/scripts.js', 'public/js/scripts')
-.sass('resources/sass/style/styles.scss', 'public/css/style')
-
 .js('resources/js/coach/login.js', 'public/js/coach')
 .sass('resources/sass/coach/login.scss', 'public/css/coach')
 
@@ -24,4 +21,15 @@ mix
 
 .js('resources/js/install/script.js', 'public/js/install')
 .sass('resources/sass/install/style.scss', 'public/css/install')
-.sourceMaps();
+.sourceMaps()
+
+.minify([
+    'public/js/coach/login.js',
+    'public/css/coach/login.css',
+
+    'public/js/coach/home.js',
+    'public/css/coach/home.css',
+
+    'public/js/install/script.js',
+    'public/css/install/style.css',
+])

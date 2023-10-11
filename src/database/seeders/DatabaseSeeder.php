@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         coach::create([
             'login_name' => 'howard',
             'password' => bcrypt('huohuade'),
-            'profile_picture' => 'howard.jpg',
+            'profile_picture' => 'coach.png',
             'name_en' => 'Yuan feng zheng',
             'name_ch' => '元冯郑',
             'job_title_en' => 'Huohuade GM',
