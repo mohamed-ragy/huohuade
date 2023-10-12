@@ -28,8 +28,6 @@ return new class extends Migration
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('coaches')->onDelete('set null');
             $table->boolean('is_deleted');
-            // $table->string('language');
-
         });
     }
 

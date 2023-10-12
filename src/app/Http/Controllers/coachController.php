@@ -13,6 +13,7 @@ class coachController extends Controller
 {
     public function __construct(Request $request)
     {
+
         $this->middleware(function ($request, $next) {
             if($request->lang == 'en'){
                 Cookie::queue(Cookie::make('lang','en',9999999999));
@@ -55,6 +56,10 @@ class coachController extends Controller
                 return response(['status'=>0]);
             }
             // return response($request);
+        }else if($request->has('coach_logout')){
+            Auth::guard('coach')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
         }
     }
 }

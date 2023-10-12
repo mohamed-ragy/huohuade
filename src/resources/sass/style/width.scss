@@ -1,8 +1,10 @@
 ///percent
 .w100p{width: 100%;}
+.w100p-20{width:calc(100% - 20px);}
 .mxw100p-60{max-width: calc(100% - 60px);}
 
 ////px
+.w25{width:25px}
 .w30{width:30px}
 
 .w400{width:400px}

@@ -1,4 +1,5 @@
 mysql
+mongodb
 .DS_Store
 .idea
 docker-compose.prod.yml

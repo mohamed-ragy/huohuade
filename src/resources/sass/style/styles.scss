@@ -5,6 +5,9 @@
 
     --c-gray-light:#f2f2f2;
 }
+*{
+    -webkit-tap-highlight-color: transparent;
+}
 @font-face {
     font-family: 'Inter';
     src: url('/storage/font/Inter.ttf') format("truetype");

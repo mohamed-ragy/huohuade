@@ -1,1 +1,13 @@
 @import './menu/menu.scss';
+@import './menu/menu_m.scss';
+
+#body{
+    @media (max-width:720px) {
+        display: none;
+    }
+}
+#body_m{
+    @media (min-width:720px) {
+        display: none;
+    }
+}

@@ -7,9 +7,8 @@ $('html,body').on('click','.menu_icon',function(e){
     }
 })
 
-
 $('html,body').on('click','.menu_elem',function(e){
     e.stopImmediatePropagation();
-    $('.menu_elem').removeClass('menu_elem_selected');
-    $(this).addClass('menu_elem_selected')
+    showPage($(this).attr('page'))
+
 })

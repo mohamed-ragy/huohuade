@@ -11,5 +11,6 @@ return[
         'locations' => '日历',
         'players' => '玩家',
         'insights' => '洞察',
+        'activity_logs' => '活动日志'
     ]
 ];

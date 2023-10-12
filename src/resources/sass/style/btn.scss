@@ -5,13 +5,14 @@
 }
 .btn{
     background-color: var(--c-huohuade);
-    font-size: 1.2em;
-    padding:5px 15px;
+    font-size: 1em;
+    padding:8px 20px;
     color: #fff;
     border-radius: 3px;
     border:none;
     outline: none;
     cursor: pointer;
+    font-weight: 500;
 }
 .btn:active{
     background-color: var(--c-huohuade-light);

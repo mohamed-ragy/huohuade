@@ -2,6 +2,8 @@
 .column{display: flex;flex-direction: column;}
 .alnC{align-items: center;}
 .jstfyC{justify-content: center;}
+.jstfySB{justify-content: space-between;}
+.jstfyE{justify-content: flex-end;}
 
 .grow1{flex-grow: 1;}
 .grow2{flex-grow: 2;}

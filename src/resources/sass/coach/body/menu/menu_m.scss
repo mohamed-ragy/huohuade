@@ -1,0 +1,71 @@
+.menu_header_m{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // margin: 10px;
+    width:calc(100% - 20px);
+    border-bottom: 1px dashed var(--c-border);
+    padding:10px;
+}
+.menu_container_m{
+    padding:10px;
+    width:calc(100% - 20px);
+    height:calc(100% - 90px);
+    position: fixed;
+    top:70px;
+    left:0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: translateX(-100%);
+    transition-duration: 150ms;
+    background-color: #fff;
+}
+.menu_container_m_expanded{
+    transform: translateX(0);
+}
+
+.menu_icon_m{
+    margin-inline-start: 5px;
+}
+.menu_coach_name_m{
+    font-size: 1em;
+    font-weight: bold;
+    margin-inline-start: 10px;
+    white-space: nowrap;
+}
+.menu_coach_jobtitle_m{
+    margin-top:2px;
+    margin-inline-start: 10px;
+    font-size: .8em;;
+    white-space: nowrap;
+}
+.menu_elem_m{
+    direction: ltr;
+    width: auto;
+    padding:10px;
+    margin:10px 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border:1px solid transparent;
+    transition-duration: 200ms;
+}
+.menu_elem_m:hover{
+    border:1px solid var(--c-huohuade-light);
+}
+.menu_elem_selected_m{
+    border:1px solid var(--c-huohuade-light);
+}
+.menu_elem_img_m{
+    width:30px;
+    height:30px;
+}
+.menu_elem_txt_m{
+    margin-inline-start: 10px;
+    font-size: 1em;
+    font-weight: 500;
+}

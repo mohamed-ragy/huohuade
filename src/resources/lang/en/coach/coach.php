@@ -11,5 +11,6 @@ return[
         'locations' => 'Locations',
         'players' => 'Players',
         'insights' => 'Insights',
+        'activity_logs' => 'Activity logs'
     ]
 ];
