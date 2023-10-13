@@ -1,6 +1,7 @@
 :root{
     --c-huohuade:#978344;
     --c-huohuade-light:#af9b58;
+    --c-huohuade-light-2:#D4C698;
     --c-border:#c9c9c9;
 
     --c-gray-light:#f2f2f2;
@@ -44,4 +45,26 @@ body{
     height:100%;
     width:100%;
     user-select: none;
+}
+#container{
+    height:100%;
+    width:100%;
+}
+
+#tooltipDiv{
+    background-color: #fff;
+    box-shadow: #0000001a 0px 0px 15px, #00000033 0px 1px 5px;
+    border-radius: 3px;
+    padding: 5px 8px;
+    position: fixed;
+    flex-wrap: nowrap;
+    z-index: 5250;
+    transition-duration: 0s;
+    max-width:400px;
+    font-size: .85em;
+    animation:400ms tooltipAnimation 0s 1 ease;
+}
+@keyframes tooltipAnimation {
+    0%{transform: translateY(-5px);opacity:0;}
+    100%{transform: translateY(0px);opacity:1;}
 }

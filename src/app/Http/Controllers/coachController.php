@@ -38,9 +38,14 @@ class coachController extends Controller
 
     }
     public function home(Request $request){
+        $coaches = [];
+        if(Auth::guard('coach')->user()->coach_level == 0 || Auth::guard('coach')->user()->coach_level == 1){
+            $coaches = coach::get();
+        }
         return view('coach.home',[
             'text' => collect(Lang::get('coach/coach')),
             'lang' => $request->lang,
+            'coaches' => $coaches,
         ]);
     }
     public function login(Request $request){

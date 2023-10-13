@@ -16,14 +16,12 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('login_name');
             $table->string('password');
-            $table->string('profile_picture');
+            $table->string('profile_picture')->nullable();
             $table->string('name_en');
             $table->string('name_ch');
-            $table->string('job_title_en');
-            $table->string('job_title_ch');
-            $table->boolean('is_master');
-            $table->string('authorities');
-            $table->string('salary')->nullable();
+            $table->integer('coach_level');
+            $table->string('gendar');
+            $table->integer('salary')->nullable();
             $table->string('created_at');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('coaches')->onDelete('set null');

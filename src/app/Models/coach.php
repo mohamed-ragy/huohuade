@@ -17,10 +17,8 @@ class coach extends Authenticatable
         'profile_picture',
         'name_en',
         'name_ch',
-        'job_title_en',
-        'job_title_ch',
-        'is_master',
-        'authorities',
+        'coach_level',
+        'gendar',
         'salary',
         'created_at',
         'created_by',
@@ -32,3 +30,9 @@ class coach extends Authenticatable
         'remember_token',
     ];
 }
+///coach levels
+// 0 => Administrator coach
+// 1 => Manager coach
+// 2 => Senior coach
+// 3 => Basic coach
+// 4 => Coach in training
