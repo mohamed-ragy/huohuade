@@ -1,6 +1,3 @@
-coach.profile_picture == null && coach.gendar == 'male' ? window.coach.profile_picture =  '../storage/imgs/profile_male.png' :
-coach.profile_picture == null && coach.gendar == 'female' ? window.coach.profile_picture =  '../storage/imgs/profile_female.png' :
-window.coach.profile_picture =  `../storage/imgs/coaches/${window.coach.profile_picture}`;
 
 window.accessibility = {};
 switch (coach.coach_level) {
@@ -43,3 +40,6 @@ for(const key in coaches){
     coaches[key].profile_picture == null && coaches[key].gendar == 'female' ? '../storage/imgs/profile_female.png' :
 `../storage/imgs/coaches/${window.coach.profile_picture}`;
 }
+coach.profile_picture == null && coach.gendar == 'male' ? window.coach.profile_picture =  '../storage/imgs/profile_male.png' :
+coach.profile_picture == null && coach.gendar == 'female' ? window.coach.profile_picture =  '../storage/imgs/profile_female.png' :
+window.coach.profile_picture =  `../storage/imgs/coaches/${window.coach.profile_picture}`;
