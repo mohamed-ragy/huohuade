@@ -1,13 +1,13 @@
 #pageContainer{
-    // padding:10px;
     overflow-x: hidden;
     overflow-y: auto;
+    height:100%;
 }
 
 #page_m{
-    // padding:10px;
     overflow-x: hidden;
     overflow-y: auto;
+    height:100%;
 }
 
 @import './coaches.scss';

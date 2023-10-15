@@ -6,11 +6,12 @@
     width:calc(100% - 20px);
     border-bottom: 1px dashed var(--c-border);
     padding:10px;
+    height: 30px;
 }
 .menu_container_m{
     padding:10px;
     width:calc(100% - 20px);
-    height:calc(100% - 90px);
+    height: calc(100% - 70px);
     position: fixed;
     top:50px;
     left:0;

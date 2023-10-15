@@ -1,7 +1,9 @@
 .row{display: flex;flex-direction: row;}
 .column{display: flex;flex-direction: column;}
 .wrap{flex-wrap: wrap;}
+.alnS{align-items: flex-start;}
 .alnC{align-items: center;}
+.jstfyS{justify-content: flex-start;}
 .jstfyC{justify-content: center;}
 .jstfySB{justify-content: space-between;}
 .jstfyE{justify-content: flex-end;}

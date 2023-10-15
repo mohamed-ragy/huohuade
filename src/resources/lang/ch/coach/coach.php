@@ -7,6 +7,9 @@ return[
         'logout' => '注销',
         'en' => 'English',
         'ch' => '中国人',
+        'delete' => '删除',
+        'manage' => '管理',
+        'activities' => '活动内容',
     ],
     'menu' => [
         'calendar' => '日历',

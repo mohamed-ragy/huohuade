@@ -7,6 +7,9 @@ return[
         'logout' => 'Logout',
         'en' => 'English',
         'ch' => '中国人',
+        'delete' => 'Delete',
+        'manage' => 'Manage',
+        'activities' => 'Activities',
     ],
     'menu' => [
         'calendar' => 'Calendar',

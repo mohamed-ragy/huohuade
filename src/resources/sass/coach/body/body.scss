@@ -7,6 +7,7 @@
     }
 }
 #body_m{
+    height:calc(100% - 50px);
     @media (min-width:720px) {
         display: none;
     }
