@@ -11,7 +11,9 @@ showPage = function(page){
         case 'locations':
             drawPage_locations();
             break;
-
+        case 'coaches':
+            drawPage_coaches();
+            break;
         default:
             break;
     }

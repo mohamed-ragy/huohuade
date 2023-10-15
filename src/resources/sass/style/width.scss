@@ -1,3 +1,7 @@
+//other
+.wa{width:auto}
+.wfc{width:fit-content}
+
 ///percent
 .w100p{width: 100%;}
 .w100p-20{width:calc(100% - 20px);}
@@ -8,8 +12,11 @@
 .w25{width:25px}
 .w30{width:30px}
 
+.mnw300{min-width: 300px;}
+
 .w400{width:400px}
 .mxw400{max-width:400px}
+
 
 ///em
 .w108em{width:1.8em}

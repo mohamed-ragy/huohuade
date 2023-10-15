@@ -22,5 +22,6 @@ return[
         'coach_2' => '高级教练',
         'coach_3' => '基础教练',
         'coach_4' => '教练在训练中',
+        'createNewCoach' => '创建新教练',
     ]
 ];

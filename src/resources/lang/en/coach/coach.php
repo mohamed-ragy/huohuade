@@ -22,5 +22,6 @@ return[
         'coach_2' => 'Senior coach',
         'coach_3' => 'Basic coach',
         'coach_4' => 'Coach in training',
+        'createNewCoach' => 'Create new coach',
     ]
 ];

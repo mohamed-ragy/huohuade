@@ -9,7 +9,7 @@
     padding:8px 20px;
     color: #fff;
     border-radius: 3px;
-    border:none;
+    border:1px solid transparent;
     outline: none;
     cursor: pointer;
     font-weight: 500;
@@ -20,6 +20,17 @@
 .btn:disabled{
     background-color:var(--c-border);
     cursor: not-allowed;
+}
+.btn_cancel{
+    background-color: #fff;
+    border:1px solid var(--c-huohuade);
+    color:var(--c-huohuade);
+}
+.btn_cancel:hover{
+    background-color: #f2f2f2;
+}
+.btn_cancel:active{
+    background-color: #fff;
 }
 ///
 .btn_icon_25{
