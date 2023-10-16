@@ -13,8 +13,8 @@ RUN addgroup -g ${GID} --system laravel
 RUN adduser -G laravel --system -D -s /bin/sh -u ${UID} laravel
 RUN sed -i "s/user  nginx/user laravel/g" /etc/nginx/nginx.conf
 
-ADD ./dockerfiels/nginx/huohuade.key /etc/nginx/
-ADD ./dockerfiels/nginx/huohuade.pem /etc/nginx/
+ADD ./nginx/huohuade.key /etc/nginx/
+ADD ./nginx/huohuade.pem /etc/nginx/
 ADD ./nginx/default.prod.conf /etc/nginx/conf.d/
 
 RUN mkdir -p /var/www/huohuade
