@@ -20,12 +20,10 @@ return new class extends Migration
             $table->string('name_en');
             $table->string('name_ch');
             $table->integer('coach_level');
-            $table->string('gendar');
-            $table->integer('salary')->nullable();
+            $table->string('gender');
+            $table->integer('salary');
+            $table->string('salary_currency');
             $table->string('created_at');
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->foreign('created_by')->references('id')->on('coaches')->onDelete('set null');
-            $table->boolean('is_deleted');
         });
     }
 

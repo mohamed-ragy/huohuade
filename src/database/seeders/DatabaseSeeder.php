@@ -22,11 +22,10 @@ class DatabaseSeeder extends Seeder
             'name_en' => 'Yuan feng zheng',
             'name_ch' => '元冯郑',
             'coach_level' => 0,
-            'gendar' => 'male',
-            'salary' => null,
+            'gender' => 'male',
+            'salary' => 0,
+            'salary_currency' => 'RMB',
             'created_at' => Carbon::now()->timestamp,
-            'created_by' => null,
-            'is_deleted' => false,
         ]);
         $manager = coach::create([
             'login_name' => 'manager',
@@ -35,11 +34,10 @@ class DatabaseSeeder extends Seeder
             'name_en' => 'Xin Zhao',
             'name_ch' => '新招',
             'coach_level' => 1,
-            'gendar' => 'male',
+            'gender' => 'male',
             'salary' => 10000,
+            'salary_currency' => 'RMB',
             'created_at' => Carbon::now()->timestamp,
-            'created_by' => $administrator->id,
-            'is_deleted' => false,
         ]);
         $senior = coach::create([
             'login_name' => 'senior',
@@ -48,11 +46,10 @@ class DatabaseSeeder extends Seeder
             'name_en' => 'Li Wang',
             'name_ch' => '王丽',
             'coach_level' => 2,
-            'gendar' => 'female',
+            'gender' => 'female',
             'salary' => 7500,
+            'salary_currency' => 'RMB',
             'created_at' => Carbon::now()->timestamp,
-            'created_by' => $administrator->id,
-            'is_deleted' => false,
         ]);
         $basic = coach::create([
             'login_name' => 'basic',
@@ -61,11 +58,10 @@ class DatabaseSeeder extends Seeder
             'name_en' => 'Ming Ping',
             'name_ch' => '明平',
             'coach_level' => 3,
-            'gendar' => 'male',
+            'gender' => 'male',
             'salary' => 3000,
+            'salary_currency' => 'RMB',
             'created_at' => Carbon::now()->timestamp,
-            'created_by' => $administrator->id,
-            'is_deleted' => false,
         ]);
         $coach = coach::create([
             'login_name' => 'coach',
@@ -74,11 +70,10 @@ class DatabaseSeeder extends Seeder
             'name_en' => 'Mu Yang',
             'name_ch' => '穆阳',
             'coach_level' => 4,
-            'gendar' => 'male',
+            'gender' => 'male',
             'salary' => 1000,
+            'salary_currency' => 'RMB',
             'created_at' => Carbon::now()->timestamp,
-            'created_by' => $administrator->id,
-            'is_deleted' => false,
         ]);
     }
 }

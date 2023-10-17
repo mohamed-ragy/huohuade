@@ -1,12 +1,12 @@
 drawPage_coaches = function(){
     $('.pageContainerTree').text('').append(
-        $('<div/>',{class:'bold500 fs102',text:text.menu.coaches})
+        $('<div/>',{class:'bold500',text:text.menu.coaches})
     )
     $('#page').append(
-        $('<div/>',{class:'ma mxw1000'}).append(
+        $('<div/>',{class:''}).append(
             $('<div/>',{class:'w100p column alnS jstfyS'}).append(
                 $('<div/>',{class:'btn_container'}).append(
-                    $('<button/>',{class:'btn btn_cancel',text:text.coaches.createNewCoach})
+                    $('<button/>',{class:'showPage btn btn_cancel',page:'create_new_coach',tab:'coaches',text:text.coaches.createNewCoach})
                 )
             ),
             $('<table/>',{id:'coachesTable'})
@@ -17,7 +17,7 @@ drawPage_coaches = function(){
         $('<div/>',{class:'ma mxw1000'}).append(
             $('<div/>',{class:'w100p column alnS jstfyS'}).append(
                 $('<div/>',{class:'btn_container'}).append(
-                    $('<button/>',{class:'btn btn_cancel',text:text.coaches.createNewCoach})
+                    $('<button/>',{class:'showPage btn btn_cancel',page:'create_new_coach',tab:'coaches',text:text.coaches.createNewCoach})
                 )
             ),
             $('<table/>',{id:'coachesTable_m'})

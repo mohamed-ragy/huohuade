@@ -2,11 +2,15 @@
 .column{display: flex;flex-direction: column;}
 .wrap{flex-wrap: wrap;}
 .alnS{align-items: flex-start;}
+.alnE{align-items: flex-end;}
 .alnC{align-items: center;}
+.alnBL{align-items: baseline;}
 .jstfyS{justify-content: flex-start;}
 .jstfyC{justify-content: center;}
 .jstfySB{justify-content: space-between;}
 .jstfyE{justify-content: flex-end;}
+
+.alnsE{align-self: flex-end;}
 
 .grow1{flex-grow: 1;}
 .grow2{flex-grow: 2;}
@@ -16,3 +20,10 @@
 
 
 .tac{text-align: center;}
+
+
+///
+.zx10{z-index: 10;}
+.zx20{z-index: 20;}
+
+//

@@ -18,11 +18,10 @@ class coach extends Authenticatable
         'name_en',
         'name_ch',
         'coach_level',
-        'gendar',
+        'gender',
         'salary',
+        'salary_currency',
         'created_at',
-        'created_by',
-        'is_deleted',
     ];
 
     protected $hidden = [

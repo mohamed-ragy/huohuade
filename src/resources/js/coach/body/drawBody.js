@@ -17,36 +17,36 @@ drawbody = function(){
                             $('<div/>',{class:'menu_coach_jobtitle',text:window.text.coaches[`coach_${window.coach.coach_level}`]}),
                         )
                     ),
-                    $('<div/>',{class:`menu_elem menu_elem_selected`,page:'calendar'}).append(
+                    $('<div/>',{class:`showPage menu_elem menu_elem_selected`,page:'calendar',tab:'calendar'}).append(
                         $('<div/>',{tooltip:text.menu.calendar,class:'menu_elem_img ico-calendar'}),
                         $('<div/>',{text:text.menu.calendar,class:'menu_elem_txt'})
                     ),
-                    $('<div/>',{class:`menu_elem ${!accessibility.coaches_see ? 'none' : ''}`,page:'coaches'}).append(
+                    $('<div/>',{class:`showPage menu_elem ${!accessibility.coaches_see ? 'none' : ''}`,page:'coaches',tab:'coaches'}).append(
                         $('<div/>',{tooltip:text.menu.coaches,class:'menu_elem_img ico-coach'}),
                         $('<div/>',{text:text.menu.coaches,class:'menu_elem_txt'})
                     ),
-                    $('<div/>',{class:'menu_elem',page:'locations'}).append(
+                    $('<div/>',{class:'showPage menu_elem',page:'locations',tab:'locations'}).append(
                         $('<div/>',{tooltip:text.menu.locations,class:'menu_elem_img ico-location'}),
                         $('<div/>',{text:text.menu.locations,class:'menu_elem_txt'})
                     ),
-                    $('<div/>',{class:'menu_elem',page:'players'}).append(
+                    $('<div/>',{class:'showPage menu_elem',page:'players',tab:'players'}).append(
                         $('<div/>',{tooltip:text.menu.players,class:'menu_elem_img ico-player'}),
                         $('<div/>',{text:text.menu.players,class:'menu_elem_txt'})
                     ),
-                    $('<div/>',{class:'menu_elem',page:'insights'}).append(
+                    $('<div/>',{class:'showPage menu_elem',page:'insights',tab:'insights'}).append(
                         $('<div/>',{tooltip:text.menu.insights,class:'menu_elem_img ico-insights'}),
                         $('<div/>',{text:text.menu.insights,class:'menu_elem_txt'})
                     ),
-                    $('<div/>',{class:'menu_elem',page:'activity_logs'}).append(
+                    $('<div/>',{class:'showPage menu_elem',page:'activity_logs',tab:'activity_logs'}).append(
                         $('<div/>',{tooltip:text.menu.activity_logs,class:'menu_elem_img ico-activity_logs'}),
                         $('<div/>',{text:text.menu.activity_logs,class:'menu_elem_txt'})
                     ),
                 )
             ),
             $('<div/>',{id:'pageContainer',class:'grow2 shrink0'}).append(
-                $('<div/>',{class:'mB40 p10 w100p-20 row alnC jstfySB'}).append(
-                    $('<div/>',{class:'pageContainerTree'}),
-                    $('<div/>',{class:'row alnC jstfyE'}).append(
+                $('<div/>',{class:'mB40 w100p row alnC jstfySB'}).append(
+                    $('<div/>',{class:'pageContainerTree fs101 mX10 row alnBL'}),
+                    $('<div/>',{class:'row alnC jstfyE mX10'}).append(
                         $('<div/>',{class:`${window.lang == 'en' ? 'ico-china switch_lang_ch' : 'ico-usa switch_lang_en'} w30 h30 pointer mX10`,tooltip:text.main[window.lang == 'en' ? 'ch' : 'en']}),
                         $('<div/>',{class:'ico-logout coach_logout w30 h30 pointer mX10',tooltip:text.main.logout}),
                     )
@@ -76,27 +76,27 @@ drawbody = function(){
                         $('<div/>',{class:'ico-logout coach_logout w20 h20 pointer mX10',tooltip:text.main.logout}),
                     ),
                 ),
-                $('<div/>',{class:'menu_elem_m menu_elem_m_selected',page:'calendar'}).append(
+                $('<div/>',{class:'showPage menu_elem_m menu_elem_m_selected',page:'calendar',tab:'calendar'}).append(
                     $('<div/>',{class:'menu_elem_img ico-calendar'}),
                     $('<div/>',{text:text.menu.calendar,class:'menu_elem_txt_m'})
                 ),
-                $('<div/>',{class:`menu_elem_m ${!accessibility.coaches_see ? 'none' : ''}`,page:'coaches'}).append(
+                $('<div/>',{class:`showPage menu_elem_m ${!accessibility.coaches_see ? 'none' : ''}`,page:'coaches',tab:'coaches'}).append(
                     $('<div/>',{class:'menu_elem_img ico-coach'}),
                     $('<div/>',{text:text.menu.coaches,class:'menu_elem_txt_m'})
                 ),
-                $('<div/>',{class:'menu_elem_m',page:'locations'}).append(
+                $('<div/>',{class:'showPage menu_elem_m',page:'locations',tab:'locations'}).append(
                     $('<div/>',{class:'menu_elem_img ico-location'}),
                     $('<div/>',{text:text.menu.locations,class:'menu_elem_txt_m'})
                 ),
-                $('<div/>',{class:'menu_elem_m',page:'players'}).append(
+                $('<div/>',{class:'showPage menu_elem_m',page:'players',tab:'players'}).append(
                     $('<div/>',{class:'menu_elem_img ico-player'}),
                     $('<div/>',{text:text.menu.players,class:'menu_elem_txt_m'})
                 ),
-                $('<div/>',{class:'menu_elem_m',page:'insights'}).append(
+                $('<div/>',{class:'showPage menu_elem_m',page:'insights',tab:'insights'}).append(
                     $('<div/>',{class:'menu_elem_img ico-insights'}),
                     $('<div/>',{text:text.menu.insights,class:'menu_elem_txt_m'})
                 ),
-                $('<div/>',{class:'menu_elem_m',page:'activity_logs'}).append(
+                $('<div/>',{class:'showPage menu_elem_m',page:'activity_logs',tab:'activity_logs'}).append(
                     $('<div/>',{class:'menu_elem_img ico-activity_logs'}),
                     $('<div/>',{text:text.menu.activity_logs,class:'menu_elem_txt_m'})
                 ),

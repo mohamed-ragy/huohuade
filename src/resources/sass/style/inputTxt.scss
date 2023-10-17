@@ -34,3 +34,75 @@ input::-webkit-inner-spin-button {
     cursor: not-allowed;
     border:1px solid var(--c-border);
 }
+////
+.inputSelectContainer{
+    // padding: 8px;
+    height:42px;
+    width:327px;
+    @media (max-width:500px) {
+        width:277px;
+    }
+    max-width:calc(100%);
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+}
+.inputSelectArrow{
+    position: absolute;
+    top: 15px;
+    right: 12px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+.inputSelect{
+    padding: 8px;
+    height:15px;
+    width:300px;
+    @media (max-width:500px) {
+        width:250px;
+    }
+    max-width:calc(100% - 16px);
+    background-color: transparent;
+    color:#515151;
+    border:none;
+    font-size: .9em;
+    border-radius: 0;
+    margin:0;
+    user-select: auto;
+    border:1px solid var(--c-border);
+    border-radius: 3px;
+    margin:5px;
+    cursor: pointer;
+    user-select: none;
+}
+.inputSelect:read-only{
+    background-color:transparent;
+    user-select: none;
+    cursor: pointer;
+}
+.inputSelectList{
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    left:0;
+    top:37px;
+    margin:0 5px;
+    width:316px;
+    @media (max-width:500px) {
+        width:266px;
+    }
+    max-width:calc(100%);
+    border:1px solid rgb(225, 225, 225);
+    background-color: #fff;
+}
+.inputSelectListItem{
+    padding:5px;
+    width:calc(100% - 10px);
+    background-color: #fff;
+    cursor: pointer;
+    font-size: .9em;
+}
+.inputSelectListItem:hover{
+    background-color: rgb(245, 245, 245);;
+}
+///

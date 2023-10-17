@@ -10,6 +10,8 @@ return[
         'delete' => 'Delete',
         'manage' => 'Manage',
         'activities' => 'Activities',
+        'create' => 'Create',
+        'browse' => 'Browse',
     ],
     'menu' => [
         'calendar' => 'Calendar',
@@ -26,5 +28,23 @@ return[
         'coach_3' => 'Basic coach',
         'coach_4' => 'Coach in training',
         'createNewCoach' => 'Create new coach',
+        //
+        'loginName' => 'Login name',
+        'password' => 'Password',
+        'passwordConfirm' => 'Confirm password',
+        'profile_picture' => 'Profile picture',
+        'name_en' => 'Name in English',
+        'name_ch' => 'Name in Chinese',
+        'gender' => 'Gender',
+        'male' => 'Male',
+        'female' => 'Female',
+        'job_title' => 'Job title',
+        'salary' => 'Salary',
+        'salary_currency' => 'Salary currency',
+        'RMB' => 'Chinese yuan (RMB)',
+        'USD' => 'US dollar (USD)',
+        'HKD' => 'Hong Kong dollar (HKD)',
+        'EUR' => 'Euro (EUR)',
+        //
     ]
 ];

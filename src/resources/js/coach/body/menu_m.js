@@ -8,8 +8,3 @@ $('html,body').on('click','.menu_icon_m',function(e){
         $('.menu_icon_m').find('.menu_icon_img').removeClass('ico-menu').addClass('ico-close')
     }
 })
-
-$('html,body').on('click','.menu_elem_m',function(e){
-    e.stopImmediatePropagation();
-    showPage($(this).attr('page'))
-})

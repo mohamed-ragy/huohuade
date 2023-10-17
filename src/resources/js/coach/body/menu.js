@@ -7,8 +7,3 @@ $('html,body').on('click','.menu_icon',function(e){
     }
 })
 
-$('html,body').on('click','.menu_elem',function(e){
-    e.stopImmediatePropagation();
-    showPage($(this).attr('page'))
-
-})
