@@ -14,7 +14,7 @@ services:
       context: ./Dockerfiles/
       dockerfile: nginx.dockerfile
     ports:
-      - 80:80
+      - 8081:80
     container_name: huohuade_app
     volumes:
       - ./src:/var/www/huohuade:delegated
@@ -33,10 +33,10 @@ services:
       dockerfile: php.dockerfile
     container_name: huohuade_php
     ports:
-      - 9000:9000
+      - 9001:9000
     volumes:
       - ./src:/var/www/huohuade:delegated
-      - ./Dockerfiles/php.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./Dockerfiles/php.ini:/usr/local/etc/php/conf.d/local.ini 
     networks:
       - huohuade
 
@@ -45,7 +45,7 @@ services:
     restart: always
     tty: true
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - ./mysql:/var/lib/mysql
     container_name: huohuade_mysql
@@ -58,7 +58,19 @@ services:
       SERVICE_NAME: mysql
     networks:
       - huohuade
-      
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - huohuade
+
   composer:
     build:
       context: ./Dockerfiles/
