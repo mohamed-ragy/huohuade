@@ -17,7 +17,6 @@ class coachController extends Controller
 {
     public function __construct(Request $request)
     {
-
         $this->middleware(function ($request, $next) {
             if($request->lang == 'en'){
                 Cookie::queue(Cookie::make('lang','en',9999999999));
@@ -149,7 +148,7 @@ class coachController extends Controller
                 // return response($fileExtention);
                 $thumbnail = Image::make($file);
                 $thumbnail->resize(800, 800, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
-                $thumbnail->save( 'storage/imgs/coaches/'. $file_name .'.'.$fileExtention);
+                $thumbnail->save( public_path('storage/imgs/coaches/'). $file_name .'.'.$fileExtention);
                 // $file->storeAs('public/imgs/coaches/' ,$request->login_name.'.'.$fileExtention);
             }
             $create_coach = coach::create([

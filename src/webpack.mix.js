@@ -33,4 +33,4 @@ mix
     'public/js/install/script.js',
     'public/css/install/style.css',
 ])
-// .sourceMaps();
+.sourceMaps();
