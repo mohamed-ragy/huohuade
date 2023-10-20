@@ -76,7 +76,7 @@ services:
       - huohuade
 
   npm:
-    image: node:21
+    image: node:12.14.0
     container_name: huohuade_npm
     volumes:
       - ./src:/var/www/huohuade

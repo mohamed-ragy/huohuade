@@ -27,7 +27,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN set -e; \
     docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype; \
     docker-php-ext-install -j$(nproc) gd && docker-php-ext-enable gd
-RUN docker-php-ext-install mysqli pdo pdo_mysql mbstring exif pcntl bcmath && docker-php-ext-enable mysqli
+# RUN docker-php-ext-install mysqli pdo pdo_mysql mbstring exif pcntl bcmath && docker-php-ext-enable mysqli
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Get latest Composer
 COPY --from=composer:2.6.5 /usr/bin/composer /usr/bin/composer
