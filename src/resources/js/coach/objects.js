@@ -38,7 +38,7 @@ switch (coach.coach_level) {
 for(const key in coaches){
     coaches[key].profile_picture = coaches[key].profile_picture == null && coaches[key].gender == 'male' ? '../storage/imgs/profile_male.png' :
     coaches[key].profile_picture == null && coaches[key].gender == 'female' ? '../storage/imgs/profile_female.png' :
-`../storage/imgs/coaches/${window.coach.profile_picture}`;
+`../storage/imgs/coaches/${coaches[key].profile_picture}`;
 }
 coach.profile_picture == null && coach.gender == 'male' ? window.coach.profile_picture =  '../storage/imgs/profile_male.png' :
 coach.profile_picture == null && coach.gender == 'female' ? window.coach.profile_picture =  '../storage/imgs/profile_female.png' :

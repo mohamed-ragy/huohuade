@@ -6,4 +6,4 @@ require('./body/body.js')
 require('./pages/pages.js')
 
 drawbody();
-showPage('create_new_coach','coaches')
+// showPage('create_new_coach','coaches')

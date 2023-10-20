@@ -163,6 +163,7 @@ class coachController extends Controller
                 'salary_currency' => strip_tags($request->salary_currency),
                 'created_at' => Carbon::now()->timestamp,
             ]);
+            ///create activity
             return response(['status'=>1,'coach' => $create_coach]);
         }
     }

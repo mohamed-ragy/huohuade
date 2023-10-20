@@ -58,19 +58,7 @@ services:
       SERVICE_NAME: mysql
     networks:
       - huohuade
-
-  phpmyadmin:
-    image: phpmyadmin:5.2.1
-    restart: always
-    ports:
-      - 8080:80
-    depends_on:
-      - mysql
-    environment:
-      - PMA_ARBITRARY=1
-    networks:
-      - huohuade
-
+      
   composer:
     build:
       context: ./Dockerfiles/
