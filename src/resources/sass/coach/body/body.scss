@@ -1,14 +1,2 @@
 @import './menu/menu.scss';
 @import './menu/menu_m.scss';
-
-#body{
-    @media (max-width:720px) {
-        display: none;
-    }
-}
-#body_m{
-    height:calc(100% - 50px);
-    @media (min-width:720px) {
-        display: none;
-    }
-}

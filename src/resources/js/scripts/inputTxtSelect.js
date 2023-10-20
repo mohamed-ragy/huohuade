@@ -1,5 +1,6 @@
 $('html,body').on('click','.inputSelectContainer',function(e){
     e.stopImmediatePropagation();
+    if($(this).find('.inputSelect').prop('disabled') == true){return}
     $(this).find('.inputSelectList').hasClass('none') ? $(this).find('.inputSelectList').removeClass('none')
     : $(this).find('.inputSelectList').addClass('none')
 })

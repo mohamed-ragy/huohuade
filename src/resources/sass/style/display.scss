@@ -1,6 +1,7 @@
 .row{display: flex;flex-direction: row;}
 .column{display: flex;flex-direction: column;}
 .wrap{flex-wrap: wrap;}
+.wrapR{flex-wrap: wrap-reverse;}
 .alnS{align-items: flex-start;}
 .alnE{align-items: flex-end;}
 .alnC{align-items: center;}
@@ -23,6 +24,7 @@
 
 
 ///
+.zx5{z-index: 5;}
 .zx10{z-index: 10;}
 .zx20{z-index: 20;}
 

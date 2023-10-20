@@ -6,6 +6,9 @@
     border-bottom: 1px dashed var(--c-border);
     padding:10px;
     height: 30px;
+    @media (min-width:1024px) {
+        display: none;
+    }
 }
 .menu_container_m{
     padding:10px;
@@ -19,6 +22,9 @@
     transform: translateX(-100%);
     transition-duration: 150ms;
     background-color: #fff;
+    @media (min-width:1024px) {
+        display: none;
+    }
 }
 .menu_container_m_expanded{
     transform: translateX(0);

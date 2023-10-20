@@ -17,7 +17,7 @@ $('html,body').on('click','.coach_logout',function(e){
     e.stopImmediatePropagation();
     $.ajax({
         url:'../api/coach',
-        type:'put',
+        type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),
             coach_logout:true,

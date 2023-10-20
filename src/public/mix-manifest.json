@@ -1,14 +1,5 @@
 {
     "/js/coach/login.js": "/js/coach/login.js",
     "/js/coach/home.js": "/js/coach/home.js",
-    "/js/install/script.js": "/js/install/script.js",
-    "/css/install/style.css": "/css/install/style.css",
-    "/css/coach/home.css": "/css/coach/home.css",
-    "/css/coach/login.css": "/css/coach/login.css",
-    "/js/coach/login.min.js": "/js/coach/login.min.js",
-    "/css/coach/login.min.css": "/css/coach/login.min.css",
-    "/js/coach/home.min.js": "/js/coach/home.min.js",
-    "/css/coach/home.min.css": "/css/coach/home.min.css",
-    "/js/install/script.min.js": "/js/install/script.min.js",
-    "/css/install/style.min.css": "/css/install/style.min.css"
+    "/js/install/script.js": "/js/install/script.js"
 }

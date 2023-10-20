@@ -9,7 +9,7 @@ $('html,body').on('click','#loginBtn',function(e){
     $('.login_msg').removeClass('none c_red c_green').addClass('none').text('')
     $.ajax({
         url:'../api/coach',
-        type:'put',
+        type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),
             login:true,

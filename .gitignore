@@ -2,7 +2,6 @@ mysql
 mongodb
 .DS_Store
 .idea
-docker-compose.prod.yml
 docker-compose.yml
 dockerfiles/nginx/huohuade.key
 dockerfiles/nginx/huohuade.pem
