@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.24.0
 
 # Arguments defined in docker-compose.yml
 ARG user
