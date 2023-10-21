@@ -5,6 +5,7 @@ return[
         "title" => "Huohuade | Coach Dashboard",
         "huohuade" => "Huohuade",
         "logout" => "Logout",
+        "notifications" => "Notifications",
         "en" => "English",
         "ch" => "中国人",
         "delete" => "Delete",

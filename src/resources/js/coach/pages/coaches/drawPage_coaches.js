@@ -6,7 +6,7 @@ drawPage_coaches = function(){
         $('<div/>',{class:''}).append(
             $('<div/>',{class:`w100p column alnS jstfyS ${!window.accessibility.coaches_manage ? 'none' : ''}`}).append(
                 $('<div/>',{class:'btn_container'}).append(
-                    $('<button/>',{class:'showPage btn btn_cancel',page:'create_new_coach',tab:'coaches',text:text.coaches.createNewCoach})
+                    $('<button/>',{class:'showPage btn btn_cancel',page:'create_new_coach',text:text.coaches.createNewCoach})
                 )
             ),
             $('<table/>',{id:'coachesTable'})
@@ -16,7 +16,7 @@ drawPage_coaches = function(){
 
     for(const key in window.coaches){
         let coach = window.coaches[key];
-        console.log(coach)
+        // console.log(coach)
         $('#coachesTable').append(
             $('<tr/>',{class:'tableRow'}).append(
                 $('<td/>',{}).append(

@@ -59,6 +59,22 @@ services:
     networks:
       - huohuade
       
+  mongodb:
+    image: mongo:7.0.2
+    container_name: huohuade_mongodb
+    restart: always
+    tty: true
+    ports:
+      - "27018:27018"
+    volumes:
+      - ./mongodb:/data/db
+    working_dir: /var/www/huohuade
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example 
+    networks:
+      - huohuade
+      
   composer:
     build:
       context: ./Dockerfiles/

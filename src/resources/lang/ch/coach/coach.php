@@ -5,6 +5,7 @@ return[
         "title" => "霍华德 | 教练仪表板",
         "huohuade" => "霍华德",
         "logout" => "注销",
+        "notifications" => "通知",
         "en" => "English",
         "ch" => "中国人",
         "delete" => "删除",

@@ -1,6 +1,6 @@
 drawPage_create_new_coach = function(){
     $('.pageContainerTree').text('').append(
-        $('<a/>',{class:'showPage',page:'coaches',tab:'coaches',text:text.menu.coaches}),
+        $('<a/>',{class:'showPage',page:'coaches',text:text.menu.coaches}),
         $('<span/>',{text:'>',class:'mX5'}),
         $('<span/>',{class:'bold500',text:text.coaches.createNewCoach}),
     );

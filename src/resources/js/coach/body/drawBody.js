@@ -95,6 +95,7 @@ drawbody = function(){
                     $('<div/>',{class:'pageContainerTree'}),
                     $('<div/>',{class:'pageHeaderIcons row alnC jstfyE mX10 grow1'}).append(
                         $('<div/>',{class:`${window.lang == 'en' ? 'ico-china switch_lang_ch' : 'ico-usa switch_lang_en'} pageHeaderIcon`,tooltip:text.main[window.lang == 'en' ? 'ch' : 'en']}),
+                        $('<div/>',{class:'ico-notifications pageHeaderIcon',tooltip:text.main.notifications}),
                         $('<div/>',{class:'ico-logout coach_logout pageHeaderIcon',tooltip:text.main.logout}),
                     )
                 ),

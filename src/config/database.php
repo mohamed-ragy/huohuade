@@ -63,6 +63,15 @@ return [
             ]) : [],
         ],
 
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'host' => env('MDB_HOST', 'mongodb'),
+            'port' => env('MDB_PORT', '27018'),
+            'database' => 'huohuade',
+            'username' => env('MDB_USERNAME', 'root'),
+            'password' => env('MDB_PASSWORD', 'example'),
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

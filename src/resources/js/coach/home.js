@@ -6,4 +6,10 @@ require('./body/body.js')
 require('./pages/pages.js')
 
 drawbody();
-// showPage('create_new_coach','coaches')
+
+let params = new URLSearchParams(window.location.search)
+params.get('page') == null ?  window.history.replaceState({page:'calendar'},'',`/${window.lang}/?page=calendar`) : window.history.replaceState({page:params.get('page')},'',`/${window.lang}/?page=${params.get('page')}`);
+showPage(window.history.state.page)
+
+
+//
