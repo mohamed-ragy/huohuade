@@ -20,8 +20,8 @@ RUN apt-get update && apt-get install -y \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# RUN pecl install mongodb 
-# RUN echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
+RUN pecl install mongodb 
+RUN echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
 
 # Install PHP extensions
 RUN set -e; \
