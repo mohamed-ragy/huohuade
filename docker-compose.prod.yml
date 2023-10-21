@@ -21,6 +21,7 @@ services:
     depends_on:
       - php
       - mysql
+      - mongodb
     networks:
       - huohuade
 
@@ -117,6 +118,7 @@ services:
       - ./src:/var/www/huohuade:delegated
     depends_on:
       - mysql
+      - mongodb
     entrypoint: [ 'php', '/var/www/huohuade/artisan' ]
     networks:
       - huohuade
