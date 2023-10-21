@@ -66,7 +66,7 @@ services:
     restart: always
     tty: true
     ports:
-      - "27018:27018"
+      - "27018:27017"
     volumes:
       - ./mongodb:/data/db
     working_dir: /var/www/huohuade

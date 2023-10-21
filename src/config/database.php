@@ -66,7 +66,7 @@ return [
         'mongodb' => [
             'driver' => 'mongodb',
             'host' => env('MDB_HOST', 'mongodb'),
-            'port' => env('MDB_PORT', '27018'),
+            'port' => env('MDB_PORT', '27017'),
             'database' => 'huohuade',
             'username' => env('MDB_USERNAME', 'root'),
             'password' => env('MDB_PASSWORD', 'example'),

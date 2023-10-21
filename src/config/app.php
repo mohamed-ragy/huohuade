@@ -170,7 +170,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // MongoDB\Laravel\MongoDBServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        MongoDB\Laravel\MongoDBServiceProvider::class,
 
     ])->toArray(),
 
