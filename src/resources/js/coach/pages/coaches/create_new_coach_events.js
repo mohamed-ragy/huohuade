@@ -11,9 +11,9 @@ $('html,body').on('change','#create_new_coach_img_input',function(e){
 
 $('html,body').on('click','#create_coach_btn',function(e){
     e.stopImmediatePropagation();
-    showLoadingBar($('#create_coach_loading'))
+    showLoadingBar($('#loading'))
     $('.create_coach_error').text('')
-    // $('.create_coach_input').prop('disabled',true);
+    $('.create_coach_input').prop('disabled',true);
     let formData = new FormData();
     formData.append('create_coach', true);
     formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
@@ -37,7 +37,7 @@ $('html,body').on('click','#create_coach_btn',function(e){
         data:formData
         ,success:function(r){
             $('.create_coach_input').prop('disabled',false);
-            hideLoadingBar($('#create_coach_loading'))
+            hideLoadingBar($('#loading'))
             if(r.status == 1){
                 r.coach.profile_picture = r.coach.profile_picture == null && r.coach.gender == 'male' ? '../storage/imgs/profile_male.png' :
                 r.coach.profile_picture = r.coach.profile_picture == null && r.coach.gender == 'female' ? '../storage/imgs/profile_female.png' :

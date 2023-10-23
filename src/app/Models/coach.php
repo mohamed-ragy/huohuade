@@ -36,7 +36,7 @@ class coach extends Authenticatable
 // 3 => Basic coach
 // 4 => Coach in training
 
-///currencies ['RMB','USD','HKD','EUR']
+///currencies ['CNY','USD','HKD','EUR']
 
 
 //

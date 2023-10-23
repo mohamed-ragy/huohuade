@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class activity_log extends Model
 {
@@ -13,11 +13,11 @@ class activity_log extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'code','created_by','created_by_name_en','created_by_name_ch','created_at',
         'coach_id','coach_name_en','coach_name_ch',
         'player_id','player_name_en','player_name_ch',
         'location_id','location_name_en','location_name_ch',
         'payment_id','lesson_id',
-        'created_by','created_at',
     ];
 
     public function coach(){

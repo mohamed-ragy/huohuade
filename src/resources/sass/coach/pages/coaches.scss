@@ -4,6 +4,9 @@
     border-radius: 50%;
     object-fit: cover;
 }
+.deleteCoachSalaryIcon{visibility:hidden;}
 
-
+.tableRow:hover{
+    .deleteCoachSalaryIcon{visibility: visible;}
+}
 //

@@ -1,2 +1,14 @@
 @import './menu/menu.scss';
 @import './menu/menu_m.scss';
+
+.pageContainerHead{
+    width:calc(100% - 20px);
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: space-between;
+    margin:0 10px;
+    margin-bottom:30px;
+    padding-bottom:10px;
+    border-bottom: 1px solid var(--c-border-light);
+}

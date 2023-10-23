@@ -10,10 +10,18 @@
     <link rel="stylesheet" href="../css/coach/home.min.css">
 </head>
 <body>
-    <div id="tooltipDiv"></div>
-    <div id="container">
-
+    <div id="loading" class="loadingBar loadingBar_top loadingBar_4"></div>
+    <div id="tooltipDiv" class="none"></div>
+    <div class="popupContainer none">
+        <div class="popup">
+            <div class="popupHead">
+                <div class="popupTitle"></div>
+                <div class="popupClose btn_icon_15 mie-5 ico-close"></div>
+            </div>
+            <div class="popupBody"></div>
+        </div>
     </div>
+    <div id="container"></div>
 </body>
 <script>
     window.text = {!! $text !!}

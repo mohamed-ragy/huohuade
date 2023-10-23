@@ -2,13 +2,19 @@
     --c-huohuade:#978344;
     --c-huohuade-light:#af9b58;
     --c-huohuade-light-2:#D4C698;
-    --c-border:#c9c9c9;
+    --c-border:rgb(201, 201, 201);
+    --c-border-light:rgb(223, 223, 223);
 
     --c-gray-light:#f2f2f2;
+    --c-gray-light2:#e1e1e1;
 }
 *{
     -webkit-tap-highlight-color: transparent;
 }
+.unset{all:unset}
+
+//
+
 @font-face {
     font-family: 'Inter';
     src: url('/storage/font/Inter.ttf') format("truetype");
@@ -98,3 +104,17 @@ table{
 
 .line{width:calc(100% - 20px);margin:10px;border-bottom:1px solid rgb(235, 235, 235);padding-top:10px;}
 //
+.red_msg{
+    border-radius: 5px;
+    color:rgb(218, 47, 47);
+    border:1px solid rgba(218, 47, 47,.8);
+    background-color:rgba(218, 47, 47,.05);
+}
+.pagination_arrow_disabled{
+    cursor: not-allowed;
+    .ico-arrow-prev{background: url("/storage/icons/arrow-prev-gray.svg") top right/cover;}
+    .ico-arrow-next{background: url("/storage/icons/arrow-next-gray.svg") top right/cover;}
+}
+.pagination_arrow_disabled:hover{background-color: transparent;}
+//
+

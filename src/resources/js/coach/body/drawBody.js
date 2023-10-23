@@ -91,7 +91,7 @@ drawbody = function(){
                 )
             ),
             $('<div/>',{id:'pageContainer',class:' '}).append(
-                $('<div/>',{class:'mB40 w100p row wrapR alnC jstfySB'}).append(
+                $('<div/>',{class:'pageContainerHead'}).append(
                     $('<div/>',{class:'pageContainerTree'}),
                     $('<div/>',{class:'pageHeaderIcons row alnC jstfyE mX10 grow1'}).append(
                         $('<div/>',{class:`${window.lang == 'en' ? 'ico-china switch_lang_ch' : 'ico-usa switch_lang_en'} pageHeaderIcon`,tooltip:text.main[window.lang == 'en' ? 'ch' : 'en']}),
@@ -99,7 +99,7 @@ drawbody = function(){
                         $('<div/>',{class:'ico-logout coach_logout pageHeaderIcon',tooltip:text.main.logout}),
                     )
                 ),
-                $('<div/>',{id:'page'})
+                $('<div/>',{class:'page'})
             ),
         ),
     )

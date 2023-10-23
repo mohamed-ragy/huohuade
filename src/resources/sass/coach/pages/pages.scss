@@ -11,8 +11,13 @@
         height:calc(100% - 70px);
     }
 }
+.page{
+    opacity: 0;
+    transition-duration: 200ms;
+}
+.page_show{opacity: 1;}
 .pageContainerTree{
-    font-size:1.1em;
+    font-size:1em;
     margin:0 10px;
     display: flex;
     align-items: baseline;

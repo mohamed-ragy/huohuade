@@ -1,0 +1,67 @@
+.pageTabs{
+    width:calc(100% - 30px);
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content: flex-start;
+    margin:0 15px;
+    margin-top:20px;
+    margin-bottom:40px;
+}
+.pageTabsContainer{
+    overflow-x: hidden;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content: flex-start;
+    border-bottom:1px solid var(--c-gray-light);
+}
+.pageTab{
+    font-size:.85em;
+    margin-inline-end:20px;
+    cursor: pointer;
+    padding-bottom:5px;
+    white-space: nowrap;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.pageTab_selected{
+    border-bottom:1px solid var(--c-huohuade-light);
+    color:var(--c-huohuade-light);
+    font-weight: 700;
+}
+.pageTab:last-child{margin-inline-end:0;}
+.pageTabContainer{
+    width:calc(100% - 10px);
+    padding:0 5px;
+    height:0px;
+    overflow: hidden;
+    opacity:0;
+    transition-duration: 300ms;
+}
+.pageTabContainer_selected{
+    height:auto;
+    opacity:1;
+    overflow: visible;
+}
+.pageTabArrow{
+    // width:20px;
+    // height:20px;
+    padding:5px;
+    margin:5px;
+    cursor: pointer;
+    white-space: nowrap;
+    background-color: var(--c-gray-light);
+    border-radius: 4px;
+}
+.pageTabArrow:hover{
+    background-color: var(--c-gray-light2);
+}
+.pageTabArrowLeft{
+    margin-inline-end:10px;
+}
+.pageTabArrowRight{
+    margin-inline-start:10px;
+}

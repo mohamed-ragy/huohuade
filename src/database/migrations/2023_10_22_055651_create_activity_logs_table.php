@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::connection('mongodb')->drop('activity_logs');
         Schema::connection('mongodb')->create('activity_logs', function ($collection) {
             $collection->index('created_at');
             $collection->index('created_by');
@@ -22,7 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::connection('mongodb_activity_logs')->drop('activity_logs');
-        // Schema::dropIfExists('activity_logs');
+        Schema::connection('mongodb')->drop('activity_logs');
+        Schema::dropIfExists('activity_logs');
     }
 };

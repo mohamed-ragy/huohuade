@@ -23,16 +23,51 @@
 }
 .btn_cancel{
     background-color: #fff;
-    border:1px solid var(--c-huohuade);
-    color:var(--c-huohuade);
+    border:1px solid var(--c-huohuade-light);
+    color:var(--c-huohuade-light);
 }
 .btn_cancel:hover{
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(250, 250, 250);
 }
 .btn_cancel:active{
     background-color: #fff;
 }
+.btn_delete{
+    background-color: rgb(218, 47, 47);
+    border:1px solid rgb(218, 47, 47);
+    color:#fff;
+}
+.btn_delete:hover{
+    background-color: rgba(213, 30, 30,.8);
+}
+.btn_delete:active{
+    background-color: rgb(218, 47, 47);
+}
 ///
+.btn_icon_15{
+    width:15px;
+    height:15px;
+    padding:5px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+}
+.btn_icon_15:hover{
+    background-color: var(--c-gray-light);
+}
+.btn_icon_20{
+    width:20px;
+    height:20px;
+    padding:5px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+}
+.btn_icon_20:hover{
+    background-color: var(--c-gray-light);
+}
 .btn_icon_25{
     width:25px;
     height:25px;

@@ -6,6 +6,11 @@
     left:0;
     background-color: var(--c-huohuade-light);
 }
+.loadingBar_top{
+    bottom:unset;
+    top:0;
+}
+.loadingBar_4{height:4px;}
 .loadingBar_load{
     transition-duration: 2000ms;
     width:80%;

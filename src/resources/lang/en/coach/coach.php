@@ -9,10 +9,17 @@ return[
         "en" => "English",
         "ch" => "中国人",
         "delete" => "Delete",
+        "deleteConfirmation" => "Delete confirmation",
         "manage" => "Manage",
+        "edit" => "Edit",
+        "save" => "Save",
+        "cancel" => "Cancel",
+        "back" => "Back",
+        "salary" => "Salary",
         "activities" => "Activities",
         "create" => "Create",
         "browse" => "Browse",
+        "dataSaved" => "Data saved successfully."
     ],
     "menu" => [
         "calendar" => "Calendar",
@@ -41,11 +48,10 @@ return[
         "job_title" => "Job title",
         "salary" => "Salary",
         "salary_currency" => "Salary currency",
-        "RMB" => "Chinese yuan (RMB)",
+        "CNY" => "Chinese yuan (CNY)",
         "USD" => "US dollar (USD)",
         "HKD" => "Hong Kong dollar (HKD)",
         "EUR" => "Euro (EUR)",
-        //
         "login_name_required" => "Please enter a login name.",
         "login_name_regex" => "The login name can consist of English letters, numbers, underscores, and dashes only.",
         "login_name_unique" => "The login name you entered is already used by another coach account.",
@@ -61,6 +67,13 @@ return[
         "salary_required" => "Please enter the coach's salary.",
         "salary_integer" => "The coach salary must be only numbers.",
         "salary_currency_required" => "Please select a currency symbol.",
-
+        "deleteCoachConfirmMsg" => "Are you sure you want to delete :name:'s account?",
+        "editProfile" => 'Edit profile',
+        'changePassword' => "Change password",
+        "newPassword" => "New password",
+        "noSalaries" => "The selected coach has not yet received any salary.",
+        "deleteCoachSalaryConfirmMsg" => "Are you sure you want to delete this salary record?",
+        "addNewSalary" => "Submit new salary",
+        "description" => "Description",
     ]
 ];

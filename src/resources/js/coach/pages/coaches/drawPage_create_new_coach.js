@@ -1,11 +1,11 @@
 drawPage_create_new_coach = function(){
     $('.pageContainerTree').text('').append(
-        $('<a/>',{class:'showPage',page:'coaches',text:text.menu.coaches}),
+        $('<span/>',{class:'pointer c_huohuade bold500 showPage',page:'coaches',text:text.menu.coaches}),
         $('<span/>',{text:'>',class:'mX5'}),
         $('<span/>',{class:'bold500',text:text.coaches.createNewCoach}),
     );
 
-    $('#page').append(
+    $('.page').append(
         $('<input/>',{id:'create_new_coach_img_input',type:'file',hidden:true,accept:'image/png, image/jpeg, image/jpg, image/jpg, image/webp, image/bmp'}),
         $('<div/>',{class:'wfc'}).append(
             $('<div/>',{class:'m20'}).append(
@@ -48,8 +48,8 @@ drawPage_create_new_coach = function(){
                     $('<div/>',{class:'inputSelectArrow ico-arrow-down'}),
                     $('<input/>',{class:'inputText inputSelect create_coach_input',id:'create_new_coach_gender',readonly:true}),
                     $('<div/>',{class:'inputSelectList none'}).append(
-                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.male,key:text.coaches.male}),
-                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.female,key:text.coaches.female}),
+                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.male,key:'male'}),
+                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.female,key:'female'}),
                     )
                 ),
                 $('<div/>',{class:'create_coach_error create_coach_gender_error fs08 mX5 c_red',text:''})
@@ -81,7 +81,7 @@ drawPage_create_new_coach = function(){
                     $('<div/>',{class:'inputSelectArrow ico-arrow-down'}),
                     $('<input/>',{class:'inputText inputSelect create_coach_input',id:'create_new_coach_salary_currency',readonly:true}),
                     $('<div/>',{class:'inputSelectList none'}).append(
-                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.RMB,key:'RMB'}),
+                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.CNY,key:'CNY'}),
                         $('<div/>',{class:'inputSelectListItem',text:text.coaches.USD,key:'USD'}),
                         $('<div/>',{class:'inputSelectListItem',text:text.coaches.HKD,key:'HKD'}),
                         $('<div/>',{class:'inputSelectListItem',text:text.coaches.EUR,key:'EUR'}),
@@ -90,7 +90,6 @@ drawPage_create_new_coach = function(){
                 $('<div/>',{class:'create_coach_error create_coach_salary_currency_error fs08 mX5 c_red',text:''})
             ),
             $('<div/>',{class:'btn_container relative'}).append(
-                $('<div/>',{class:'loadingBar',id:'create_coach_loading'}),
                 $('<button/>',{class:'btn m10 create_coach_input',id:'create_coach_btn',text:text.main.create})
             ),
 
