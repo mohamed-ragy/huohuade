@@ -87,13 +87,14 @@ table{
     box-sizing: border-box;
     text-indent: initial;
     border-spacing: 0px;
-    width:100%;
+    width:calc(100% - 20px);
+    margin:10px;
 }
 .tableRow{
     margin:10px;
     td{
         border-bottom:1px solid rgb(245, 245, 245);
-        padding:10px;
+        padding:5px;
         margin:0;
         vertical-align: middle;
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\activity_log;
 use App\Models\coach;
+use App\Models\location;
 use App\Models\salary;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -45,11 +46,13 @@ class coachController extends Controller
     public function home(Request $request){
         if(Auth::guard('coach')->user()->coach_level == 0 || Auth::guard('coach')->user()->coach_level == 1){
             $coaches = coach::get();
+            $locations = location::get();
         }
         return view('coach.home',[
             'text' => collect(Lang::get('coach/coach')),
             'lang' => $request->lang,
             'coaches' => $coaches ?? collect([]),
+            'locations' => $locations ?? collect([]),
         ]);
     }
     public function login(Request $request){

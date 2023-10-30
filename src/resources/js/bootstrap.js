@@ -34,3 +34,4 @@ window.$ = require("jquery");
 window.loadTouchEvents = require('jquery-touch-events');
 loadTouchEvents($);
 require('./scripts/scripts')
+window.L = require("leaflet");

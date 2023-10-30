@@ -3,6 +3,7 @@ require('../bootstrap.js');
 require('./tools/objects.js')
 require('./tools/links.js')
 require('./tools/pageTabs.js')
+require('./tools/map.js')
 
 require('./body/body.js')
 require('./pages/pages.js')

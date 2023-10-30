@@ -19,7 +19,13 @@ return[
         "activities" => "Activities",
         "create" => "Create",
         "browse" => "Browse",
-        "dataSaved" => "Data saved successfully."
+        "dataSaved" => "Data saved successfully.",
+        "profile_picture" => "Profile picture",
+        "name_en" => "Name in English",
+        "name_ch" => "Name in Chinese",
+        "zoomIn" => "Zoom in",
+        "zoomOut" => "Zoom out",
+        "currentLocation" => "Current location",
     ],
     "menu" => [
         "calendar" => "Calendar",
@@ -39,9 +45,6 @@ return[
         "loginName" => "Login name",
         "password" => "Password",
         "passwordConfirm" => "Confirm password",
-        "profile_picture" => "Profile picture",
-        "name_en" => "Name in English",
-        "name_ch" => "Name in Chinese",
         "gender" => "Gender",
         "male" => "Male",
         "female" => "Female",
@@ -75,5 +78,9 @@ return[
         "deleteCoachSalaryConfirmMsg" => "Are you sure you want to delete this salary record?",
         "addNewSalary" => "Submit new salary",
         "description" => "Description",
-    ]
+    ],
+    "locations" => [
+        "createNewLocation" => "Create new location",
+        "locationOnMap" => "Location on map",
+    ],
 ];

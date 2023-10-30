@@ -10,6 +10,10 @@ showPage = function(page){
         let tab = '';
         $('.page').text('')
         switch (page) {
+            case 'create_new_location':
+                tab = 'locations',
+                drawPage_create_new_location();
+                break;
             case 'locations':
                 tab = 'locations';
                 drawPage_locations();

@@ -19,7 +19,13 @@ return[
         "activities" => "活动内容",
         "create" => "创造",
         "browse" => "浏览",
-        "dataSaved" => "数据已成功保存。"
+        "dataSaved" => "数据已成功保存。",
+        "profile_picture" => "个人资料图片",
+        "name_en" => "英文名称",
+        "name_ch" => "中文名字",
+        "zoomIn" => "Zoom in",
+        "zoomOut" => "Zoom out",
+        "currentLocation" => "Current location",
     ],
     "menu" => [
         "calendar" => "日历",
@@ -39,9 +45,6 @@ return[
         "loginName" => "登录名",
         "password" => "密码",
         "passwordConfirm" => "确认密码",
-        "profile_picture" => "个人资料图片",
-        "name_en" => "英文名称",
-        "name_ch" => "中文名字",
         "gender" => "性别",
         "male" => "男性",
         "female" => "女性",
@@ -76,5 +79,8 @@ return[
         "addNewSalary" => "提交新工资",
         "description" => "描述",
 
-    ]
+    ],
+    "locations" => [
+        "createNewLocation" => "Create new location",
+    ],
 ];

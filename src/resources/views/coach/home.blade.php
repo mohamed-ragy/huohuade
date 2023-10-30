@@ -28,6 +28,7 @@
     window.coach = {!! Auth::guard('coach')->user() !!}
     window.lang = "{{ $lang }}"
     window.coaches = {!! $coaches !!}
+    window.locations = {!! $locations !!}
 </script>
 <script src="../js/coach/home.min.js"></script>
 </html>

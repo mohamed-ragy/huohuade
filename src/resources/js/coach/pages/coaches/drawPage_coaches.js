@@ -28,7 +28,6 @@ drawPage_coaches = function(){
                 $('<td/>',{class:!window.accessibility.coaches_manage ? 'none' : ''}).append(
                     $('<div/>',{class:'row alnC jstfyS'}).append(
                         $('<div/>',{class:'ico-activity_logs mX10 w25 h25 pointer',tooltip:text.main.activities}),
-                        // $('<div/>',{class:'ico-money mX10 w25 h25 pointer',tooltip:text.main.salary}),
                         $('<div/>',{coach:coach.id,class:'ico-settings mX10 w25 h25 pointer showPage',page:'manage_coach',tooltip:text.main.manage}),
                         $('<div/>',{coach:coach.id,class:`${window.coach.id == coach.id ? 'none' : ''} delete_coach ico-delete mX10 w25 h25 pointer`,tooltip:text.main.delete}),
                     )

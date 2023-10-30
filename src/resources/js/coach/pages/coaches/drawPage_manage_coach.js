@@ -40,7 +40,7 @@ draw_edit_coach_profile = function(coach,tab){
                 $('<div/>',{class:'edit_coach_error edit_coach_loginName_error fs08 mX5 c_red',text:''})
             ),
             $('<div/>',{class:'wfc m20 mB40 edit_coach_img_container'}).append(
-                $('<div/>',{class:'m10 fs09',text:text.coaches.profile_picture}),
+                $('<div/>',{class:'m10 fs09',text:text.main.profile_picture}),
                 $('<div/>',{class:' row alnE jstfyS'}).append(
                     $('<img/>',{class:'mX10 h150 ofCover',id:'edit_coach_img_preview',src:coach.profile_picture}),
                     $('<button/>',{class:'btn btn_cancel edit_coach_input',id:'edit_coach_img_btn',text:text.main.browse}),
@@ -49,12 +49,12 @@ draw_edit_coach_profile = function(coach,tab){
             ),
             $('<div/>',{class:'line'}),
             $('<div/>',{class:'m20'}).append(
-                $('<div/>',{class:'mX10 fs09',text:text.coaches.name_en}),
+                $('<div/>',{class:'mX10 fs09',text:text.main.name_en}),
                 $('<input/>',{class:'inputText edit_coach_input',id:'edit_coach_name_en',value:coach.name_en}),
                 $('<div/>',{class:'edit_coach_error edit_coach_name_en_error fs08 mX5 c_red',text:''})
             ),
             $('<div/>',{class:'m20'}).append(
-                $('<div/>',{class:'mX10 fs09',text:text.coaches.name_ch}),
+                $('<div/>',{class:'mX10 fs09',text:text.main.name_ch}),
                 $('<input/>',{class:'inputText edit_coach_input',id:'edit_coach_name_ch',value:coach.name_ch}),
                 $('<div/>',{class:'edit_coach_error edit_coach_name_ch_error fs08 mX5 c_red',text:''})
             ),
@@ -144,7 +144,7 @@ draw_coach_salaries = function(coach,tab){
         ),
 
         $('<table/>',{id:'coach_salaries_table',class:'pT10'}),
-        $('<div/>',{class:'fs09 coach_salaries_table_noResults',text:text.coaches.noSalaries})
+        $('<div/>',{class:'fs09 none coach_salaries_table_noResults',text:text.coaches.noSalaries})
     )
 }
 draw_coach_salary_row = function(salary){

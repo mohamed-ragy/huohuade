@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\coach;
+use App\Models\location;
 use App\Models\salary;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -99,5 +100,33 @@ class DatabaseSeeder extends Seeder
             }
 
         }
+
+        /////////////////locations
+        location::create([
+            'name_en' => 'Hong Kong', 'name_ch' => '香港特别行政區', 'profile_picture'=>null,
+            'lng' => '114.177216', 'lat' => '22.302711',
+            'contact_info' => [
+                0 => ['name_en'=>'Li Wang', 'name_ch'=>'李王', 'phone'=>'123456789', 'description'=>$this->faker->paragraph()],
+            ],
+            'created_at' => Carbon::now()->timestamp,
+        ]);
+        location::create([
+            'name_en' => 'Beijing', 'name_ch' => '北京市', 'profile_picture'=>null,
+            'lng' => '116.383331', 'lat' => '	39.916668',
+            'contact_info' => [
+                0 => ['name_en'=>'Liu Zhang', 'name_ch'=>'刘张', 'phone'=>'123456789', 'description'=>$this->faker->paragraph()],
+                1 => ['name_en'=>'Wu Zhang', 'name_ch'=>'吴张', 'phone'=>'123456789', 'description'=>''],
+            ],
+            'created_at' => Carbon::now()->timestamp,
+        ]);
+        location::create([
+            'name_en' => 'Shanghai', 'name_ch' => '上海市', 'profile_picture'=>null,
+            'lng' => '121.469170', 'lat' => '31.224361',
+            'contact_info' => [
+                0 => ['name_en'=>'Chen Huang', 'name_ch'=>'陈黄', 'phone'=>'123456789', 'description'=>$this->faker->paragraph()],
+            ],
+            'created_at' => Carbon::now()->timestamp,
+        ]);
+
     }
 }

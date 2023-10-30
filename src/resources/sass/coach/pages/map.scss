@@ -1,0 +1,13 @@
+.leaflet-control-zoom{border:none !important;}
+
+.leaflet-control-zoom-out, .leaflet-control-zoom-in, .leaflet-control-currentLocation{
+    background-color: #fff!important;
+    color:#515151 !important;
+    width:20px !important;
+    height:20px !important;
+    padding:5px !important;
+}
+.leaflet-control-zoom-out:hover, .leaflet-control-zoom-in:hover, .leaflet-control-currentLocation:hover{
+    background-color: #f2f2f2 !important;
+}
+//

@@ -25,7 +25,7 @@ drawPage_create_new_coach = function(){
             ),
             $('<div/>',{class:'line'}),
             $('<div/>',{class:'wfc m20 mB40 create_new_coach_img_container'}).append(
-                $('<div/>',{class:'m10 fs09',text:text.coaches.profile_picture}),
+                $('<div/>',{class:'m10 fs09',text:text.main.profile_picture}),
                 $('<div/>',{class:' row alnE jstfyS'}).append(
                     $('<img/>',{class:'mX10 h150 ofCover',id:'create_new_coach_img_preview',src:'../storage/imgs/profile_male.png'}),
                     $('<button/>',{class:'btn btn_cancel create_coach_input',id:'create_new_coach_img_btn',text:text.main.browse}),
@@ -33,12 +33,12 @@ drawPage_create_new_coach = function(){
                 $('<div/>',{class:'mT10 create_coach_error create_coach_img_error fs08 mX5 c_red',text:''})
             ),
             $('<div/>',{class:'m20'}).append(
-                $('<div/>',{class:'mX10 fs09',text:text.coaches.name_en}),
+                $('<div/>',{class:'mX10 fs09',text:text.main.name_en}),
                 $('<input/>',{class:'inputText create_coach_input',id:'create_new_coach_name_en'}),
                 $('<div/>',{class:'create_coach_error create_coach_name_en_error fs08 mX5 c_red',text:''})
             ),
             $('<div/>',{class:'m20'}).append(
-                $('<div/>',{class:'mX10 fs09',text:text.coaches.name_ch}),
+                $('<div/>',{class:'mX10 fs09',text:text.main.name_ch}),
                 $('<input/>',{class:'inputText create_coach_input',id:'create_new_coach_name_ch'}),
                 $('<div/>',{class:'create_coach_error create_coach_name_ch_error fs08 mX5 c_red',text:''})
             ),

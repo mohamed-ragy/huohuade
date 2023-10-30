@@ -72,7 +72,7 @@ drawbody = function(){
                         $('<div/>',{tooltip:text.menu.coaches,class:'menu_elem_img ico-coach'}),
                         $('<div/>',{text:text.menu.coaches,class:'menu_elem_txt'})
                     ),
-                    $('<div/>',{class:'showPage menu_elem',page:'locations',tab:'locations'}).append(
+                    $('<div/>',{class:`showPage menu_elem ${!accessibility.locations_see ? 'none' : ''}`,page:'locations',tab:'locations'}).append(
                         $('<div/>',{tooltip:text.menu.locations,class:'menu_elem_img ico-location'}),
                         $('<div/>',{text:text.menu.locations,class:'menu_elem_txt'})
                     ),
