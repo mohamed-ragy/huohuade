@@ -18,6 +18,14 @@ drawPage_manage_location = function(location_id,tab){
             ),
             $('<div/>',{class:'pageTabArrow pageTabArrowRight'}).append($('<div/>',{class:'ico-arrow-next w15 h15'})),
         ),
+        draw_edit_location_profile(location,tab),
+        draw_location_contact_info(location,tab)
 
     );
+}
+draw_edit_location_profile=function(location,tab){
+
+}
+draw_location_contact_info=function(location,tab){
+
 }

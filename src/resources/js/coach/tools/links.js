@@ -50,10 +50,10 @@ $('html,body').on('click','.coach_logout',function(e){
     })
 
 })
-$('html,body').on('click','.call',function(e){
-    e.stopImmediatePropagation();
-    window.open(`tel:${$(this).attr('phone')}`, '_self');
-})
+// $('html,body').on('click','.call',function(e){
+//     e.stopImmediatePropagation();
+//     window.open(`tel:${$(this).attr('phone')}`, '_self');
+// })
 $('html,body').on('click','.popupClose',function(e){
     e.stopImmediatePropagation();
     $('.popupContainer').addClass('none');

@@ -28,6 +28,7 @@ return[
         "currentLocation" => "Current location",
         "editProfile" => 'Edit profile',
         "call" => 'Call',
+        "phone" => 'Phone number',
     ],
     "menu" => [
         "calendar" => "Calendar",
@@ -68,6 +69,7 @@ return[
         "name_en_required" => "Please enter the coach's name in English.",
         "name_ch_required" => "Please enter the coach's name in Chinese.",
         "gender_required" => "Please select the coach's gender.",
+        "phone_required" => "Please enter the coach's phone number.",
         "job_title_required" => "Please select the coach's job title.",
         "salary_required" => "Please enter the coach's salary.",
         "salary_integer" => "The coach salary must be only numbers.",

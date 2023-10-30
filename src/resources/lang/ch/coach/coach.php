@@ -28,6 +28,7 @@ return[
         "currentLocation" => "当前所在位置",
         "editProfile" => '编辑个人资料',
         "call" => '称呼',
+        "phone" => '联系电话',
     ],
     "menu" => [
         "calendar" => "日历",
@@ -68,6 +69,7 @@ return[
         "name_en_required" => "请输入教练的英文姓名。",
         "name_ch_required" => "请输入教练的中文姓名。",
         "gender_required" => "请选择教练的性别。",
+        "phone_required" => '请输入教练的联系电话。',
         "job_title_required" => "请选择教练的职称。",
         "salary_required" => "请输入教练的工资。",
         "salary_integer" => "教练的工资只能是数字。",

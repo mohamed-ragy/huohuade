@@ -83,6 +83,7 @@ class coachController extends Controller
                 'name_en' => strip_tags($request->name_en),
                 'name_ch' => strip_tags($request->name_ch),
                 'gender' => strtolower(strip_tags($request->gender)),
+                'phone' => strip_tags($request->phone),
                 'job_title' => $request->job_title,
                 'salary' => strip_tags($request->salary),
                 'salary_currency' => $request->salary_currency,
@@ -93,6 +94,7 @@ class coachController extends Controller
                 'name_en' => 'required',
                 'name_ch' => 'required',
                 'gender' => ['required',Rule::in(['male', 'female'])],
+                'phone' => 'required',
                 'job_title' => ['required',Rule::in(['0','1','2','3','4'])],
                 'salary' => 'required|integer',
                 'salary_currency' => ['required',Rule::in(['CNY','USD','HKD','EUR'])],
@@ -113,6 +115,8 @@ class coachController extends Controller
 
                 'gender.required' => Lang::get('coach/coach.coaches.gender_required'),
                 'gender.in' => Lang::get('coach/coach.coaches.gender_required'),
+
+                'phone.required' => Lang::get('coach/coach.coaches.phone_required'),
 
                 'job_title.required' => Lang::get('coach/coach.coaches.job_title_required'),
                 'job_title.in' => Lang::get('coach/coach.coaches.job_title_required'),
@@ -166,6 +170,7 @@ class coachController extends Controller
                 'name_ch' => strip_tags($request->name_ch),
                 'coach_level' => strip_tags($request->job_title),
                 'gender' => strtolower(strip_tags($request->gender)),
+                'phone' => strip_tags($request->phone),
                 'salary' => strip_tags($request->salary),
                 'salary_currency' => strip_tags($request->salary_currency),
                 'created_at' => Carbon::now()->timestamp,
@@ -189,6 +194,7 @@ class coachController extends Controller
                 'name_en' => strip_tags($request->name_en),
                 'name_ch' => strip_tags($request->name_ch),
                 'gender' => strtolower(strip_tags($request->gender)),
+                'phone' => strip_tags($request->phone),
                 'job_title' => $request->job_title,
                 'salary' => strip_tags($request->salary),
                 'salary_currency' => $request->salary_currency,
@@ -196,6 +202,7 @@ class coachController extends Controller
                 'name_en' => 'required',
                 'name_ch' => 'required',
                 'gender' => ['required',Rule::in(['male', 'female'])],
+                'phone' => 'required',
                 'job_title' => ['required',Rule::in(['0','1','2','3','4'])],
                 'salary' => 'required|integer',
                 'salary_currency' => ['required',Rule::in(['CNY','USD','HKD','EUR'])],
@@ -206,6 +213,8 @@ class coachController extends Controller
 
                 'gender.required' => Lang::get('coach/coach.coaches.gender_required'),
                 'gender.in' => Lang::get('coach/coach.coaches.gender_required'),
+
+                'phone.required' => Lang::get('coach/coach.coaches.phone_required'),
 
                 'job_title.required' => Lang::get('coach/coach.coaches.job_title_required'),
                 'job_title.in' => Lang::get('coach/coach.coaches.job_title_required'),
@@ -257,6 +266,7 @@ class coachController extends Controller
                 'name_ch' => strip_tags($request->name_ch),
                 'coach_level' => strip_tags($request->job_title),
                 'gender' => strtolower(strip_tags($request->gender)),
+                'phone' => strip_tags($request->phone),
                 'salary' => strip_tags($request->salary),
                 'salary_currency' => strip_tags($request->salary_currency),
             ]);

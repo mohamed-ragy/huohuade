@@ -70,6 +70,11 @@ draw_edit_coach_profile = function(coach,tab){
                 ),
                 $('<div/>',{class:'edit_coach_error edit_coach_gender_error fs08 mX5 c_red',text:''})
             ),
+            $('<div/>',{class:'m20'}).append(
+                $('<div/>',{class:'mX10 fs09',text:text.main.phone}),
+                $('<input/>',{class:'inputText edit_coach_input',id:'edit_new_coach_phone',type:'number',value:coach.phone}),
+                $('<div/>',{class:'edit_coach_error edit_coach_phone_error fs08 mX5 c_red',text:''})
+            ),
             $('<div/>',{class:'line'}),
             $('<div/>',{class:'m20 zx10 relative'}).append(
                 $('<div/>',{class:'mX10 fs09',text:text.coaches.job_title}),

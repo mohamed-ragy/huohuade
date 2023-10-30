@@ -24,6 +24,7 @@ $('html,body').on('click','#create_coach_btn',function(e){
     formData.append('name_en', $('#create_new_coach_name_en').val());
     formData.append('name_ch', $('#create_new_coach_name_ch').val());
     formData.append('gender', $('#create_new_coach_gender').attr('key'));
+    formData.append('phone', $('#create_new_coach_phone').val());
     formData.append('job_title', $('#create_new_coach_job_title').attr('key'));
     formData.append('salary', $('#create_new_coach_salary').val());
     formData.append('salary_currency', $('#create_new_coach_salary_currency').attr('key'));
@@ -65,6 +66,9 @@ $('html,body').on('click','#create_coach_btn',function(e){
                 }
                 if(r.errors.gender){
                     $('.create_coach_gender_error').text(r.errors.gender[0])
+                }
+                if(r.errors.phone){
+                    $('.create_coach_phone_error').text(r.errors.phone[0])
                 }
                 if(r.errors.job_title){
                     $('.create_coach_job_title_error').text(r.errors.job_title[0])
