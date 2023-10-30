@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Image;
+use Illuminate\Support\Str;
+
 class coachController extends Controller
 {
     public function __construct(Request $request)
@@ -58,6 +60,7 @@ class coachController extends Controller
     public function login(Request $request){
         return view('coach.login',[
             'text'=> collect(Lang::get('coach/login')),
+            'lang' => $request->lang
         ]);
     }
     public function coach(Request $request){
@@ -387,6 +390,83 @@ class coachController extends Controller
             ]);
             return response(['status'=>1,'coach' => $coach]);
 
+        }
+    }
+    public function location(Request $request){
+        if($request->has('create_location')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+            $validation = Validator::make([
+                'name_en' => strip_tags($request->name_en),
+                'name_ch' => strip_tags($request->name_ch),
+                'lat' => strip_tags($request->lat),
+                'lng' => strip_tags($request->lng),
+            ],[
+                'name_en' => 'required',
+                'name_ch' => 'required',
+                'lat' => 'required|not_in:0',
+                'lng' => 'required|not_in:0',
+
+            ],[
+                'name_en.required' => Lang::get('coach/coach.locations.name_en_required'),
+                'name_ch.required' => Lang::get('coach/coach.locations.name_ch_required'),
+                'lat.required' => Lang::get('coach/coach.locations.latlng_required'),
+                'lat.not_in' => Lang::get('coach/coach.locations.latlng_required'),
+                'lng.required' => Lang::get('coach/coach.locations.latlng_required'),
+                'lng.not_in' => Lang::get('coach/coach.locations.latlng_required'),
+
+            ]);
+            $profile_picture = null;
+            $file = $request->file('profile_picture');
+            if($file != null){
+                $validation2 = Validator::make([
+                    'profile_picture' => $request->profile_picture,
+                ],[
+                    'profile_picture' => 'mimes:jpg,png,jpeg,bmp,webp,gif'
+                ]);
+                if($validation2->fails()){
+                    $validation->getMessageBag()->add('profile_picture', Lang::get('coach/coach.locations.profile_picture_mimes'));
+                    return response(['status'=>0, 'errors'=>$validation->errors()]);
+                }
+            }
+            if($validation->fails()){
+                return response(['status'=>0,'errors' => $validation->errors()]);
+            }
+
+            if($file != null){
+                $fileExtention = $file->guessExtension();
+                $file_name = Str::uuid();
+                $profile_picture = $file_name .'.'.$fileExtention;
+                File::delete('storage/imgs/coaches/'.$file_name.'.png',
+                'storage/imgs/coaches/'.$file_name.'.jpg',
+                'storage/imgs/coaches/'.$file_name.'.jpeg',
+                'storage/imgs/coaches/'.$file_name.'.gif',
+                'storage/imgs/coaches/'.$file_name.'.webp',
+                'storage/imgs/coaches/'.$file_name.'.bmp');
+                $thumbnail = Image::make($file);
+                $thumbnail->resize(800, 800, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
+                $thumbnail->save( public_path('storage/imgs/locations/'). $file_name .'.'.$fileExtention);
+            }
+
+            $create_location = location::create([
+                'name_en' => strip_tags($request->name_en),
+                'name_ch' => strip_tags($request->name_ch),
+                'lat' => strip_tags($request->lat),
+                'lng' => strip_tags($request->lng),
+                'profile_picture' => $profile_picture,
+                'contact_info' => [],
+                'created_at' => Carbon::now()->timestamp,
+            ]);
+            activity_log::create([
+                'code' => 'location.create',
+                'created_at' => Carbon::now()->timestamp,
+                'created_by' => Auth::guard('coach')->user()->id,
+                'created_by_name_en' => Auth::guard('coach')->user()->name_en,
+                'created_by_name_ch' => Auth::guard('coach')->user()->name_ch,
+                'location_id' => $create_location->id,
+                'location_name_en' => $create_location->name_en,
+                'location_name_ch' => $create_location->name_ch,
+            ]);
+            return response(['status'=>1,'location' => $create_location]);
         }
     }
 }

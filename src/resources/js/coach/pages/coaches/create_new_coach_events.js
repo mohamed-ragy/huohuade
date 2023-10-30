@@ -30,12 +30,12 @@ $('html,body').on('click','#create_coach_btn',function(e){
 
     // console.log(profile_picture)
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         processData: false,
         contentType: false,
-        data:formData
-        ,success:function(r){
+        data:formData,
+        success:function(r){
             $('.create_coach_input').prop('disabled',false);
             hideLoadingBar($('#loading'))
             if(r.status == 1){

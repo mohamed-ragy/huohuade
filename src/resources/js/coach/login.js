@@ -8,7 +8,7 @@ $('html,body').on('click','#loginBtn',function(e){
     showLoadingBar($('#loginLoadingBar'));
     $('.login_msg').removeClass('none c_red c_green').addClass('none').text('')
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),

@@ -26,6 +26,7 @@
 </body>
 <script>
     window.text = {!! $text !!}
+    window.lang = "{{ $lang }}"
 </script>
 <script src="../js/coach/login.min.js"></script>
 </html>

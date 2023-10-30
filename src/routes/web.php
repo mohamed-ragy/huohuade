@@ -24,7 +24,8 @@ Route::domain('coach.'.env('APP_URL'))->group(function(){
     Route::get('{lang}/login',[coachController::class,'login'])->name('coach.login');
 
 
-    Route::post('/api/coach',[coachController::class,'coach']);
+    Route::post('{lang}/api/coach',[coachController::class,'coach']);
+    Route::post('{lang}/api/location',[coachController::class,'location']);
 });
 $homeRoutes = function(){
     Route::get('/',function(){

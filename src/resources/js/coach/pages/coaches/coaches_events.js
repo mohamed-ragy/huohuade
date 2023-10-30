@@ -21,7 +21,7 @@ $('html,body').on('click','.delete_coach_confirm',function(e){
     let coach = coaches.find(item=>item.id == $(this).attr('coach'))
     showLoadingBar($('#deleteCoachLoadingBar'))
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),

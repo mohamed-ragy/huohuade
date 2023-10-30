@@ -26,7 +26,7 @@ $('html,body').on('click','#edit_coach_btn',function(e){
     formData.append('salary', $('#edit_coach_salary').val());
     formData.append('salary_currency', $('#edit_coach_salary_currency').attr('key'));
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         processData: false,
         contentType: false,
@@ -80,7 +80,7 @@ $('html,body').on('click','#change_password_coach_btn',function(e){
     $('.change_password_coach_error').text('')
     $('.change_password_coach_input').prop('disabled',true);
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),
@@ -114,7 +114,7 @@ $('html,body').on('click','.pageTab_coach_salary',function(e){
     $('#coach_salaries_table').text('')
     showLoadingBar($('#loading'))
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),
@@ -141,7 +141,7 @@ $('html,body').on('click','.coach_salaries_table_pagination_next',function(e){
     showLoadingBar($('#loading'))
     $('.coach_salaries_table_pagination').attr('page',parseInt($('.coach_salaries_table_pagination').attr('page')) + 1)
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),
@@ -168,7 +168,7 @@ $('html,body').on('click','.coach_salaries_table_pagination_prev',function(e){
     showLoadingBar($('#loading'))
     $('.coach_salaries_table_pagination').attr('page',parseInt($('.coach_salaries_table_pagination').attr('page')) - 1)
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),
@@ -207,7 +207,7 @@ $('html,body').on('click','.deleteCoachSalary_confirm',function(e){
     showLoadingBar($('#deleteCoachSalaryLoadingBar'))
     let salary_id = $(this).attr('salary_id');
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),
@@ -231,7 +231,7 @@ $('html,body').on('click','#submit_coach_salary_confirmBtn',function(e){
     $('.submit_coach_salary_input').prop('disabled',true);
     let coach = coaches.find(item=>item.id == window.history.state.coach);
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),

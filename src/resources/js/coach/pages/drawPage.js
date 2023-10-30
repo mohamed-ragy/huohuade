@@ -10,28 +10,32 @@ showPage = function(page){
         let tab = '';
         $('.page').text('')
         switch (page) {
+            case 'manage_location':
+                tab = 'locations';
+                drawPage_manage_location(window.history.state.location,'edit_location_profile');
+            break;
             case 'create_new_location':
                 tab = 'locations',
                 drawPage_create_new_location();
-                break;
+            break;
             case 'locations':
                 tab = 'locations';
                 drawPage_locations();
-                break;
+            break;
             case 'coaches':
                 tab = 'coaches';
                 drawPage_coaches();
-                break;
+            break;
             case 'create_new_coach':
                 tab = 'coaches';
                 drawPage_create_new_coach();
-                break;
+            break;
             case 'manage_coach':
                 tab = 'coaches';
                 drawPage_manage_coach(window.history.state.coach,'edit_coach_profile');
-                break;
+            break;
             default:
-                break;
+            break;
         }
         $(`.menu_elem[page="${tab}"]`).addClass('menu_elem_selected')
         $(`.menu_elem_m[page="${tab}"]`).addClass('menu_elem_selected_m')

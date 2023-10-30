@@ -26,6 +26,8 @@ return[
         "zoomIn" => "Zoom in",
         "zoomOut" => "Zoom out",
         "currentLocation" => "Current location",
+        "editProfile" => 'Edit profile',
+        "call" => 'Call',
     ],
     "menu" => [
         "calendar" => "Calendar",
@@ -71,7 +73,6 @@ return[
         "salary_integer" => "The coach salary must be only numbers.",
         "salary_currency_required" => "Please select a currency symbol.",
         "deleteCoachConfirmMsg" => "Are you sure you want to delete :name:'s account?",
-        "editProfile" => 'Edit profile',
         'changePassword' => "Change password",
         "newPassword" => "New password",
         "noSalaries" => "The selected coach has not yet received any salary.",
@@ -82,5 +83,10 @@ return[
     "locations" => [
         "createNewLocation" => "Create new location",
         "locationOnMap" => "Location on map",
+        "name_en_required" => "Please enter the location's name in English.",
+        "name_ch_required" => "Please enter the location's name in Chinese.",
+        "latlng_required" => "Please set a location on the map.",
+        "profile_picture_mimes" => "The profile picture must be a file of type: jpg, png, jpeg, bmp, webp.",
+        "contactInfo" => "Contact info",
     ],
 ];

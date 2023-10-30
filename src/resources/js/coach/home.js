@@ -20,11 +20,15 @@ if(params.get('page') == null){
         case 'manage_coach':
             window.history.replaceState({page:params.get('page'),coach:params.get('coach')},'',`/${window.lang}/?page=${params.get('page')}&coach=${params.get('coach')}`);
             showPage(window.history.state.page)
-            break;
+        break;
+        case 'manage_location':
+            window.history.replaceState({page:params.get('page'),location:params.get('location')},'',`/${window.lang}/?page=${params.get('page')}&location=${params.get('location')}`);
+            showPage(window.history.state.page)
+        break;
         default:
             window.history.replaceState({page:params.get('page')},'',`/${window.lang}/?page=${params.get('page')}`);
             showPage(window.history.state.page)
-            break;
+        break;
     }
 
 

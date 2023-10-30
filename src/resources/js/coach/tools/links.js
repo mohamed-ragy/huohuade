@@ -1,5 +1,5 @@
 $('html,body').on('click','.showPage',function(e){
-    // e.stopImmediatePropagation();
+    e.stopImmediatePropagation();
     // if($(this).attr('page') == window.history.state.page){
     //     window.history.replaceState({page:$(this).attr('page')},'',`/${window.lang}/?page=${$(this).attr('page')}`)
     //     return
@@ -8,11 +8,15 @@ $('html,body').on('click','.showPage',function(e){
         case 'manage_coach':
             window.history.pushState({page:$(this).attr('page'),coach:$(this).attr('coach')},'',`/${window.lang}/?page=${$(this).attr('page')}&coach=${$(this).attr('coach')}`)
             showPage($(this).attr('page'),$(this).attr('tab'))
-            break;
+        break;
+        case 'manage_location':
+            window.history.pushState({page:$(this).attr('page'),location:$(this).attr('location')},'',`/${window.lang}/?page=${$(this).attr('page')}&location=${$(this).attr('location')}`)
+            showPage($(this).attr('page'),$(this).attr('tab'))
+        break;
         default:
             window.history.pushState({page:$(this).attr('page')},'',`/${window.lang}/?page=${$(this).attr('page')}`)
             showPage($(this).attr('page'),$(this).attr('tab'))
-            break;
+        break;
     }
 
 })
@@ -35,7 +39,7 @@ $('html,body').on('click','.switch_lang_en',function(e){
 $('html,body').on('click','.coach_logout',function(e){
     e.stopImmediatePropagation();
     $.ajax({
-        url:'../api/coach',
+        url:`/${lang}/api/coach`,
         type:'post',
         data:{
             _token:$('meta[name="csrf-token"]').attr('content'),
@@ -46,7 +50,10 @@ $('html,body').on('click','.coach_logout',function(e){
     })
 
 })
-
+$('html,body').on('click','.call',function(e){
+    e.stopImmediatePropagation();
+    window.open(`tel:${$(this).attr('phone')}`, '_self');
+})
 $('html,body').on('click','.popupClose',function(e){
     e.stopImmediatePropagation();
     $('.popupContainer').addClass('none');

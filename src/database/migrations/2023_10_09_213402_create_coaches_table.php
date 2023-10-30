@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('profile_picture')->nullable();
             $table->string('name_en');
             $table->string('name_ch');
-            $table->integer('coach_level');
             $table->string('gender');
+            $table->string('phone');
+            $table->integer('coach_level');
             $table->integer('salary');
             $table->string('salary_currency');
             $table->string('created_at');

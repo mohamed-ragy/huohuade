@@ -13,7 +13,7 @@ drawPage_manage_coach = function(coach_id,tab){
         $('<div/>',{class:'pageTabs'}).append(
             $('<div/>',{class:'pageTabArrow pageTabArrowLeft'}).append($('<div/>',{class:'ico-arrow-prev w15 h15'})),
             $('<div/>',{class:'pageTabsContainer'}).append(
-                $('<div/>',{tab:'edit_coach_profile',class:`pageTab ${tab == 'edit_coach_profile' ? 'pageTab_selected' : ''}`,text:text.coaches.editProfile}),
+                $('<div/>',{tab:'edit_coach_profile',class:`pageTab ${tab == 'edit_coach_profile' ? 'pageTab_selected' : ''}`,text:text.main.editProfile}),
                 $('<div/>',{tab:'change_coach_password',class:`pageTab ${tab == 'change_coach_password' ? 'pageTab_selected' : ''}`,text:text.coaches.changePassword}),
                 $('<div/>',{tab:'coach_salary',class:`pageTab_coach_salary pageTab ${tab == 'coach_salary' ? 'pageTab_selected' : ''}`,text:text.coaches.salary}),
             ),

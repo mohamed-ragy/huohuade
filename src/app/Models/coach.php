@@ -19,6 +19,7 @@ class coach extends Authenticatable
         'name_ch',
         'coach_level',
         'gender',
+        'phone',
         'salary',
         'salary_currency',
         'created_at',
