@@ -112,7 +112,7 @@ draw_edit_coach_profile = function(coach,tab){
             ),
             $('<div/>',{class:'btn_container relative'}).append(
                 $('<button/>',{class:'btn m10 edit_coach_input',id:'edit_coach_btn',text:text.main.save}),
-                $('<div/>',{class:'edit_coach_success c_green mX10',text:''})
+                $('<div/>',{class:'edit_coach_success opacity0 td200 c_green mX10',text:''})
             ),
         )
     )

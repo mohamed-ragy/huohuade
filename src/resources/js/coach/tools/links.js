@@ -50,10 +50,17 @@ $('html,body').on('click','.coach_logout',function(e){
     })
 
 })
-// $('html,body').on('click','.call',function(e){
-//     e.stopImmediatePropagation();
-//     window.open(`tel:${$(this).attr('phone')}`, '_self');
-// })
+$('html,body').on('click','.call',function(e){
+    e.stopImmediatePropagation();
+    window.open(`tel:${$(this).attr('phone')}`, '_self');
+})
+$('html,body').on('click','.copy',function(e){
+    e.stopImmediatePropagation();
+    let val = $(this).attr('copy');
+    // navigator.clipboard.writeText(val);
+    $(this).text(text.main.copied)
+    setTimeout(()=>{$(this).text(val)},2000)
+})
 $('html,body').on('click','.popupClose',function(e){
     e.stopImmediatePropagation();
     $('.popupContainer').addClass('none');

@@ -32,6 +32,7 @@
 @import './height.scss';
 @import './fontSizes.scss';
 @import'./colors.scss';
+@import'./transitions.scss';
 
 
 @import './shadows.scss';
@@ -89,6 +90,18 @@ table{
     border-spacing: 0px;
     width:calc(100% - 20px);
     margin:10px;
+}
+.tableRow_head{
+    margin:10px;
+    td{
+        border-bottom:1px solid rgb(245, 245, 245);
+        padding:5px;
+        margin:0;
+        vertical-align: middle;
+    }
+}
+.tableRow_head:hover{
+    background-color: unset;
 }
 .tableRow{
     margin:10px;

@@ -8,6 +8,7 @@ $('html,body').on('change','#edit_coach_img_input',function(e){
     var image = document.getElementById('output');
     $('#edit_coach_img_preview').attr('src',URL.createObjectURL(e.target.files[0]))
 })
+
 $('html,body').on('click','#edit_coach_btn',function(e){
     e.stopImmediatePropagation();
     showLoadingBar($('#loading'))
@@ -43,8 +44,10 @@ $('html,body').on('click','#edit_coach_btn',function(e){
                 for(const key in window.coaches){
                     if(window.coaches[key].id == window.history.state.coach){
                         window.coaches[key] = r.coach;
-                        drawPage_manage_coach(window.history.state.coach,'edit_coach_profile')
-                        $('.edit_coach_success').text(text.main.dataSaved)
+                        showPage('manage_coach')
+                        setTimeout(()=>{$('.edit_coach_success').text(text.main.dataSaved).removeClass('opacity0')},500)
+                        setTimeout(()=>{$('.edit_coach_success').addClass('opacity0')},5000)
+
                     }
                 }
 

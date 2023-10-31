@@ -37,6 +37,7 @@ $('html,body').on('click','#create_location_btn',function(e){
                 `../storage/imgs/locations/${r.location.profile_picture}`;
                 window.locations.push(r.location);
                 showPage('locations')
+                window.history.pushState({page:'locations'},'',`/${window.lang}/?page=locations`);
             }else if(r.status == 0){
                 if(r.errors.profile_picture){
                     $('.create_location_img_error').text(r.errors.profile_picture[0])

@@ -9,7 +9,7 @@ $('html,body').on('click','.delete_coach',function(e){
         ),
         $('<div/>',{class:'btn_container'}).append(
             $('<button/>',{class:'btn btn_cancel popupClose mX5',text:'Cancel'}),
-            $('<button/>',{coach:coach.id,class:'btn btn_delete delete_coach_confirm mX5',text:'Delete'}),
+            $('<button/>',{coach:coach.id,class:'btn btn_delete delete_coach_confirm mX5',text:text.main.delete}),
 
         ),
         $('<div/>',{class:'loadingBar ',id:'deleteCoachLoadingBar'})
@@ -27,15 +27,13 @@ $('html,body').on('click','.delete_coach_confirm',function(e){
             _token:$('meta[name="csrf-token"]').attr('content'),
             delete_coach:true,
             coach_id:coach.id,
-            coach_name_en:coach.name_en,
-            coach_name_ch:coach.name_ch,
         },success:function(r){
             if(r.stats == 1){
                 hideLoadingBar($('#deleteCoachLoadingBar'))
                 for(const key in window.coaches){
                     if(window.coaches[key].id == coach.id){
                         window.coaches.splice(key,1);
-                        drawPage_coaches();
+                        showPage('coaches');
                         $('.popupContainer').addClass('none');
                     }
                 }

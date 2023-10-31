@@ -25,8 +25,8 @@ drawPage_locations = function(){
                 ),
                 $('<td/>',{class:!window.accessibility.locations_manage ? 'none' : ''}).append(
                     $('<div/>',{class:'row alnC jstfyS'}).append(
-                        $('<div/>',{class:'ico-phone mX10 w25 h25 pointer call_location',tooltip:text.main.call}),
-                        $('<div/>',{class:'ico-activity_logs mX10 w25 h25 pointer',tooltip:text.main.activities}),
+                        $('<div/>',{location:location.id,class:'ico-phone mX10 w25 h25 pointer contactInfo_location',tooltip:text.locations.contactInfo}),
+                        $('<div/>',{location:location.id,class:'ico-activity_logs mX10 w25 h25 pointer',tooltip:text.main.activities}),
                         $('<div/>',{location:location.id,class:'ico-settings mX10 w25 h25 pointer showPage',page:'manage_location',tooltip:text.main.manage}),
                         $('<div/>',{location:location.id,class:`delete_location ico-delete mX10 w25 h25 pointer`,tooltip:text.main.delete}),
                     )

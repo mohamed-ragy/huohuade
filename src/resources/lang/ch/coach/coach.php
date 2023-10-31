@@ -29,6 +29,9 @@ return[
         "editProfile" => '编辑个人资料',
         "call" => '称呼',
         "phone" => '联系电话',
+        "copied" => "复制了！",
+        "name" => "姓名",
+        "wechatId" => "微信ID",
     ],
     "menu" => [
         "calendar" => "日历",
@@ -90,5 +93,13 @@ return[
         "latlng_required" => "请在地图上设置一个位置。",
         "profile_picture_mimes" => "个人资料图片必须是以下类型的文件：jpg、png、jpeg、bmp、webp。",
         "contactInfo" => "联系方式",
+        "noContactInfo" => "没有为此位置创建任何联系信息！",
+        "deleteLocationConfirmMsg" => "您确定要删除位置:name:吗？",
+        "createNewContactInfo" => "创建新的联系信息",
+        "name_en_required" => "请输入英文联系人姓名。",
+        "name_ch_required" => "请输入中文联系人姓名。",
+        "phone_required" => "请输入联系电话。",
+        "wechat_id_required" => "请输入联系微信号。",
+        "deletelocationContactConfirmMsg" => "您确定要删除:contact:的联系信息吗？",
     ],
 ];

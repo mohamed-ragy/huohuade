@@ -45,6 +45,7 @@ $('html,body').on('click','#create_coach_btn',function(e){
                 `../storage/imgs/coaches/${r.coach.profile_picture}`;
                 window.coaches.push(r.coach);
                 showPage('coaches')
+                window.history.pushState({page:'coaches'},'',`/${window.lang}/?page=coaches`)
             }else if(r.status == 0){
                 if(r.errors.login_name){
                     $('.create_coach_loginName_error').text(r.errors.login_name[0])

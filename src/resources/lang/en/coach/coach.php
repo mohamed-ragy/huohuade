@@ -29,6 +29,10 @@ return[
         "editProfile" => 'Edit profile',
         "call" => 'Call',
         "phone" => 'Phone number',
+        "copied" => "Copied!",
+        "name" => "Name",
+        "wechatId" => "Wechat ID",
+
     ],
     "menu" => [
         "calendar" => "Calendar",
@@ -90,5 +94,13 @@ return[
         "latlng_required" => "Please set a location on the map.",
         "profile_picture_mimes" => "The profile picture must be a file of type: jpg, png, jpeg, bmp, webp.",
         "contactInfo" => "Contact info",
+        "noContactInfo" => "No contact information has been created for this location!",
+        "deleteLocationConfirmMsg" => "Are you sure you want to delete the location :name:?",
+        "createNewContactInfo" => "Create new contact info",
+        "name_en_required" => "Please enter the contact name in English.",
+        "name_ch_required" => "Please enter the contact name in Chinese.",
+        "phone_required" => "Please enter the contact phone number.",
+        "wechat_id_required" => "Please enter the contact wechat ID.",
+        "deletelocationContactConfirmMsg" => "Are you sure you want to delete :contact:'s contact information?",
     ],
 ];

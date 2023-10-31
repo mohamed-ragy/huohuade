@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Image;
 use Illuminate\Support\Str;
+use PDO;
 
 class coachController extends Controller
 {
@@ -329,9 +330,9 @@ class coachController extends Controller
                     'created_by' => Auth::guard('coach')->user()->id,
                     'created_by_name_en' => Auth::guard('coach')->user()->name_en,
                     'created_by_name_ch' => Auth::guard('coach')->user()->name_ch,
-                    'coach_id' => $request->coach_id,
-                    'coach_name_en' => $request->coach_name_en,
-                    'coach_name_ch' => $request->coach_name_ch,
+                    'coach_id' => $coach->id,
+                    'coach_name_en' => $coach->name_en,
+                    'coach_name_ch' => $coach->name_ch,
                 ]);
                 return response(['stats' => 1]);
             }
@@ -477,6 +478,154 @@ class coachController extends Controller
                 'location_name_ch' => $create_location->name_ch,
             ]);
             return response(['status'=>1,'location' => $create_location]);
+        }else if($request->has('delete_location')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+            $location = location::where('id',$request->location_id)->first();
+            $delete = location::where('id',$request->location_id)->delete();
+            if($delete){
+                File::delete('storage/imgs/locations/'.$location->profile_picture);
+                activity_log::create([
+                    'code' => 'location.delete',
+                    'created_at' => Carbon::now()->timestamp,
+                    'created_by' => Auth::guard('coach')->user()->id,
+                    'created_by_name_en' => Auth::guard('coach')->user()->name_en,
+                    'created_by_name_ch' => Auth::guard('coach')->user()->name_ch,
+                    'location_id' => $location->id,
+                    'location_name_en' => $location->name_en,
+                    'location_name_ch' => $location->name_ch,
+                ]);
+                return response(['stats' => 1]);
+            }
+        }else if($request->has('edit_location')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+            $validation = Validator::make([
+                'name_en' => strip_tags($request->name_en),
+                'name_ch' => strip_tags($request->name_ch),
+                'lat' => strip_tags($request->lat),
+                'lng' => strip_tags($request->lng),
+            ],[
+                'name_en' => 'required',
+                'name_ch' => 'required',
+                'lat' => 'required|not_in:0',
+                'lng' => 'required|not_in:0',
+
+            ],[
+                'name_en.required' => Lang::get('coach/coach.locations.name_en_required'),
+                'name_ch.required' => Lang::get('coach/coach.locations.name_ch_required'),
+                'lat.required' => Lang::get('coach/coach.locations.latlng_required'),
+                'lat.not_in' => Lang::get('coach/coach.locations.latlng_required'),
+                'lng.required' => Lang::get('coach/coach.locations.latlng_required'),
+                'lng.not_in' => Lang::get('coach/coach.locations.latlng_required'),
+
+            ]);
+            $location = location::where('id',$request->location_id)->first();
+            $profile_picture = null;
+            $file = $request->file('profile_picture');
+            if($file == null){
+                $profile_picture = $location->profile_picture;
+            }else{
+                $validation2 = Validator::make([
+                    'profile_picture' => $request->profile_picture,
+                ],[
+                    'profile_picture' => 'mimes:jpg,png,jpeg,bmp,webp,gif'
+                ]);
+                if($validation2->fails()){
+                    $validation->getMessageBag()->add('profile_picture', Lang::get('coach/coach.locations.profile_picture_mimes'));
+                    return response(['status'=>0, 'errors'=>$validation->errors()]);
+                }
+            }
+            if($validation->fails()){
+                return response(['status'=>0,'errors' => $validation->errors()]);
+            }
+            if($file != null){
+                $fileExtention = $file->guessExtension();
+                $file_name = Str::uuid();
+                $profile_picture = $file_name .'.'.$fileExtention;
+                File::delete('storage/imgs/locations/'.$location->profile_picture);
+                $thumbnail = Image::make($file);
+                $thumbnail->resize(800, 800, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
+                $thumbnail->save( public_path('storage/imgs/locations/'). $file_name .'.'.$fileExtention);
+            }
+
+            $location->update([
+                'profile_picture' => $profile_picture,
+                'name_en' => strip_tags($request->name_en),
+                'name_ch' => strip_tags($request->name_ch),
+                'lat' => strip_tags($request->lat),
+                'lng' => strip_tags($request->lng),
+            ]);
+            activity_log::create([
+                'code' => 'location.edit_profile',
+                'created_at' => Carbon::now()->timestamp,
+                'created_by' => Auth::guard('coach')->user()->id,
+                'created_by_name_en' => Auth::guard('coach')->user()->name_en,
+                'created_by_name_ch' => Auth::guard('coach')->user()->name_ch,
+                'location_id' => $location->id,
+                'location_name_en' => $location->name_en,
+                'location_name_ch' => $location->name_ch,
+            ]);
+            return response(['status'=>1,'location' => $location]);
+        }else if($request->has('create_location_contact_info')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+            $validation = Validator::make([
+                'name_en' => strip_tags($request->name_en),
+                'name_ch' => strip_tags($request->name_ch),
+                'phone' => strip_tags($request->phone),
+                'wechat_id' => strip_tags($request->wechat_id),
+            ],[
+                'name_en' => 'required',
+                'name_ch' => 'required',
+                'phone' => 'required',
+                'wechat_id' => 'required',
+            ],[
+                'name_en.required' => Lang::get('coach/coach.locations.name_en_required'),
+                'name_ch.required' => Lang::get('coach/coach.locations.name_ch_required'),
+                'phone.required' => Lang::get('coach/coach.locations.phone_required'),
+                'wechat_id.required' => Lang::get('coach/coach.locations.wechat_id_required'),
+            ]);
+            if($validation->fails()){
+                return response(['status'=>0,'errors'=>$validation->errors()]);
+            }else{
+                $location = location::where('id',$request->location_id)->first();
+                $contact_info = $location->contact_info;
+                array_push($contact_info,[
+                    'name_en' => strip_tags($request->name_en),
+                    'name_ch' => strip_tags($request->name_ch),
+                    'phone' => strip_tags($request->phone),
+                    'wechat_id' => strip_tags($request->wechat_id),
+                ]);
+                $i = 0;
+                foreach($contact_info as $key => $contact){
+                    $i++;
+                    $contact_info[$key]['id'] = $i;
+                }
+                $location->update([
+                    'contact_info' => $contact_info
+                ]);
+                return response(['status' => 1, 'contact_info' => $contact_info]);
+            }
+        }else if($request->has('delete_contact')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+            $location = location::where('id',$request->loaction_id)->first();
+            $contact_info = [];
+            $i = 0;
+            foreach($location->contact_info as $contact){
+                if($contact['id'] != $request->contact_id){
+                    $i++;
+                    array_push($contact_info,[
+                        'id' => $i,
+                        'name_en' => $contact['name_en'],
+                        'name_ch' => $contact['name_ch'],
+                        'phone' => $contact['phone'],
+                        'wechat_id' => $contact['wechat_id'],
+                    ]);
+                }
+
+            }
+            $location->update([
+                'contact_info' => $contact_info
+            ]);
+            return response(['status' => 1, 'contact_info' => $contact_info]);
         }
     }
 }

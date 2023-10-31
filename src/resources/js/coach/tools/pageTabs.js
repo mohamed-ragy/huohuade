@@ -8,9 +8,11 @@ $('html,body').on('click','.pageTab',function(e){
     $(`.pageTabContainer[tab="${$(this).attr('tab')}"]`).addClass('pageTabContainer_selected');
 
     $(this).closest('.pageTabs').find('.pageTabContainer').scrollLeft($(this).offset().left)
-    $(this).closest('.pageTabs').find('.pageTabsContainer').animate({
-        'scrollLeft':$(this).offset().left - 40 - $(this).closest('.pageTabs').find('.pageTabsContainer').offset().left + $(this).closest('.pageTabs').find('.pageTabsContainer').scrollLeft(),
-    },300,'swing');
+    try{
+        $(this).closest('.pageTabs').find('.pageTabsContainer').animate({
+            'scrollLeft':$(this).offset().left - 40 - $(this).closest('.pageTabs').find('.pageTabsContainer').offset().left + $(this).closest('.pageTabs').find('.pageTabsContainer').scrollLeft(),
+        },300,'swing');
+    }catch{}
 
 })
 
