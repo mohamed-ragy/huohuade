@@ -57,7 +57,7 @@ $('html,body').on('click','.call',function(e){
 $('html,body').on('click','.copy',function(e){
     e.stopImmediatePropagation();
     let val = $(this).attr('copy');
-    // navigator.clipboard.writeText(val);
+    navigator.clipboard.writeText(val);
     $(this).text(text.main.copied)
     setTimeout(()=>{$(this).text(val)},2000)
 })
