@@ -9,4 +9,12 @@
 .tableRow:hover{
     .deleteCoachSalaryIcon{visibility: visible;}
 }
+
+.deleted_coaches{
+    background-color: rgb(229, 229, 229) !important;
+    opacity:.5;
+}
+.deleted_coaches:hover{
+    background-color: rgb(229, 229, 229) !important;
+}
 //

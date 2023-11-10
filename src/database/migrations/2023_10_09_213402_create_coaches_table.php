@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('salary');
             $table->string('salary_currency');
             $table->string('created_at');
+            $table->boolean('is_deleted')->default(false);
         });
     }
 

@@ -6,7 +6,7 @@ drawPage_create_new_location = function(){
     );
     $('.page').append(
         $('<input/>',{id:'create_new_location_img_input',type:'file',hidden:true,accept:'image/png, image/jpeg, image/jpg, image/jpg, image/webp, image/bmp'}),
-        $('<div/>',{class:'wfc'}).append(
+        $('<div/>',{class:'wfc wxw100p'}).append(
             $('<div/>',{class:'wfc m20 mB40 create_new_location_img_container'}).append(
                 $('<div/>',{class:'m10 fs09',text:text.main.profile_picture}),
                 $('<div/>',{class:' row alnE jstfyS'}).append(

@@ -1,0 +1,40 @@
+.datePicker{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:10px;
+    width: fit-content;
+    cursor: pointer;
+    border-radius: 5px;
+    padding:10px 15px;
+    position: relative;
+}
+
+.datePicker_month{
+    font-size:1.2em;
+    font-weight: 500;
+    margin-inline-end:10px;
+    z-index: 10;
+}
+.datePicker_year{
+    font-size:1.2em;
+    font-weight: 500;
+    margin-inline-end:10px;
+}
+///
+.datePicker_select{
+    cursor: auto;
+    position: absolute;
+    top:100%;
+    left:0;
+    padding:8px 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,.12);
+    z-index: 10;
+}
+.datePicker_select_btn{
+    font-size: .95em !important;
+    padding:7px 15px !important;
+}
+//

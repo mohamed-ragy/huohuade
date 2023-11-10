@@ -1,5 +1,9 @@
 showLoadingBar = function(elem){
-    elem.addClass('loadingBar_load')
+    elem.removeClass('loadingBar_load')
+    setTimeout(()=>{
+        elem.addClass('loadingBar_load')
+    },500)
+
 }
 hideLoadingBar = function(elem){
     elem.addClass('loadingBar_loaded')

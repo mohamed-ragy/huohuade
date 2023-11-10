@@ -29,6 +29,7 @@
     window.lang = "{{ $lang }}"
     window.coaches = {!! $coaches !!}
     window.locations = {!! $locations !!}
+    window.players = {!! $players !!}
 </script>
 <script src="../js/coach/home.min.js"></script>
 </html>

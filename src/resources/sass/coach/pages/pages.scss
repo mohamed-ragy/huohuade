@@ -1,14 +1,14 @@
 #pageContainer{
     overflow-x: hidden;
     overflow-y: auto;
-    height:calc(100% - 20px);
-    max-width: 1200px;
-    width:100%;
+    height: calc(100% - 20px);
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
-    padding-top:20px;
+    padding: 20px;
     @media (max-width:1024px) {
         height:calc(100% - 70px);
+        padding: 20px 5px;
     }
 }
 .page{
@@ -41,6 +41,7 @@
 }
 
 @import './map.scss';
+@import './calendar.scss';
 @import './coaches.scss';
 @import './locations.scss';
 //

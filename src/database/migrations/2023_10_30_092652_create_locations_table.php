@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('lat');
             $table->json('contact_info');
             $table->string('created_at');
+            $table->boolean('is_deleted')->default(false);
         });
     }
 

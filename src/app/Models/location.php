@@ -10,10 +10,14 @@ class location extends Model
     protected $table = 'locations';
     public $timestamps = false;
     protected $fillable = [
-        'name_en','name_ch','profile_picture',
-        'lng','lat',
+        'name_en',
+        'name_ch',
+        'profile_picture',
+        'lng',
+        'lat',
         'contact_info',
         'created_at',
+        'is_deleted',
     ];
     protected $casts = ['contact_info'=>'array'];
 }

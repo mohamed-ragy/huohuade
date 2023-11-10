@@ -35,6 +35,7 @@ $('html,body').on('click','#create_coach_btn',function(e){
         type:'post',
         processData: false,
         contentType: false,
+        cache: false,
         data:formData,
         success:function(r){
             $('.create_coach_input').prop('disabled',false);

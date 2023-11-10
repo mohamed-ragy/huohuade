@@ -1,0 +1,29 @@
+$('html,body').on('click','#create_lesson_btn',function(e){
+    e.stopImmediatePropagation();
+    showLoadingBar($('#loading'))
+    $('.create_lesson_location_error').text('')
+    $('.create_lesson_input').prop('disabled',true);
+    $.ajax({
+        url:`/${window.lang}/api/calendar`,
+        type:'post',
+        data:{
+            _token:$('meta[name="csrf-token"]').attr('content'),
+            create_new_lesson:true,
+            location_id:$('#create_lesson_location').attr('key'),
+            year:window.history.state.year,
+            month:window.history.state.month,
+            day:window.history.state.day,
+            hour:$('#create_lesson_hour').text(),
+            minute:$('#create_lesson_minute').text(),
+        },success:function(r){
+            $('.create_lesson_input').prop('disabled',false);
+            hideLoadingBar($('#loading'))
+            if(r.stats == 0){
+                $('.create_lesson_location_error').text(text.calendar.selectLocation)
+            }else if(r.stats == 1){
+            window.history.pushState({page:'calendar_day',day:window.history.state.day,month:window.calendar.month,year:window.calendar.year},'',`/${window.lang}/?page=calendar_day&day=${window.history.state.day}&month=${window.calendar.month}&year=${window.calendar.year}`)
+            drawPage_calendar_day()
+            }
+        }
+    })
+})

@@ -1,0 +1,143 @@
+#calendar_calendar{
+    overflow: auto;
+    padding:40px 0 ;
+}
+.calendar_row{
+    width:1050px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.calendar_row_head{
+    width:150px;
+    margin:10px 0 ;
+    position: relative;
+    text-align: center;
+}
+.calendar_dayCard{
+    padding:10px;
+    margin:10px;
+    width:110px;
+    height:110px;
+    position: relative;
+    border-radius: 8px;
+    background-color: rgb(247,247,247);
+    cursor: pointer;
+    border:1px solid transparent;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.calendar_dayCard_dump{
+    background-color: rgb(232,232,232);
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,.01);
+    cursor: auto;
+}
+.calendar_dayCard_hasLessons{
+    border:1px solid var(--c-huohuade-light)
+}
+.calendar_dayCard_dayNum{
+    font-size: 1.1em;
+    font-weight: 500;
+    color:#6e6e6e;
+}
+.calendar_dayCard_locations{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    width:calc(100%);
+    margin-inline-start: 20px;
+}
+.calendar_dayCard_locationImg{
+    width:38px;
+    height:38px;
+    margin-inline-start:-20px;
+    border-radius: 50%;
+    background-color: #fff;
+    border:2px solid #fff;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+////
+#lessonsTable{
+    td{padding: 10px 20px !important;vertical-align: top !important;}
+}
+.lessonsTableContainer{
+    width:100%;
+    overflow: auto;
+}
+.lessonTable_coachTag{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding:2px ;
+    font-size: .8em;
+    margin:3px;
+    border:1px solid #c7c7c7;
+    position: relative;
+    cursor: auto;
+}
+.lessonTable_coachTag:hover{
+    .removeCoachFromLesson{display: block;}
+}
+.lessonTable_coachTagImg{
+    width:25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.removeCoachFromLesson{
+    padding:5px;
+    position: absolute;
+    right:1px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border-radius: 50%;
+    display: none;
+    outline: none;
+    border:none;;
+}
+.removeCoachFromLesson:disabled{cursor:not-allowed;}
+////
+.lessonTable_playerTag{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding:2px ;
+    font-size: .8em;
+    margin:3px;
+    border:1px solid #c7c7c7;
+    position: relative;
+    cursor: auto;
+}
+.lessonTable_playerTag:hover{
+    .removePlayerFromLesson{display: block;}
+}
+.lessonTable_playerTagImg{
+    width:25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.removePlayerFromLesson{
+    padding:5px;
+    position: absolute;
+    right:1px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border-radius: 50%;
+    display: none;
+    outline: none;
+    border:none;
+}
+.removePlayerFromLesson:disabled{cursor:not-allowed;}
+////
+
+
+
+//

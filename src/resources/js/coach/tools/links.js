@@ -5,6 +5,18 @@ $('html,body').on('click','.showPage',function(e){
     //     return
     // }
     switch($(this).attr('page')){
+        case 'create_new_lesson':
+            window.history.pushState({page:$(this).attr('page'),day:window.history.state.day,month:window.calendar.month,year:window.calendar.year},'',`/${window.lang}/?page=${$(this).attr('page')}&day=${window.history.state.day}&month=${window.calendar.month}&year=${window.calendar.year}`)
+            showPage($(this).attr('page'),$(this).attr('tab'))
+        break;
+        case 'calendar_day':
+            window.history.pushState({page:$(this).attr('page'),day:$(this).attr('day'),month:window.calendar.month,year:window.calendar.year},'',`/${window.lang}/?page=${$(this).attr('page')}&day=${$(this).attr('day')}&month=${window.calendar.month}&year=${window.calendar.year}`)
+            showPage($(this).attr('page'),$(this).attr('tab'))
+        break;
+        case 'calendar':
+            window.history.pushState({page:$(this).attr('page'),month:window.calendar.month,year:window.calendar.year},'',`/${window.lang}/?page=${$(this).attr('page')}&month=${window.calendar.month}&year=${window.calendar.year}`)
+            showPage($(this).attr('page'),$(this).attr('tab'))
+        break;
         case 'manage_coach':
             window.history.pushState({page:$(this).attr('page'),coach:$(this).attr('coach')},'',`/${window.lang}/?page=${$(this).attr('page')}&coach=${$(this).attr('coach')}`)
             showPage($(this).attr('page'),$(this).attr('tab'))

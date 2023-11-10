@@ -32,6 +32,7 @@ $('html,body').on('click','#edit_coach_btn',function(e){
         type:'post',
         processData: false,
         contentType: false,
+        cache: false,
         data:formData,
         success:function(r){
             console.log(r)

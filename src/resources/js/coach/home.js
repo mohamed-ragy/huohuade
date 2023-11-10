@@ -4,6 +4,8 @@ require('./tools/objects.js')
 require('./tools/links.js')
 require('./tools/pageTabs.js')
 require('./tools/map.js')
+require('./tools/datePicker.js')
+require('./tools/timePicker.js')
 
 require('./body/body.js')
 require('./pages/pages.js')
@@ -17,6 +19,30 @@ if(params.get('page') == null){
     showPage(window.history.state.page)
 }else{
     switch(params.get('page')){
+        case 'create_new_lesson':
+            window.calendar = {
+                month:params.get('month') ?? new Date().getMonth() + 1,
+                year:params.get('year') ?? new Date().getFullYear()
+            }
+            window.history.pushState({page:params.get('page'),day:params.get('day'),month:window.calendar.month,year:window.calendar.year},'',`/${window.lang}/?page=${params.get('page')}&day=${params.get('day')}&month=${window.calendar.month}&year=${window.calendar.year}`)
+            showPage(window.history.state.page)
+        break;
+        case 'calendar_day':
+            window.calendar = {
+                month:params.get('month') ?? new Date().getMonth() + 1,
+                year:params.get('year') ?? new Date().getFullYear()
+            }
+            window.history.pushState({page:params.get('page'),day:params.get('day'),month:window.calendar.month,year:window.calendar.year},'',`/${window.lang}/?page=${params.get('page')}&day=${params.get('day')}&month=${window.calendar.month}&year=${window.calendar.year}`)
+            showPage(window.history.state.page)
+        break;
+        case 'calendar':
+            window.calendar = {
+                month:params.get('month') ?? new Date().getMonth() + 1,
+                year:params.get('year') ?? new Date().getFullYear()
+            }
+            window.history.pushState({page:params.get('page'),month:window.calendar.month,year:window.calendar.year},'',`/${window.lang}/?page=${params.get('page')}&month=${window.calendar.month}&year=${window.calendar.year}`)
+            showPage(window.history.state.page)
+        break;
         case 'manage_coach':
             window.history.replaceState({page:params.get('page'),coach:params.get('coach')},'',`/${window.lang}/?page=${params.get('page')}&coach=${params.get('coach')}`);
             showPage(window.history.state.page)

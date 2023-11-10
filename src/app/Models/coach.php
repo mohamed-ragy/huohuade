@@ -23,12 +23,18 @@ class coach extends Authenticatable
         'salary',
         'salary_currency',
         'created_at',
+        'is_deleted'
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
+    public function lessons(){
+        return $this->belongsToMany(lesson::class,'lessons_coaches','coach_id','lesson_id');
+    }
+
 }
 ///coach levels
 // 0 => Administrator coach

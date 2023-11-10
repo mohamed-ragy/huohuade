@@ -30,7 +30,7 @@ drawPage_manage_location = function(location_id,tab){
 draw_edit_location_profile=function(location,tab){
     return $('<div/>',{class:`pageTabContainer ${tab == 'edit_location_profile' ? 'pageTabContainer_selected' : ''}`,tab:'edit_location_profile'}).append(
         $('<input/>',{id:'edit_location_img_input',type:'file',hidden:true,accept:'image/png, image/jpeg, image/jpg, image/jpg, image/webp, image/bmp'}),
-        $('<div/>',{class:'wfc'}).append(
+        $('<div/>',{class:'wfc wxw100p'}).append(
             $('<div/>',{class:'wfc m20 mB40 edit_location_img_container'}).append(
                 $('<div/>',{class:'m10 fs09',text:text.main.profile_picture}),
                 $('<div/>',{class:' row alnE jstfyS'}).append(
