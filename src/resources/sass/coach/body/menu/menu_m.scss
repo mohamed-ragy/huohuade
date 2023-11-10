@@ -25,6 +25,7 @@
     @media (min-width:1024px) {
         display: none;
     }
+    z-index: 1000;
 }
 .menu_container_m_expanded{
     transform: translateX(0);

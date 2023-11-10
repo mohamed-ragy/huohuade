@@ -1,19 +1,21 @@
 #pageContainer{
     overflow-x: hidden;
     overflow-y: auto;
-    height: calc(100% - 20px);
+    height: calc(100% - 40px);
     width: 100%;
     margin-right: auto;
     margin-left: auto;
     padding: 20px;
     @media (max-width:1024px) {
         height:calc(100% - 70px);
-        padding: 20px 5px;
+        padding: 30px 5px;
     }
 }
 .page{
     opacity: 0;
     transition-duration: 200ms;
+    padding-bottom: 200px;
+
 }
 .page_show{opacity: 1;}
 .pageContainerTree{
