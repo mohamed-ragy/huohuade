@@ -4,8 +4,11 @@ require('./calendar_events.js')
 ///
 require('./drawPage_calendar_day.js')
 require('./calendar_day_events.js')
+//
 require('./drawPage_create_new_lesson.js')
 require('./create_new_lesson_events.js')
-
-
+///
+require('./drawPage_lesson.js')
+require('./lesson_functions.js')
+require('./lesson_events.js')
 ///

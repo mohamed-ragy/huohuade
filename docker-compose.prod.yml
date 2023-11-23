@@ -123,3 +123,19 @@ services:
     networks:
       - huohuade
 
+  schedule:
+    build:
+      context: ./Dockerfiles/
+      dockerfile: php.dockerfile
+      args:
+          user: muha
+          uid: 1000
+    command: ['php','artisan', 'schedule:work' ]
+    container_name: huohuade_schedule
+    restart: always
+    volumes:
+      - ./src:/var/www/huohuade:delegated
+    depends_on:
+      - php
+    networks:
+      - huohuade

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('ended_at')->nullable();
             $table->unsignedBigInteger('location_id');
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->string('court');
             // $table->unsignedBigInteger('canceled_by')->nullable();
             // $table->foreign('canceled_by')->references('id')->on('coaches')->onDelete('set null');
             // $table->string('canceled_at')->nullable();

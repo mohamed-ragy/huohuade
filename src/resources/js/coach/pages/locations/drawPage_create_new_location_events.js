@@ -34,8 +34,6 @@ $('html,body').on('click','#create_location_btn',function(e){
             $('.create_location_input').prop('disabled',false);
             hideLoadingBar($('#loading'));
             if(r.status == 1){
-                r.location.profile_picture = r.location.profile_picture == null ? '../storage/imgs/profile_location.png' :
-                `../storage/imgs/locations/${r.location.profile_picture}`;
                 window.locations.push(r.location);
                 showPage('locations')
                 window.history.pushState({page:'locations'},'',`/${window.lang}/?page=locations`);

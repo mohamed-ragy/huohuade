@@ -34,8 +34,6 @@ $('html,body').on('click','#edit_location_btn',function(e){
             $('.edit_location_input').prop('disabled',false);
             hideLoadingBar($('#loading'));
             if(r.status == 1){
-                r.location.profile_picture = r.location.profile_picture == null ? '../storage/imgs/profile_location.png' :
-                `../storage/imgs/locations/${r.location.profile_picture}`;
                 for(const key in locations){
                     if(window.locations[key].id == window.history.state.location){
                         window.locations[key] = r.location;
@@ -161,5 +159,53 @@ $('html,body').on('click','.deleteLocationContactInfo_confirm',function(e){
             }
         }
     })
+})
+//
+$('html,body').on('click','.location_court_delete',function(e){
+    e.stopImmediatePropagation();
+    $(this).parent().remove();
+})
+$('html,body').on('click','.location_court_add',function(e){
+    e.stopImmediatePropagation();
+    $(this).before(
+        $('<div/>',{class:'row alnC jstfyS '}).append(
+            $('<input/>',{class:'inputText edit_location_court input_60',value:'',maxlength:8}),
+            $('<div/>',{class:'ico-close pointer w10 h10 location_court_delete'})
+        )
+    );
+})
+$('html,body').on('click','#location_courts_cancel',function(e){
+    e.stopImmediatePropagation();
+    draw_location_courts_table(locations.find(item=>item.id == window.history.state.location))
+})
+$('html,body').on('click','#location_courts_save',function(e){
+    e.stopImmediatePropagation();
+    $('.location_courts_saved').addClass('none')
+    showLoadingBar($('#loading'))
+    let courts = [];
+    $('.edit_location_court').each(function(){
+        if($(this).val() != ''){
+            courts.push($(this).val())
+        }
+    })
+    $.ajax({
+        url:`/${lang}/api/location`,
+        type:'post',
+        data:{
+            _token:$('meta[name="csrf-token"]').attr('content'),
+            save_location_courts:true,
+            location_id:window.history.state.location,
+            courts:courts,
+        },success:function(r){
+            hideLoadingBar($('#loading'))
+            if(r.status = 1){
+                locations.find(item=>item.id == window.history.state.location).courts = courts;
+                draw_location_courts_table(locations.find(item=>item.id == window.history.state.location));
+                $('.location_courts_saved').removeClass('none');
+                setTimeout(() => {$('.location_courts_saved').addClass('none')}, 4000);
+            }
+        }
+    })
+
 })
 //

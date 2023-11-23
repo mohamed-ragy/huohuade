@@ -16,8 +16,12 @@ class location extends Model
         'lng',
         'lat',
         'contact_info',
+        'courts',
         'created_at',
         'is_deleted',
     ];
-    protected $casts = ['contact_info'=>'array'];
+    protected $casts = [
+        'contact_info' => 'array',
+        'courts' => 'array'
+]   ;
 }

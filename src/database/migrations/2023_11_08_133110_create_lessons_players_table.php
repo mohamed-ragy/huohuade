@@ -17,6 +17,9 @@ return new class extends Migration
             $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
             $table->unsignedBigInteger('player_id');
             $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
+            $table->boolean('is_attend')->nullable();
+            $table->string('attend_at')->nullable();
+            $table->string('finish_at')->nullable();
         });
     }
 

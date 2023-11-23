@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
@@ -48,6 +49,9 @@ class coachController extends Controller
 
     }
     public function home(Request $request){
+        // dd(lesson::where([
+        //     'status' => 'ongoing'
+        // ])->where('date','<=',Carbon::today()->timestamp)->get());
         if(Auth::guard('coach')->user()->coach_level == 0 || Auth::guard('coach')->user()->coach_level == 1){
             $coaches = coach::orderBy('coach_level','asc')->get();
             $locations = location::get();
@@ -132,7 +136,7 @@ class coachController extends Controller
                 'salary_currency.in' => Lang::get('coach/coach.coaches.salary_currency_required'),
 
             ]);
-            $profile_picture = null;
+            $profile_picture = '../storage/imgs/profile_'.strip_tags($request->gender).'.png';
             $file = $request->file('profile_picture');
             if($file != null){
                 $validation2 = Validator::make([
@@ -154,7 +158,7 @@ class coachController extends Controller
             if($file != null){
                 $fileExtention = $file->guessExtension();
                 $file_name = strip_tags($request->login_name);
-                $profile_picture = $file_name .'.'.$fileExtention;
+                $profile_picture = '../storage/imgs/coaches/'.$file_name .'.'.$fileExtention;
                 File::delete('storage/imgs/coaches/'.$file_name.'.png',
                 'storage/imgs/coaches/'.$file_name.'.jpg',
                 'storage/imgs/coaches/'.$file_name.'.jpeg',
@@ -231,7 +235,7 @@ class coachController extends Controller
             ]);
             $coach = coach::where('id',$request->coach_id)->first();
 
-            $profile_picture = null;
+            $profile_picture = '../storage/imgs/profile_'.strip_tags($request->gender).'.png';
             $file = $request->file('profile_picture');
             if($file == null){
                 $profile_picture = $coach->profile_picture;
@@ -253,13 +257,13 @@ class coachController extends Controller
             if($file != null){
                 $fileExtention = $file->guessExtension();
                 $file_name = strip_tags($coach->login_name);
-                $profile_picture = $file_name .'.'.$fileExtention;
+                $profile_picture = '../storage/imgs/coaches/'.$file_name .'.'.$fileExtention;
                 File::delete('storage/imgs/coaches/'.$file_name.'.png',
-                'storage/imgs/coaches/'.$file_name.'.jpg',
-                'storage/imgs/coaches/'.$file_name.'.jpeg',
-                'storage/imgs/coaches/'.$file_name.'.gif',
-                'storage/imgs/coaches/'.$file_name.'.webp',
-                'storage/imgs/coaches/'.$file_name.'.bmp');
+                'storage/imgs/coaches/'.strip_tags($coach->login_name).'.jpg',
+                'storage/imgs/coaches/'.strip_tags($coach->login_name).'.jpeg',
+                'storage/imgs/coaches/'.strip_tags($coach->login_name).'.gif',
+                'storage/imgs/coaches/'.strip_tags($coach->login_name).'.webp',
+                'storage/imgs/coaches/'.strip_tags($coach->login_name).'.bmp');
                 $thumbnail = Image::make($file);
                 $thumbnail->resize(800, 800, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
                 $thumbnail->save( public_path('storage/imgs/coaches/'). $file_name .'.'.$fileExtention);
@@ -362,7 +366,9 @@ class coachController extends Controller
             $coach = coach::where('id',$request->coach_id)->first();
             $delete = coach::where('id',$request->coach_id)->delete();
             if($delete){
-                File::delete('storage/imgs/coaches/'.$coach->profile_picture);
+                if($coach->profile_picture != '../storage/imgs/profile_male.png' && $coach->profile_picture != '../storage/imgs/profile_female.png'){
+                    File::delete(str_replace('../','',$coach->profile_picture));
+                }
                 activity_log::create([
                     'code' => 'coach.delete',
                     'created_at' => Carbon::now()->timestamp,
@@ -465,7 +471,7 @@ class coachController extends Controller
                 'lng.not_in' => Lang::get('coach/coach.locations.latlng_required'),
 
             ]);
-            $profile_picture = null;
+            $profile_picture = '../storage/imgs/profile_location.png';
             $file = $request->file('profile_picture');
             if($file != null){
                 $validation2 = Validator::make([
@@ -485,13 +491,13 @@ class coachController extends Controller
             if($file != null){
                 $fileExtention = $file->guessExtension();
                 $file_name = Str::uuid();
-                $profile_picture = $file_name .'.'.$fileExtention;
-                File::delete('storage/imgs/coaches/'.$file_name.'.png',
-                'storage/imgs/coaches/'.$file_name.'.jpg',
-                'storage/imgs/coaches/'.$file_name.'.jpeg',
-                'storage/imgs/coaches/'.$file_name.'.gif',
-                'storage/imgs/coaches/'.$file_name.'.webp',
-                'storage/imgs/coaches/'.$file_name.'.bmp');
+                $profile_picture = '../storage/imgs/locations/'.$file_name .'.'.$fileExtention;
+                File::delete('storage/imgs/locations/'.$file_name.'.png',
+                'storage/imgs/locations/'.$file_name.'.jpg',
+                'storage/imgs/locations/'.$file_name.'.jpeg',
+                'storage/imgs/locations/'.$file_name.'.gif',
+                'storage/imgs/locations/'.$file_name.'.webp',
+                'storage/imgs/locations/'.$file_name.'.bmp');
                 $thumbnail = Image::make($file);
                 $thumbnail->resize(800, 800, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
                 $thumbnail->save( public_path('storage/imgs/locations/'). $file_name .'.'.$fileExtention);
@@ -505,6 +511,7 @@ class coachController extends Controller
                 'profile_picture' => $profile_picture,
                 'contact_info' => [],
                 'created_at' => Carbon::now()->timestamp,
+                'courts' => [],
             ]);
             activity_log::create([
                 'code' => 'location.create',
@@ -556,7 +563,9 @@ class coachController extends Controller
             $location = location::where('id',$request->location_id)->first();
             $delete = location::where('id',$request->location_id)->delete();
             if($delete){
-                File::delete('storage/imgs/locations/'.$location->profile_picture);
+                if($location->profile_picture != '../storage/imgs/profile_location.png'){
+                    File::delete(str_replace('../','',$location->profile_picture));
+                }
                 activity_log::create([
                     'code' => 'location.delete',
                     'created_at' => Carbon::now()->timestamp,
@@ -592,7 +601,7 @@ class coachController extends Controller
 
             ]);
             $location = location::where('id',$request->location_id)->first();
-            $profile_picture = null;
+            $profile_picture = '../storage/imgs/profile_location.png';
             $file = $request->file('profile_picture');
             if($file == null){
                 $profile_picture = $location->profile_picture;
@@ -613,8 +622,10 @@ class coachController extends Controller
             if($file != null){
                 $fileExtention = $file->guessExtension();
                 $file_name = Str::uuid();
-                $profile_picture = $file_name .'.'.$fileExtention;
-                File::delete('storage/imgs/locations/'.$location->profile_picture);
+                $profile_picture = '../storage/imgs/locations/'.$file_name .'.'.$fileExtention;
+                if($location->profile_picture != '../storage/imgs/profile_location.png'){
+                    File::delete(str_replace('../','',$location->profile_picture));
+                }
                 $thumbnail = Image::make($file);
                 $thumbnail->resize(800, 800, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
                 $thumbnail->save( public_path('storage/imgs/locations/'). $file_name .'.'.$fileExtention);
@@ -726,21 +737,44 @@ class coachController extends Controller
                 'location_contact_name_ch' => $deletedLocation['name_ch'],
             ]);
             return response(['status' => 1, 'contact_info' => $contact_info]);
+        }else if($request->has('save_location_courts')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+            $location = location::where('id',$request->location_id)->first();
+            $update_location = $location->update(['courts' => $request->courts]);
+            if($update_location){
+                activity_log::create([
+                    'code' => 'location.edit_courts',
+                    'created_at' => Carbon::now()->timestamp,
+                    'created_by' => Auth::guard('coach')->user()->id,
+                    'created_by_name_en' => Auth::guard('coach')->user()->name_en,
+                    'created_by_name_ch' => Auth::guard('coach')->user()->name_ch,
+                    'location_id' => $location->id,
+                    'location_name_en' => $location->name_en,
+                    'location_name_ch' => $location->name_ch,
+                ]);
+                return response(['state' => 1]);
+            }
+        }else if($request->has('getLocation')){
+            $coach = Auth::guard('coach')->user();
+            if($coach->coach_level == 0){
+                $location = location::where('id',$request->location_id)->first();
+            }else{
+                $location = location::where('id',$request->location_id)->select(['id','profile_picture','name_en','name_ch','lng','lat'])->first();
+            }
+            return response(['location'=>$location]);
         }
     }
     public function calendar(Request $request){
         if($request->has('getCalendar')){
             $coach = Auth::guard('coach')->user();
-            // $start_at = Carbon::createFromFormat('Y-m-d',$request->year.'-'.$request->month.'-1')->setTime(0,0,0)->timestamp;
-            // $end_at = Carbon::createFromFormat('Y-m-d',$request->year.'-'.$request->month + 1 .'-0')->setTime(23,59,59)->timestamp;
             $start_at = Carbon::create($request->year,$request->month,1,0,0,0,'Asia/Shanghai')->timestamp;
             $end_at = Carbon::create($request->year,$request->month + 1,0,23,59,59,'Asia/Shanghai')->timestamp;
             if($coach->coach_level == 0 || $coach->coach_level == 1){
-                $lessons = lesson::whereBetween('date',[$start_at,$end_at])->with('location')->get();
+                $lessons = lesson::whereBetween('date',[$start_at,$end_at])->with('location:id,profile_picture,name_en,name_ch')->get();
             }else{
                 $lessons = lesson::whereBetween('date',[$start_at,$end_at])->whereHas('coaches',function($q) use ($coach){
                     $q->where('coach_id',$coach->id);
-                })->with('location')->get();
+                })->with('location:id,profile_picture,name_en,name_ch,lat,lng')->get();
             }
             return response(['lessons'=>$lessons]);
         }else if($request->has('getCalendarDay')){
@@ -752,11 +786,11 @@ class coachController extends Controller
             $end_at = Carbon::create($request->year,$request->month,$request->day,23,59,59,'Asia/Shanghai')->timestamp;
 
             if($coach->coach_level == 0 || $coach->coach_level == 1){
-                $lessons = lesson::whereBetween('date',[$start_at,$end_at])->with('location')->with('coaches')->with('players')->orderBy('date','asc')->get();
+                $lessons = lesson::whereBetween('date',[$start_at,$end_at])->with('location:id,profile_picture,name_en,name_ch,lat,lng')->with('coaches:id,profile_picture,name_en,name_ch')->with('players:id,profile_picture,name_en,name_ch,gender')->orderBy('date','asc')->get();
             }else{
                 $lessons = lesson::whereBetween('date',[$start_at,$end_at])->whereHas('coaches',function($q) use ($coach){
                     $q->where('coach_id',$coach->id);
-                })->with('location')->with('coaches')->with('players')->orderBy('date','asc')->get();
+                })->with('location:id,profile_picture,name_en,name_ch,lat,lng')->with('coaches:id,profile_picture,name_en,name_ch')->with('players:id,profile_picture,name_en,name_ch,gender')->orderBy('date','asc')->get();
             }
             return response(['lessons'=>$lessons]);
         }else if($request->has('create_new_lesson')){
@@ -766,11 +800,21 @@ class coachController extends Controller
             if($location == null){
                 return response(['stats'=>0]);
             }
+            $court = null;
+            foreach($location->courts as $location_court){
+                if($location_court == $request->court){
+                    $court = $location_court;
+                }
+            }
+            if($court == null){
+                return response(['stats'=>2]);
+            }
             $lesson_date = Carbon::create($request->year,$request->month,$request->day,$request->hour,$request->minute,0,'Asia/Shanghai')->timestamp;
             $lesson = lesson::create([
                 'status' => 'upcoming',
                 'date' => $lesson_date,
                 'location_id' => $location->id,
+                'court' => $court,
             ]);
             if($lesson){
                 activity_log::create([
@@ -788,6 +832,7 @@ class coachController extends Controller
             if($coach->coach_level != 0 && $coach->coach_level != 1){return;}
             $remove_coach = coach::where('id',$request->coach_id)->first();
             $lesson = lesson::where('id',$request->lesson_id)->first();
+            if($lesson->status == 'finished' || $lesson->status == 'canceled'){return;}
             $remove = $lesson->coaches()->wherePivot('coach_id','=',$request->coach_id)->detach();
             if($remove){
                 activity_log::create([
@@ -808,6 +853,7 @@ class coachController extends Controller
             if($coach->coach_level != 0 && $coach->coach_level != 1){return;}
             $remove_player = player::where('id',$request->player_id)->first();
             $lesson = lesson::where('id',$request->lesson_id)->first();
+            if($lesson->status == 'finished' || $lesson->status == 'canceled'){return;}
             $remove = $lesson->players()->wherePivot('player_id','=',$request->player_id)->detach();
             if($remove){
                 activity_log::create([
@@ -827,6 +873,7 @@ class coachController extends Controller
             $coach = Auth::guard('coach')->user();
             if($coach->coach_level != 0 && $coach->coach_level != 1){return;}
             $lesson = lesson::where('id',$request->lesson_id)->first();
+            if($lesson->status == 'finished' || $lesson->status == 'canceled'){return;}
             $coaches = coach::whereIn('id',$request->coachesIds)->get();
             $lesson->coaches()->attach($request->coachesIds);
             $activities = [];
@@ -849,6 +896,7 @@ class coachController extends Controller
             $coach = Auth::guard('coach')->user();
             if($coach->coach_level != 0 && $coach->coach_level != 1){return;}
             $lesson = lesson::where('id',$request->lesson_id)->first();
+            if($lesson->status == 'finished' || $lesson->status == 'canceled'){return;}
             $players = player::whereIn('id',$request->playersIds)->get();
             $lesson->players()->attach($request->playersIds);
             $activities = [];
@@ -867,6 +915,167 @@ class coachController extends Controller
             }
             activity_log::insert($activities);
             return response(['stats' => 1,'players' => $players]);
+        }else if($request->has('getLesson')){
+            $coach = Auth::guard('coach')->user();
+            if($coach->coach_level == 0 || $coach->coach_level == 1){
+                $lesson = lesson::where('id',$request->lesson_id)->with('location:id,profile_picture,name_en,name_ch,lat,lng')->with('activites')->with('notes')->with('coaches:id,profile_picture,name_en,name_ch')->with('players:id,profile_picture,name_en,name_ch,gender')->orderBy('date','asc')->first();
+            }else{
+                $lesson = lesson::where('id',$request->lesson_id)->whereHas('coaches',function($q) use ($coach){
+                    $q->where('coach_id',$coach->id);
+                })->with('location:id,profile_picture,name_en,name_ch,lat,lng')->with('notes')->with('coaches:id,profile_picture,name_en,name_ch')->with('players:id,profile_picture,name_en,name_ch,gender')->orderBy('date','asc')->first();
+            }
+            return response(['lesson'=>$lesson]);
+        }else if($request->has('startLesson')){
+            $coach = Auth::guard('coach')->user();
+            $lesson = lesson::where('id',$request->lesson_id)->first();
+            $accessCheck = false;
+            if($coach->coach_level == 0 || $coach->coach_level == 1){$accessCheck = true;}
+            else if($coach->coach_level == 2){
+                if(DB::table('lessons_coaches')->where(['coach_id' => $coach->id,'lesson_id'=>$request->lesson_id])->count() > 0){$accessCheck = true;}
+            }
+            if(!$accessCheck){return;}
+            if($lesson->status == 'upcoming'){
+                $update_lesson = $lesson->update([
+                    'status' => 'ongoing',
+                    'started_at' => Carbon::now()->timestamp
+                ]);
+                if($update_lesson){
+                    activity_log::create([
+                        'code' => 'lesson.start',
+                        'created_at' => Carbon::now()->timestamp,
+                        'created_by' => $coach->id,
+                        'created_by_name_en' => $coach->name_en,
+                        'created_by_name_ch' => $coach->name_ch,
+                        'lesson_id' => $lesson->id,
+                    ]);
+                    return response(['state' => 1,'now' => Carbon::now()->timestamp]);
+                }
+            }
+        }else if($request->has('endLesson')){
+            $coach = Auth::guard('coach')->user();
+            $lesson = lesson::where('id',$request->lesson_id)->first();
+            $accessCheck = false;
+            if($coach->coach_level == 0 || $coach->coach_level == 1){$accessCheck = true;}
+            else if($coach->coach_level == 2){
+                if(DB::table('lessons_coaches')->where(['coach_id' => $coach->id,'lesson_id'=>$request->lesson_id])->count() > 0){$accessCheck = true;}
+            }
+            if(!$accessCheck){return;}
+            if($lesson->status == 'ongoing'){
+                $update_lesson = $lesson->update([
+                    'status' => 'finished',
+                    'ended_at' => Carbon::now()->timestamp
+                ]);
+                if($update_lesson){
+                    activity_log::create([
+                        'code' => 'lesson.end',
+                        'created_at' => Carbon::now()->timestamp,
+                        'created_by' => $coach->id,
+                        'created_by_name_en' => $coach->name_en,
+                        'created_by_name_ch' => $coach->name_ch,
+                        'lesson_id' => $lesson->id,
+                    ]);
+                    return response(['state' => 1,'now' => Carbon::now()->timestamp]);
+                }
+            }
+        }else if($request->has('cancelLesson')){
+            $coach = Auth::guard('coach')->user();
+            $lesson = lesson::where('id',$request->lesson_id)->first();
+            $accessCheck = false;
+            if($coach->coach_level == 0 || $coach->coach_level == 1){$accessCheck = true;}
+            else if($coach->coach_level == 2){
+                if(DB::table('lessons_coaches')->where(['coach_id' => $coach->id,'lesson_id'=>$request->lesson_id])->count() > 0){$accessCheck = true;}
+            }
+            if(!$accessCheck){return;}
+            if($lesson->status == 'upcoming' || $lesson->status == 'ongoing'){
+                $update_lesson = $lesson->update([
+                    'status' => 'canceled',
+                ]);
+                if($update_lesson){
+                    activity_log::create([
+                        'code' => 'lesson.cancel',
+                        'created_at' => Carbon::now()->timestamp,
+                        'created_by' => $coach->id,
+                        'created_by_name_en' => $coach->name_en,
+                        'created_by_name_ch' => $coach->name_ch,
+                        'lesson_id' => $lesson->id,
+                        'description' => $request->cancel_reason
+                    ]);
+                    return response(['state' => 1]);
+                }
+            }
+        }else if($request->has('player_lesson_attend')){
+            $coach = Auth::guard('coach')->user();
+            if($coach->coach_level != 0 && $coach->coach_level != 1 && $coach->coach_level != 2){return;}
+            $lesson = lesson::where('id',$request->lesson_id)->first();
+            if($lesson->status != 'ongoing'){return;}
+            $update = DB::table('lessons_players')->where(['player_id'=>$request->player_id,'lesson_id' => $request->lesson_id])
+                ->update([
+                    'is_attend' => true,
+                    'attend_at' => Carbon::now()->timestamp,
+                ]);
+            if($update){
+                $player = player::where('id',$request->player_id)->first();
+                activity_log::create([
+                    'code' => 'lesson.player.attend',
+                    'created_at' => Carbon::now()->timestamp,
+                    'created_by' => $coach->id,
+                    'created_by_name_en' => $coach->name_en,
+                    'created_by_name_ch' => $coach->name_ch,
+                    'lesson_id' => $lesson->id,
+                    'player_id' => $player->id,
+                    'player_name_en' => $player->name_en,
+                    'player_name_ch' => $player->name_ch,
+                ]);
+                return response(['state' => 1,'now' => Carbon::now()->timestamp]);
+            }
+        }else if($request->has('player_lesson_absent')){
+            $coach = Auth::guard('coach')->user();
+            if($coach->coach_level != 0 && $coach->coach_level != 1 && $coach->coach_level != 2){return;}
+            $lesson = lesson::where('id',$request->lesson_id)->first();
+            if($lesson->status != 'ongoing'){return;}
+            $update = DB::table('lessons_players')->where(['player_id'=>$request->player_id,'lesson_id' => $request->lesson_id])
+                ->update([
+                    'is_attend' => false,
+                ]);
+            if($update){
+                $player = player::where('id',$request->player_id)->first();
+                activity_log::create([
+                    'code' => 'lesson.player.absent',
+                    'created_at' => Carbon::now()->timestamp,
+                    'created_by' => $coach->id,
+                    'created_by_name_en' => $coach->name_en,
+                    'created_by_name_ch' => $coach->name_ch,
+                    'lesson_id' => $lesson->id,
+                    'player_id' => $player->id,
+                    'player_name_en' => $player->name_en,
+                    'player_name_ch' => $player->name_ch,
+                ]);
+                return response(['state' => 1]);
+            }
+        }else if($request->has('player_lesson_endLesson')){
+            $coach = Auth::guard('coach')->user();
+            if($coach->coach_level != 0 && $coach->coach_level != 1 && $coach->coach_level != 2){return;}
+            $lesson = lesson::where('id',$request->lesson_id)->first();
+            if($lesson->status != 'ongoing'){return;}
+            $update = DB::table('lessons_players')->where(['player_id'=>$request->player_id,'lesson_id' => $request->lesson_id])
+                ->update([
+                    'finish_at' => Carbon::now()->timestamp,
+                ]);
+            if($update){
+                $player = player::where('id',$request->player_id)->first();
+                activity_log::create([
+                    'code' => 'lesson.player.endLesson',
+                    'created_at' => Carbon::now()->timestamp,
+                    'created_by' => $coach->id,
+                    'created_by_name_en' => $coach->name_en,
+                    'created_by_name_ch' => $coach->name_ch,
+                    'lesson_id' => $lesson->id,
+                    'player_id' => $player->id,
+                    'player_name_en' => $player->name_en,
+                    'player_name_ch' => $player->name_ch,
+                ]);
+                return response(['state' => 1,'now' => Carbon::now()->timestamp]);
+            }
         }
     }
 }

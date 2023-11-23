@@ -33,9 +33,6 @@ drawCalendar = function(lessons){
     let days = {}
     for(const key in lessons){
         let lesson = lessons[key];
-        // let lesson_date = new Date(lesson.date * 1000).toLocaleString('en-US', { timeZone: 'Asia/Shanghai' });
-        // lesson_date = Date.parse(lesson_date);
-        // console.log(lesson_date)
         let dayNum = new Date(lesson.date * 1000).toLocaleString('en-US', { day:'numeric', timeZone: 'Asia/Shanghai' })
         if(!days.hasOwnProperty(dayNum)){
             days[dayNum] = [];
@@ -50,12 +47,10 @@ drawCalendarDay = function(dayNum,day){
     let locations_in_day = [];
     for(const key in day){
         let lesson = day[key];
-        let pp_src = '../storage/imgs/profile_location.png' ;
-        lesson.location.profile_picture == null ? pp_src = '../storage/imgs/profile_location.png' : pp_src = `../storage/imgs/locations/${lesson.location.profile_picture}` ;
         if(typeof(locations_in_day.find(item=>item.id == lesson.location.id)) === 'undefined'){
             locations_in_day.push({
                 id:lesson.location.id,
-                img:pp_src,
+                img:lesson.location.profile_picture,
                 lessons:0,
                 name:lesson.location[`name_${window.lang}`]
             })

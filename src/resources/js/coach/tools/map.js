@@ -1,4 +1,4 @@
-draw_location_map = function(container,lat,lng){
+draw_location_map = function(container,lat,lng,controls = true){
     let markerIcon = L.icon({
         iconUrl: '../storage/imgs/marker-icon.png',
         iconSize:     [25, 41], // size of the icon
@@ -29,33 +29,42 @@ draw_location_map = function(container,lat,lng){
     $('#'+container).find('.leaflet-control-zoom-out').text('').addClass('p5').attr('title',null).attr('tooltip',text.main.zoomOut).append(
         $('<div/>',{class:'ico-zoom-out h20 w20'})
     )
-    $('#'+container).find('.leaflet-control-zoom').append(
-        $('<a/>',{
-            class:'leaflet-control-currentLocation',
-            'aria-disabled':false,
-            role:'button',
-            tooltip:text.main.currentLocation,
-        }).append(
-            $('<div/>',{class:'ico-gps h20 w20'})
+    if(controls){
+        $('#'+container).find('.leaflet-control-zoom').append(
+            $('<a/>',{
+                class:'leaflet-control-currentLocation',
+                'aria-disabled':false,
+                role:'button',
+                tooltip:text.main.currentLocation,
+            }).append(
+                $('<div/>',{class:'ico-gps h20 w20'})
+            )
         )
-    )
 
-    window[container].on('click',function(e){
-        if($('.leaflet-control-currentLocation:hover').length > 0){return;}
-        window[`${container}_marker`].addTo(window[container]).setLatLng(e.latlng);
-    });
+    }
 
-    $('html,body').on('click',`#${container} .leaflet-control-currentLocation`,function(e){
-        // e.preventDefault();
-        // e.stopPropagation();
-        e.stopImmediatePropagation();
-        navigator.geolocation.getCurrentPosition(function(pos){
-            window[container].flyTo([pos.coords.latitude,pos.coords.longitude], 15, {
-                animate: true,
-                duration: 1
-            });
-            window[`${container}_marker`].addTo(window[container]).setLatLng([pos.coords.latitude,pos.coords.longitude]);
+
+    if(controls){
+        window[container].on('click',function(e){
+            if($('.leaflet-control-currentLocation:hover').length > 0){return;}
+            window[`${container}_marker`].addTo(window[container]).setLatLng(e.latlng);
         });
-    })
+        $('html,body').on('click',`#${container} .leaflet-control-currentLocation`,function(e){
+            // e.preventDefault();
+            // e.stopPropagation();
+            e.stopImmediatePropagation();
+            navigator.geolocation.getCurrentPosition(function(pos){
+                window[container].flyTo([pos.coords.latitude,pos.coords.longitude], 15, {
+                    animate: true,
+                    duration: 1
+                });
+                window[`${container}_marker`].addTo(window[container]).setLatLng([pos.coords.latitude,pos.coords.longitude]);
+            });
+        })
+    }
+
+
+
+
 
 }

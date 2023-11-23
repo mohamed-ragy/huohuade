@@ -12,6 +12,10 @@ showPage = function(page){
         let tab = '';
         $('.page').text('')
         switch (page) {
+            case 'lesson':
+                tab:'calendar';
+                drawPage_lesson()
+            break;
             case 'create_new_lesson':
                 tab = 'calendar';
                 drawPage_create_new_lesson()

@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         $admin = coach::create([
             'login_name' => 'admin',
             'password' => bcrypt('huohuade'),
-            'profile_picture' => 'admin.jpg',
+            'profile_picture' => '../storage/imgs/coaches/admin.jpg',
             'name_en' => $this->faker->firstName('male').' '.$this->faker->lastName('male'),
             'name_ch' => $faker_ch->firstName('male').' '.$faker_ch->lastName('male'),
             'gender' => 'male',
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         $manager = coach::create([
             'login_name' => 'manager',
             'password' => bcrypt('huohuade'),
-            'profile_picture' => 'manager.jpg',
+            'profile_picture' => '../storage/imgs/coaches/manager.jpg',
             'name_en' => $this->faker->firstName('male').' '.$this->faker->lastName('male'),
             'name_ch' => $faker_ch->firstName('male').' '.$faker_ch->lastName('male'),
             'gender' => 'male',
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             coach::create([
                 'login_name' => 'senior'.$i,
                 'password' => bcrypt('huohuade'),
-                'profile_picture' => 'senior'.$i.'.jpg',
+                'profile_picture' => '../storage/imgs/coaches/senior'.$i.'.jpg',
                 'name_en' => $this->faker->firstName($gender).' '.$this->faker->lastName($gender),
                 'name_ch' => $faker_ch->firstName($gender).' '.$faker_ch->lastName($gender),
                 'gender' => $gender,
@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
             coach::create([
                 'login_name' => 'basic'.$i,
                 'password' => bcrypt('huohuade'),
-                'profile_picture' => 'basic'.$i.'.jpg',
+                'profile_picture' => '../storage/imgs/coaches/basic'.$i.'.jpg',
                 'name_en' => $this->faker->firstName($gender).' '.$this->faker->lastName($gender),
                 'name_ch' => $faker_ch->firstName($gender).' '.$faker_ch->lastName($gender),
                 'gender' => 'male',
@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
             coach::create([
                 'login_name' => 'coach'.$i,
                 'password' => bcrypt('huohuade'),
-                'profile_picture' => 'coach'.$i.'.jpg',
+                'profile_picture' => '../storage/imgs/coaches/coach'.$i.'.jpg',
                 'name_en' => $this->faker->firstName($gender).' '.$this->faker->lastName($gender),
                 'name_ch' => $faker_ch->firstName($gender).' '.$faker_ch->lastName($gender),
                 'gender' => 'male',
@@ -127,49 +127,62 @@ class DatabaseSeeder extends Seeder
 
         /////////////////locations
         location::create([
-            'name_en' => 'Hong Kong', 'name_ch' => '香港特别行政區', 'profile_picture'=>'hongkong.jpg',
+            'name_en' => 'Hong Kong', 'name_ch' => '香港特别行政區', 'profile_picture'=>'../storage/imgs/locations/hongkong.jpg',
             'lng' => '114.177216', 'lat' => '22.302711',
             'contact_info' => [
                 0 => ['id'=>1,'name_en'=>'Li Wang', 'name_ch'=>'李王', 'phone'=>'123456789', 'wechat_id'=>'wxid_0123abcd'],
             ],
+            'courts' => ['1','2','3','4','5'],
             'created_at' => Carbon::now()->timestamp,
             'is_deleted' => true,
         ]);
         location::create([
-            'name_en' => 'Beijing', 'name_ch' => '北京市', 'profile_picture'=>'beijing.jpg',
+            'name_en' => 'Beijing', 'name_ch' => '北京市', 'profile_picture'=>'../storage/imgs/locations/beijing.jpg',
             'lng' => '116.383331', 'lat' => '	39.916668',
             'contact_info' => [
                 0 => ['id'=>1,'name_en'=>'Liu Zhang', 'name_ch'=>'刘张', 'phone'=>'123456789', 'wechat_id'=>'wxid_0123abcd'],
                 1 => ['id'=>2,'name_en'=>'Wu Zhang', 'name_ch'=>'吴张', 'phone'=>'123456789', 'wechat_id'=>'wxid_0123abcd'],
             ],
+            'courts' => ['A','B','C','D','E','F'],
             'created_at' => Carbon::now()->timestamp,
         ]);
         location::create([
-            'name_en' => 'Shanghai', 'name_ch' => '上海市', 'profile_picture'=>'shanghai.jpg',
+            'name_en' => 'Shanghai', 'name_ch' => '上海市', 'profile_picture'=>'../storage/imgs/locations/shanghai.jpg',
             'lng' => '121.469170', 'lat' => '31.224361',
             'contact_info' => [
                 0 => ['id'=>1,'name_en'=>'Chen Huang', 'name_ch'=>'陈黄', 'phone'=>'123456789', 'wechat_id'=>'wxid_0123abcd'],
             ],
+            'courts' => ['1','2','3','4','5'],
             'created_at' => Carbon::now()->timestamp,
         ]);
         location::create([
-            'name_en' => 'Dongguan', 'name_ch' => '东莞', 'profile_picture'=>null,
+            'name_en' => 'Dongguan', 'name_ch' => '东莞', 'profile_picture'=>'../storage/imgs/profile_location.png',
             'lng' => '113.943916', 'lat' => '22.940195',
             'contact_info' => [
                 0 => ['id'=>1,'name_en'=>'Chen Huang', 'name_ch'=>'陈黄', 'phone'=>'123456789', 'wechat_id'=>'wxid_0123abcd'],
             ],
+            'courts' => ['A','B','C','D','E','F'],
             'created_at' => Carbon::now()->timestamp,
         ]);
         $locations = location::get();
         /////////////////players
-        for($i=0;$i<50;$i++){
-            $gender = random_int(0,1) == 1 ? 'male' : 'female';
+        for($i=1;$i<=25;$i++){
             player::create([
-                'profile_picture' => null,
-                'name_en' => $this->faker->firstName($gender).' '.$this->faker->lastName('male'),
-                'name_ch' => $faker_ch->firstName($gender).' '.$faker_ch->lastName('male'),
+                'profile_picture' => '../storage/imgs/players/player_'.$i.'.jpg',
+                'name_en' => $this->faker->firstName('male').' '.$this->faker->lastName('male'),
+                'name_ch' => $faker_ch->firstName('male').' '.$faker_ch->lastName('male'),
                 'birthdate' => Carbon::now()->subYear(random_int(10,25))->subDays(random_int(0,360)),
-                'gender' => $gender,
+                'gender' => 'male',
+                'created_at' => Carbon::now()->subDays(random_int(0,100))->timestamp,
+            ]);
+        }
+        for($i=26;$i<=50;$i++){
+            player::create([
+                'profile_picture' => '../storage/imgs/players/player_'.$i.'.jpg',
+                'name_en' => $this->faker->firstName('female').' '.$this->faker->lastName('male'),
+                'name_ch' => $faker_ch->firstName('female').' '.$faker_ch->lastName('male'),
+                'birthdate' => Carbon::now()->subYear(random_int(10,25))->subDays(random_int(0,360)),
+                'gender' => 'female',
                 'created_at' => Carbon::now()->subDays(random_int(0,100))->timestamp,
             ]);
         }
@@ -184,12 +197,14 @@ class DatabaseSeeder extends Seeder
                 $created_at = Carbon::today()->subDays($i + random_int(5,10))->hour(random_int(8,20));
 
                 $status = random_int(0,5) == 0 ? 'canceled' : 'finished';
+                $location = $locations->random();
                 $lesson = lesson::create([
                     'status' => $status,
                     'date' => $started_at->timestamp,
                     'started_at' => $status == 'canceled' ? null : $started_at->timestamp,
                     'ended_at' => $status == 'canceled' ? null : $ended_at->timestamp,
-                    'location_id'=>$locations->random()->id,
+                    'location_id'=>$location->id,
+                    'court' => $location->courts[array_rand($location->courts,1)],
                 ]);
                 $lesson_creator = random_int(0,1) ? $admin : $manager ;
                 activity_log::create([
@@ -205,7 +220,7 @@ class DatabaseSeeder extends Seeder
                     'coach_id' => $lesson_creator->id,
                     'coach_en' => $lesson_creator->name_en,
                     'coach_ch' => $lesson_creator->name_ch,
-                    'note' => $this->faker->sentences(random_int(1,4)),
+                    'note' => $this->faker->sentence(random_int(10,30)),
                     'created_at' => Carbon::today()->subDays($i + random_int(1,5))->hour(random_int(8,20))->timestamp,
                 ]);
                 //add coaches
@@ -223,7 +238,7 @@ class DatabaseSeeder extends Seeder
                             'coach_id' => $lesson_coach->id,
                             'coach_en' => $lesson_coach->name_en,
                             'coach_ch' => $lesson_coach->name_ch,
-                            'note' => $this->faker->sentences(random_int(1,4)),
+                            'note' => $this->faker->sentence(random_int(10,30)),
                             'created_at' => Carbon::today()->subDays($i + random_int(1,5))->hour(random_int(8,20))->timestamp,
                         ]);
                     }
@@ -248,7 +263,7 @@ class DatabaseSeeder extends Seeder
                         'coach_id' => $lesson_creator->id,
                         'coach_en' => $lesson_creator->name_en,
                         'coach_ch' => $lesson_creator->name_ch,
-                        'note' => $this->faker->sentences(random_int(1,4)),
+                        'note' => $this->faker->sentence(random_int(10,30)),
                         'created_at' => Carbon::today()->subDays($i + random_int(1,5))->hour(random_int(8,20))->timestamp,
                     ]);
                 }
@@ -278,7 +293,7 @@ class DatabaseSeeder extends Seeder
                         'coach_id' => $lesson_coach->id,
                         'coach_en' => $lesson_coach->name_en,
                         'coach_ch' => $lesson_coach->name_ch,
-                        'note' => $this->faker->sentences(random_int(1,4)),
+                        'note' => $this->faker->sentence(random_int(10,30)),
                         'created_at' => Carbon::today()->subDays($i + random_int(1,5))->hour(random_int(8,20))->timestamp,
                     ]);
                 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('lng');
             $table->string('lat');
             $table->json('contact_info');
+            $table->json('courts');
             $table->string('created_at');
             $table->boolean('is_deleted')->default(false);
         });

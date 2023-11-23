@@ -39,9 +39,12 @@ $('html,body').on('click','#edit_coach_btn',function(e){
             $('.edit_coach_input').prop('disabled',false);
             hideLoadingBar($('#loading'))
             if(r.status == 1){
-                r.coach.profile_picture = r.coach.profile_picture == null && r.coach.gender == 'male' ? '../storage/imgs/profile_male.png' :
-                r.coach.profile_picture = r.coach.profile_picture == null && r.coach.gender == 'female' ? '../storage/imgs/profile_female.png' :
-                `../storage/imgs/coaches/${r.coach.profile_picture}`;
+                if(window.history.state.coach == coach.id){
+                    coach = JSON.parse(JSON.stringify(r.coach));
+                    $('.menu_coach_img').attr('src',coach.profile_picture);
+                    $('.menu_coach_name').text(coach[`name_${window.lang}`])
+
+                }
                 for(const key in window.coaches){
                     if(window.coaches[key].id == window.history.state.coach){
                         window.coaches[key] = r.coach;

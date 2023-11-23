@@ -10,6 +10,8 @@ switch (coach.coach_level) {
 
             'lessons_create':true,
             'lesson_remove_add_coach_player':true,
+            'lesson_manage_status':true,
+            'lesson_manage_players_attendance':true,
         };
         break;
     case 1:
@@ -21,6 +23,8 @@ switch (coach.coach_level) {
 
             'lessons_create':true,
             'lesson_remove_add_coach_player':true,
+            'lesson_manage_status':true,
+            'lesson_manage_players_attendance':true,
         };
         break;
     case 2:
@@ -32,6 +36,8 @@ switch (coach.coach_level) {
 
             'lessons_create':false,
             'lesson_remove_add_coach_player':false,
+            'lesson_manage_status':true,
+            'lesson_manage_players_attendance':true,
         };
         break;
     case 3:
@@ -43,6 +49,8 @@ switch (coach.coach_level) {
 
             'lessons_create':false,
             'lesson_remove_add_coach_player':false,
+            'lesson_manage_status':false,
+            'lesson_manage_players_attendance':false,
         };
         break;
     case 4:
@@ -54,31 +62,13 @@ switch (coach.coach_level) {
 
             'lessons_create':false,
             'lesson_remove_add_coach_player':false,
+            'lesson_manage_status':false,
+            'lesson_manage_players_attendance':false,
         };
         break;
     default:
         break;
 }
-
-coach.profile_picture == null && coach.gender == 'male' ? window.coach.profile_picture =  '../storage/imgs/profile_male.png' :
-coach.profile_picture == null && coach.gender == 'female' ? window.coach.profile_picture =  '../storage/imgs/profile_female.png' :
-window.coach.profile_picture =  `../storage/imgs/coaches/${window.coach.profile_picture}`;
-
-for(const key in coaches){
-    coaches[key].profile_picture = coaches[key].profile_picture == null && coaches[key].gender == 'male' ? '../storage/imgs/profile_male.png' :
-    coaches[key].profile_picture == null && coaches[key].gender == 'female' ? '../storage/imgs/profile_female.png' :
-    `../storage/imgs/coaches/${coaches[key].profile_picture}`;
-}
-for(const key in players){
-    players[key].profile_picture = players[key].profile_picture == null && players[key].gender == 'male' ? '../storage/imgs/profile_male.png' :
-    players[key].profile_picture == null && players[key].gender == 'female' ? '../storage/imgs/profile_female.png' :
-    `../storage/imgs/players/${players[key].profile_picture}`;
-}
-for(const key in locations){
-    locations[key].profile_picture = locations[key].profile_picture == null ? '../storage/imgs/profile_location.png' :
-    `../storage/imgs/locations/${locations[key].profile_picture}`;
-}
-
 
 
 window.calendar = {

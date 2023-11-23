@@ -19,16 +19,26 @@ $('html,body').on('click','.removePlayerFromLesson',function(e){
             $('.removePlayerFromLesson').prop('disabled',false)
             hideLoadingBar($('#loading'))
             if(r.stats == 1){
-                player_tag.remove();
-                for(const key in window.lessons){
-                    if(window.lessons[key].id == lesson_id){
-                        for(const key2 in window.lessons[key].players){
-                            if(window.lessons[key].players[key2].id == player_id){
-                                window.lessons[key].players.splice(key2,1)
+                if(window.history.state.page == 'lesson'){
+                    for(const key in window.lesson.players){
+                        if(window.lesson.players[key].id == player_id){
+                            window.lesson.players.splice(key,1)
+                        }
+                    }
+                    draw_lesson_players_table();
+                }else if(window.history.state.page == 'calendar_day'){
+                    player_tag.remove();
+                    for(const key in window.lessons){
+                        if(window.lessons[key].id == lesson_id){
+                            for(const key2 in window.lessons[key].players){
+                                if(window.lessons[key].players[key2].id == player_id){
+                                    window.lessons[key].players.splice(key2,1)
+                                }
                             }
                         }
                     }
                 }
+
             }
         }
     })

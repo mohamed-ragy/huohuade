@@ -15,16 +15,19 @@ drawPage_manage_location = function(location_id,tab){
             $('<div/>',{class:'pageTabsContainer'}).append(
                 $('<div/>',{tab:'edit_location_profile',class:`pageTab ${tab == 'edit_location_profile' ? 'pageTab_selected' : ''}`,text:text.main.editProfile}),
                 $('<div/>',{tab:'location_contact_info',class:`pageTab ${tab == 'location_contact_info' ? 'pageTab_selected' : ''}`,text:text.locations.contactInfo}),
+                $('<div/>',{tab:'location_courts',class:`pageTab ${tab == 'location_courts' ? 'pageTab_selected' : ''}`,text:text.locations.courts}),
             ),
             $('<div/>',{class:'pageTabArrow pageTabArrowRight'}).append($('<div/>',{class:'ico-arrow-next w15 h15'})),
         ),
         draw_edit_location_profile(location,tab),
+        draw_edit_location_courts(location,tab),
         draw_location_contact_info(location,tab),
         draw_create_location_contact_info(location,tab),
 
     );
     draw_location_map('edit_location_location',location.lat,location.lng)
     draw_location_contact_info_table(location);
+    draw_location_courts_table(location);
 
 }
 draw_edit_location_profile=function(location,tab){
@@ -63,11 +66,40 @@ draw_edit_location_profile=function(location,tab){
     )
 
 }
+draw_edit_location_courts=function(location,tab){
+    return $('<div/>',{class:`pageTabContainer ${tab == 'location_courts' ? 'pageTabContainer_selected' : ''}`,tab:'location_courts'}).append(
+        $('<div/>',{class:'wfc mnw300'}).append(
+            $('<div/>',{id:'location_courts_table',class:'m10 column alnS jstfyS'}),
+            $('<div/>',{class:`fs09 location_courts_table_noResults ${location.courts.length > 0 ? 'none' : null}`,text:text.locations.noCourts}),
+            $('<div/>',{class:'btn_container'}).append(
+                $('<button/>',{class:'btn m5 btn_cancel',id:'location_courts_cancel',text:text.main.cancel}),
+                $('<button/>',{class:'btn m5 ',id:'location_courts_save',text:text.main.save}),
+            ),
+            $('<div/>',{class:'c_green none location_courts_saved mxw300 tae fs09',text:text.locations.courtsSaved})
+        )
+    )
+}
+draw_location_courts_table = function(location){
+    $('.location_courts_saved').addClass('none')
+    $('#location_courts_table').text('')
+    for(const key in location.courts){
+        let court = location.courts[key];
+        $('#location_courts_table').append(
+            $('<div/>',{class:'row alnC jstfyS '}).append(
+                $('<input/>',{class:'inputText edit_location_court input_60',value:court,maxlength:8}),
+                $('<div/>',{class:'ico-close pointer w10 h10 location_court_delete'})
+            )
+        );
+    }
+    $('#location_courts_table').append(
+        $('<div/>',{class:'m10 pointer location_court_add h25 w25 ico-add',tooltip:text.locations.addNewCourt})
+    )
+}
 draw_location_contact_info=function(location,tab){
     return $('<div/>',{class:`pageTabContainer ${tab == 'location_contact_info' ? 'pageTabContainer_selected' : ''}`,tab:'location_contact_info'}).append(
         $('<div/>',{class:'w100p'}).append(
             $('<button/>',{class:'btn m10 btn_cancel pageTab',tab:'create_location_contact_info',id:'create_location_contact_info_btn',text:text.locations.createNewContactInfo}),
-            $('<table/>',{id:'location_contact_info_table',class:'pT10'}),
+            $('<table/>',{id:'location_contact_info_table',class:'m10'}),
             $('<div/>',{class:`fs09 location_contact_info_table_noResults ${location.contact_info.length > 0 ? 'none' : null}`,text:text.locations.noContactInfo})
         )
     )

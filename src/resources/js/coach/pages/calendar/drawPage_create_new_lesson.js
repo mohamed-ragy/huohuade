@@ -19,6 +19,15 @@ drawPage_create_new_lesson = function(){
                 ),
                 $('<div/>',{class:'create_lesson_location_error fs08 mX5 c_red',text:''})
             ),
+            $('<div/>',{class:'m20 zx10 relative create_lesson_location_court_container none'}).append(
+                $('<div/>',{class:'mX10 fs09',text:text.calendar.court}),
+                $('<div/>',{class:'inputSelectContainer'}).append(
+                    $('<div/>',{class:'inputSelectArrow ico-arrow-down'}),
+                    $('<input/>',{class:'inputText inputSelect create_lesson_input',id:'create_lesson_location_court',readonly:true}),
+                    $('<div/>',{class:'inputSelectList none'})
+                ),
+                $('<div/>',{class:'create_lesson_location_court_error fs08 mX5 c_red',text:''})
+            ),
             $('<div/>',{class:'column alnS jstfyS m20'}).append(
                 $('<div/>',{class:'mX10 fs09',text:text.calendar.time}),
                 $('<div/>',{class:'row alnC jstfyC '}).append(
@@ -43,9 +52,10 @@ drawPage_create_new_lesson = function(){
     )
     for(const key in window.locations){
         let location = window.locations[key];
-        inputListLocationList.append(
-            $('<div/>',{class:'inputSelectListItem',text:location[`name_${window.lang}`],key:location.id}),
-
-        )
+        if(!location.is_deleted){
+            inputListLocationList.append(
+                $('<div/>',{class:'inputSelectListItem create_lesson_location_item',text:location[`name_${window.lang}`],key:location.id}),
+            )
+        }
     }
 }

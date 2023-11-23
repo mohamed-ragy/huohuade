@@ -15,7 +15,7 @@ class activity_log extends Model
         'coach_id','coach_name_en','coach_name_ch',
         'player_id','player_name_en','player_name_ch',
         'location_id','location_name_en','location_name_ch','location_contact_name_en','location_contact_name_ch',
-        'payment_id','lesson_id',
+        'payment_id','lesson_id','description'
     ];
 
     public function coach(){

@@ -5,14 +5,15 @@
 }
 .btn{
     background-color: var(--c-huohuade);
-    font-size: 1em;
-    padding:8px 20px;
+    font-size: .9em;
+    padding:7px 15px;
     color: #fff;
     border-radius: 3px;
     border:1px solid transparent;
     outline: none;
     cursor: pointer;
     font-weight: 500;
+    font-family: 'Inter','NotoSansSC';
 }
 .btn:active{
     background-color: var(--c-huohuade-light);
@@ -92,5 +93,10 @@
 .btn_icon_30:hover{
     background-color: var(--c-gray-light);
 }
-
+//
+.btn_confirm{
+    background-color: #ff7d00 !important;
+    color:#fff;
+    border-color: #fff;
+}
 //

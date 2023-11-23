@@ -12,29 +12,30 @@ $('html,body').on('click','.addCoachToLesson',function(e){
     )
     for(const key in coaches){
         let coach = coaches[key];
-        if(!coach.is_deleted)
-        console.log(window.lessons.find(item=>item.id == lesson_id).coaches.find(item2=>item2.id === coach.id))
-        if(typeof(window.lessons.find(item=>item.id == lesson_id).coaches.find(item2=>item2.id === coach.id)) === 'undefined'){
-            coaches_container.append(
-                $('<div/>',{class:'row alnC jstfySB w100p pY5 addCoachToLessonCoachElem',coach_name:coach[`name_${window.lang}`]}).append(
-                    $('<div/>',{class:'row alnC jstfyS'}).append(
-                        $('<img/>',{class:'h40 w40 ofCover br50p',src:coach.profile_picture}),
-                        $('<div/>',{class:'fs09 mX10',text:coach[`name_${window.lang}`]})
-                    ),
-                    $('<div/>',{class:'h20 w20 pointer ico-check0 addCoachToLesson_check',coach:coach.id})
+        if(!coach.is_deleted){
+            if(typeof(window.lessons.find(item=>item.id == lesson_id).coaches.find(item2=>item2.id === coach.id)) === 'undefined'){
+                coaches_container.append(
+                    $('<div/>',{class:'row alnC jstfySB w100p pY5 pointer addCoachToLessonCoachElem',coach_name:coach[`name_${window.lang}`]}).append(
+                        $('<div/>',{class:'row alnC jstfyS'}).append(
+                            $('<img/>',{class:'h40 w40 ofCover br50p',src:coach.profile_picture}),
+                            $('<div/>',{class:'fs09 mX10',text:coach[`name_${window.lang}`]})
+                        ),
+                        $('<div/>',{class:'h20 w20 ico-check0 addCoachToLesson_check',coach:coach.id})
+                    )
                 )
-            )
+            }
         }
+
 
     }
     $('.popupContainer').removeClass('none')
 })
-$('html,body').on('click','.addCoachToLesson_check',function(e){
+$('html,body').on('click','.addCoachToLessonCoachElem',function(e){
     e.stopImmediatePropagation();
-    if($(this).hasClass('ico-check1')){
-        $(this).removeClass('ico-check1').addClass('ico-check0');
-    }else if($(this).hasClass('ico-check0')){
-        $(this).removeClass('ico-check0').addClass('ico-check1')
+    if($(this).find('.addCoachToLesson_check').hasClass('ico-check1')){
+        $(this).find('.addCoachToLesson_check').removeClass('ico-check1').addClass('ico-check0');
+    }else if($(this).find('.addCoachToLesson_check').hasClass('ico-check0')){
+        $(this).find('.addCoachToLesson_check').removeClass('ico-check0').addClass('ico-check1')
     }
 })
 $('html,body').on('input change','.addCoachToLessonFindCoach',function(e){
@@ -59,6 +60,7 @@ $('html,body').on('click','#addCoachToLesson_confirm',function(e){
     })
     if(coachesIds.length == 0){return;}
 
+    $('.popupContainer').addClass('none')
     showLoadingBar($('#loading'))
     $.ajax({
         url:`../${window.lang}/api/calendar`,
@@ -74,8 +76,8 @@ $('html,body').on('click','#addCoachToLesson_confirm',function(e){
                 for(const key in r.coaches){
                     window.lessons.find(item=>item.id == lesson_id).coaches.push(r.coaches[key]);
                 }
-                draw_calendarDay_lesson_coaches($(`.lessonTableRow_coaches-${lesson_id}`),window.lessons.find(item=>item.id == lesson_id).coaches,lesson_id)
-                $('.popupContainer').addClass('none')
+                let lesson = window.lessons.find(item=>item.id == lesson_id)
+                draw_calendarDay_lesson_coaches($(`.lessonTableRow_coaches-${lesson_id}`),lesson.coaches,lesson)
             }
 
         }

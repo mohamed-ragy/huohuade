@@ -116,7 +116,7 @@
     cursor: auto;
 }
 .lessonTable_playerTag:hover{
-    .removePlayerFromLesson{display: block;}
+    .removePlayerFromLesson_icon{display: block;}
 }
 .lessonTable_playerTagImg{
     width:25px;
@@ -124,7 +124,7 @@
     object-fit: cover;
     border-radius: 50%;
 }
-.removePlayerFromLesson{
+.removePlayerFromLesson_icon{
     padding:5px;
     position: absolute;
     right:1px;
@@ -135,7 +135,7 @@
     outline: none;
     border:none;
 }
-.removePlayerFromLesson:disabled{cursor:not-allowed;}
+.removePlayerFromLesson_icon:disabled{cursor:not-allowed;}
 ////
 
 
