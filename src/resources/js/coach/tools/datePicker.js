@@ -45,7 +45,5 @@ $('html,body').on('click','.datePicker_select_btn',function(e){
     datePicker.find('.datePicker_month').text(text.months[month]);
     datePicker.find('.datePicker_year').text(year);
     datePicker.find('.datePicker_select').addClass('none');
-
 })
-
 //

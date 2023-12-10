@@ -33,7 +33,7 @@ drawCalendar = function(lessons){
     let days = {}
     for(const key in lessons){
         let lesson = lessons[key];
-        let dayNum = new Date(lesson.date * 1000).toLocaleString('en-US', { day:'numeric', timeZone: 'Asia/Shanghai' })
+        let dayNum = new Date(lesson.start_at * 1000).toLocaleString('en-US', { day:'numeric', timeZone: 'Asia/Shanghai' })
         if(!days.hasOwnProperty(dayNum)){
             days[dayNum] = [];
         }

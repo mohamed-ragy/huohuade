@@ -28,22 +28,41 @@ drawPage_create_new_lesson = function(){
                 ),
                 $('<div/>',{class:'create_lesson_location_court_error fs08 mX5 c_red',text:''})
             ),
-            $('<div/>',{class:'column alnS jstfyS m20'}).append(
-                $('<div/>',{class:'mX10 fs09',text:text.calendar.time}),
-                $('<div/>',{class:'row alnC jstfyC '}).append(
-                    $('<div/>',{class:'timePicker',type:'hour'}).append(
-                        $('<div/>',{class:'ico-arrow-up timePickerUp'}),
-                        $('<div/>',{class:'timePickerNumber',id:'create_lesson_hour',text:'00'}),
-                        $('<div/>',{class:'ico-arrow-down timePickerDown'}),
-                        ),
-                        $('<div/>',{class:'mX10 bold500 fs103',text:':'}),
-                        $('<div/>',{class:'timePicker',type:'minute'}).append(
+            $('<div/>',{class:'row alnS jstfyS m20'}).append(
+                $('<div/>',{class:'column alnS jstfyS mie-100'}).append(
+                    $('<div/>',{class:'mX10 fs09',text:text.calendar.startTime}),
+                    $('<div/>',{class:'row alnC jstfyC '}).append(
+                        $('<div/>',{class:'timePicker',type:'hour'}).append(
                             $('<div/>',{class:'ico-arrow-up timePickerUp'}),
-                            $('<div/>',{class:'timePickerNumber',id:'create_lesson_minute',text:'00'}),
+                            $('<div/>',{class:'timePickerNumber',id:'create_lesson_startHour',text:'00'}),
                             $('<div/>',{class:'ico-arrow-down timePickerDown'}),
-                    ),
-                )
+                            ),
+                            $('<div/>',{class:'mX10 bold500 fs103',text:':'}),
+                            $('<div/>',{class:'timePicker',type:'minute'}).append(
+                                $('<div/>',{class:'ico-arrow-up timePickerUp'}),
+                                $('<div/>',{class:'timePickerNumber',id:'create_lesson_startMinute',text:'00'}),
+                                $('<div/>',{class:'ico-arrow-down timePickerDown'}),
+                        ),
+                    )
+                ),
+                $('<div/>',{class:'column alnS jstfyS '}).append(
+                    $('<div/>',{class:'mX10 fs09',text:text.calendar.endTime}),
+                    $('<div/>',{class:'row alnC jstfyC '}).append(
+                        $('<div/>',{class:'timePicker',type:'hour'}).append(
+                            $('<div/>',{class:'ico-arrow-up timePickerUp'}),
+                            $('<div/>',{class:'timePickerNumber',id:'create_lesson_endHour',text:'00'}),
+                            $('<div/>',{class:'ico-arrow-down timePickerDown'}),
+                            ),
+                            $('<div/>',{class:'mX10 bold500 fs103',text:':'}),
+                            $('<div/>',{class:'timePicker',type:'minute'}).append(
+                                $('<div/>',{class:'ico-arrow-up timePickerUp'}),
+                                $('<div/>',{class:'timePickerNumber',id:'create_lesson_endMinute',text:'00'}),
+                                $('<div/>',{class:'ico-arrow-down timePickerDown'}),
+                        ),
+                    )
+                ),
             ),
+
             $('<div/>',{class:'btn_container relative'}).append(
                 $('<button/>',{class:'btn m10 create_lesson_input',id:'create_lesson_btn',text:text.main.create})
             ),

@@ -1,13 +1,13 @@
 $('html,body').on('click','.addPlayerToLesson',function(e){
     e.stopImmediatePropagation();
     let lesson_id = $(this).attr('lesson');
+    let players_container;
     let lesson;
     if(window.history.state.page == 'lesson'){
         lesson = window.lesson;
     }else if(window.history.state.page == 'calendar_day'){
         lesson = window.lessons.find(item=>item.id == lesson_id)
     }
-    let players_container;
     $('.popupTitle').text(text.calendar.addPlayerToLesson);
     $('.popupBody').addClass('w100p').text('').append(
         $('<div/>',{class:'btn_container m20'}).append(
@@ -77,7 +77,6 @@ $('html,body').on('click','#addPlayerToLesson_confirm',function(e){
         },success:function(r){
             hideLoadingBar($('#loading'))
             if(r.stats == 1){
-
                 if(window.history.state.page == 'lesson'){
                     for(const key in r.players){
                         r.players[key].pivot = {

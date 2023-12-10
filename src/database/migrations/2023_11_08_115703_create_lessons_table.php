@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-            $table->string('date');
+            $table->string('cancelation_reason')->nullable();
+            $table->string('start_at');
+            $table->string('end_at');
             $table->string('started_at')->nullable();
             $table->string('ended_at')->nullable();
             $table->unsignedBigInteger('location_id');

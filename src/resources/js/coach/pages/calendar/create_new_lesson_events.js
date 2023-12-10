@@ -27,8 +27,10 @@ $('html,body').on('click','#create_lesson_btn',function(e){
             year:window.history.state.year,
             month:window.history.state.month,
             day:window.history.state.day,
-            hour:$('#create_lesson_hour').text(),
-            minute:$('#create_lesson_minute').text(),
+            start_hour:$('#create_lesson_startHour').text(),
+            start_minute:$('#create_lesson_startMinute').text(),
+            end_hour:$('#create_lesson_endHour').text(),
+            end_minute:$('#create_lesson_endMinute').text(),
         },success:function(r){
             $('.create_lesson_input').prop('disabled',false);
             hideLoadingBar($('#loading'))

@@ -18,12 +18,23 @@ $('html,body').on('click','.removeCoachFromLesson',function(e){
             $('.removeCoachFromLesson').prop('disabled',false)
             hideLoadingBar($('#loading'))
             if(r.stats == 1){
-                coach_tag.remove();
-                for(const key in window.lessons){
-                    if(window.lessons[key].id == lesson_id){
-                        for(const key2 in window.lessons[key].coaches){
-                            if(window.lessons[key].coaches[key2].id == coach_id){
-                                window.lessons[key].coaches.splice(key2,1)
+                if(window.history.state.page == 'lesson'){
+                    window.lesson.activites.push(r.activity)
+                    draw_lesson_timeline();
+                    for(const key in window.lesson.coaches){
+                        if(window.lesson.coaches[key].id == coach_id){
+                            window.lesson.coaches.splice(key,1)
+                        }
+                    }
+                    draw_lesson_coaches_table();
+                }else if(window.history.state.page == 'calendar_day'){
+                    coach_tag.remove();
+                    for(const key in window.lessons){
+                        if(window.lessons[key].id == lesson_id){
+                            for(const key2 in window.lessons[key].coaches){
+                                if(window.lessons[key].coaches[key2].id == coach_id){
+                                    window.lessons[key].coaches.splice(key2,1)
+                                }
                             }
                         }
                     }

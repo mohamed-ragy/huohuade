@@ -65,6 +65,7 @@ $('html,body').on('click','#lesson_cancel_confirm',function(e){
         $('.cancel_lesson_reason_error').text(text.lesson.cancelReasonRequire)
     }
     $('.popupContainer').addClass('none')
+    let reason = $("#cancel_lesson_reason").val();
     $.ajax({
         url:`../${window.lang}/api/calendar`,
         type:`post`,
@@ -72,11 +73,12 @@ $('html,body').on('click','#lesson_cancel_confirm',function(e){
             _token:$('meta[name="csrf-token"]').attr('content'),
             cancelLesson:true,
             lesson_id:window.history.state.lesson,
-            cancel_reason:$("#cancel_lesson_reason").val(),
+            cancel_reason:reason,
         },success:function(r){
             lesson_status_change_loading(false);
             if(r.state == 1){
                 window.lesson.status = 'canceled';
+                window.lesson.cancelation_reason = reason;
                 drawLesson_page()
             }
         }
@@ -152,3 +154,145 @@ $('html,body').on('click','.player_lesson_endLesson',function(e){
     })
 })
 /////
+$('html,body').on('click','.coach_lesson_attend',function(e){
+    e.stopImmediatePropagation();
+    if(!$(this).hasClass('btn_confirm')){$(this).addClass('btn_confirm');return;}
+    showLoadingBar($('#loading'))
+    let coach_id = $(this).attr('coach');
+    $.ajax({
+        url:`../${window.lang}/api/calendar`,
+        type:'post',
+        data:{
+            _token:$('meta[name="csrf-token"').attr('content'),
+            coach_lesson_attend:true,
+            coach_id:coach_id,
+            lesson_id:window.history.state.lesson,
+        },success:function(r){
+            hideLoadingBar($('#loading'))
+            if(r.state == 1){
+                window.lesson.coaches.find(item=>item.id == coach_id).pivot.is_attend = 1;
+                window.lesson.coaches.find(item=>item.id == coach_id).pivot.attend_at = r.now;
+                draw_lesson_coaches_table();
+            }
+        }
+    })
+})
+$('html,body').on('click','.coach_lesson_absent',function(e){
+    e.stopImmediatePropagation();
+    if(!$(this).hasClass('btn_confirm')){$(this).addClass('btn_confirm');return;}
+    showLoadingBar($('#loading'))
+    let coach_id = $(this).attr('coach');
+    $.ajax({
+        url:`../${window.lang}/api/calendar`,
+        type:'post',
+        data:{
+            _token:$('meta[name="csrf-token"').attr('content'),
+            coach_lesson_absent:true,
+            coach_id:coach_id,
+            lesson_id:window.history.state.lesson,
+        },success:function(r){
+            hideLoadingBar($('#loading'))
+            if(r.state == 1){
+                window.lesson.coaches.find(item=>item.id == coach_id).pivot.is_attend = 0;
+                draw_lesson_coaches_table();
+            }
+        }
+    })
+})
+$('html,body').on('click','.coach_lesson_endLesson',function(e){
+    e.stopImmediatePropagation();
+    if(!$(this).hasClass('btn_confirm')){$(this).addClass('btn_confirm');return;}
+    showLoadingBar($('#loading'))
+    let coach_id = $(this).attr('coach');
+    $.ajax({
+        url:`../${window.lang}/api/calendar`,
+        type:'post',
+        data:{
+            _token:$('meta[name="csrf-token"').attr('content'),
+            coach_lesson_endLesson:true,
+            coach_id:coach_id,
+            lesson_id:window.history.state.lesson,
+        },success:function(r){
+            hideLoadingBar($('#loading'))
+            if(r.state == 1){
+                window.lesson.coaches.find(item=>item.id == coach_id).pivot.finish_at = r.now;
+                draw_lesson_coaches_table();
+            }
+        }
+    })
+})
+//
+$('html,body').on('click','#lesson_note_postBtn',function(e){
+    e.stopImmediatePropagation();
+    if($('#lesson_note_post').val() == ''){alert('gg');}
+    showLoadingBar($('#loading'))
+    $('#lesson_note_postBtn').prop('disabled',true)
+    $.ajax({
+        url:`../${window.lang}/api/calendar`,
+        type:'post',
+        data:{
+            _token:$('meta[name="csrf-token"]').attr('content'),
+            lesson_post_note:true,
+            lesson_id:window.history.state.lesson,
+            note:$('#lesson_note_post').val(),
+        },success:function(r){
+            hideLoadingBar($('#loading'))
+            $('#lesson_note_postBtn').prop('disabled',false)
+            if(r.state == 1){
+                $('#lesson_note_post').val('')
+                window.lesson.notes.push(r.note);
+                // draw_lesson_notes();
+                $('#lesson_notes_container').prepend(
+                    draw_lesson_note(r.note),
+                )
+            }
+        }
+    })
+})
+//
+$('html,body').on('click','.lesson_note_pin_toggle',function(e){
+    e.stopImmediatePropagation();
+    let is_pinned;
+    let thisElem = $(this);
+    if($(this).hasClass('ico-pinned')){
+        is_pinned = 0;
+    }else if($(this).hasClass('ico-un-pinned')){
+        is_pinned = 1;
+    }
+    showLoadingBar($('#loading'))
+    $.ajax({
+        url:`../${window.lang}/api/calendar`,
+        type:'post',
+        data:{
+            _token:$('meta[name="csrf-token"]').attr('content'),
+            pin_lesson_note:true,
+            lesson_id:window.history.state.lesson,
+            note_id:thisElem.attr('note'),
+            is_pinned:is_pinned,
+        },success:function(r){
+            hideLoadingBar($('#loading'))
+            if(r.state == 1){
+                // thisElem.parent().remove();
+                window.lesson.notes.find(item=>item._id == thisElem.attr('note')).is_pinned = is_pinned;
+                if(is_pinned){
+                    thisElem.parent().remove();
+                    $('#lesson_notes_container_pinned').prepend(
+                        draw_lesson_note(window.lesson.notes.find(item=>item._id == thisElem.attr('note'))),
+                    )
+                }else{
+                    draw_lesson_notes();
+                    // $('#lesson_notes_container').prepend(
+                    //     draw_lesson_note(window.lesson.notes.find(item=>item._id == thisElem.attr('note'))),
+                    // )
+                }
+
+            }
+        }
+    })
+})
+//
+$('html,body').on('click','.lesson_timeLine',function(e){
+    e.stopImmediatePropagation();
+    console.log($(this).attr('lesson'))
+});
+//

@@ -200,7 +200,8 @@ class DatabaseSeeder extends Seeder
                 $location = $locations->random();
                 $lesson = lesson::create([
                     'status' => $status,
-                    'date' => $started_at->timestamp,
+                    'start_at' => $started_at->timestamp,
+                    'end_at' => $ended_at->timestamp,
                     'started_at' => $status == 'canceled' ? null : $started_at->timestamp,
                     'ended_at' => $status == 'canceled' ? null : $ended_at->timestamp,
                     'location_id'=>$location->id,
@@ -221,6 +222,7 @@ class DatabaseSeeder extends Seeder
                     'coach_en' => $lesson_creator->name_en,
                     'coach_ch' => $lesson_creator->name_ch,
                     'note' => $this->faker->sentence(random_int(10,30)),
+                    'is_pinned' => false,
                     'created_at' => Carbon::today()->subDays($i + random_int(1,5))->hour(random_int(8,20))->timestamp,
                 ]);
                 //add coaches
@@ -239,6 +241,7 @@ class DatabaseSeeder extends Seeder
                             'coach_en' => $lesson_coach->name_en,
                             'coach_ch' => $lesson_coach->name_ch,
                             'note' => $this->faker->sentence(random_int(10,30)),
+                            'is_pinned' => false,
                             'created_at' => Carbon::today()->subDays($i + random_int(1,5))->hour(random_int(8,20))->timestamp,
                         ]);
                     }
@@ -264,6 +267,7 @@ class DatabaseSeeder extends Seeder
                         'coach_en' => $lesson_creator->name_en,
                         'coach_ch' => $lesson_creator->name_ch,
                         'note' => $this->faker->sentence(random_int(10,30)),
+                        'is_pinned' => false,
                         'created_at' => Carbon::today()->subDays($i + random_int(1,5))->hour(random_int(8,20))->timestamp,
                     ]);
                 }
@@ -294,6 +298,7 @@ class DatabaseSeeder extends Seeder
                         'coach_en' => $lesson_coach->name_en,
                         'coach_ch' => $lesson_coach->name_ch,
                         'note' => $this->faker->sentence(random_int(10,30)),
+                        'is_pinned' => false,
                         'created_at' => Carbon::today()->subDays($i + random_int(1,5))->hour(random_int(8,20))->timestamp,
                     ]);
                 }

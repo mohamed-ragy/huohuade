@@ -71,17 +71,18 @@ drawCalendarDay_page = function(lessons){
     }
     for(const key in lessons){
         let lesson = lessons[key];
-        let starts_at = new Date(lesson.date * 1000).toLocaleTimeString(window.lang,{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Asia/Shanghai'});
+        let start_at = new Date(lesson.start_at * 1000).toLocaleTimeString(window.lang,{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Asia/Shanghai'});
+        let end_at = new Date(lesson.end_at * 1000).toLocaleTimeString(window.lang,{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Asia/Shanghai'});
         $('#lessonsTable').append(
             $('<tr/>',{class:`tableRow pointer lessonTableRow-${lesson.id} ${lesson.status == 'canceled' ? 'canceledLesson_tableRow none' : ''} showPage`,page:'lesson',lesson:lesson.id}).append(
-                $('<td/>',{class:'fs08 location_popup',location:lesson.location.id}).append(
+                $('<td/>',{class:'fs08',location:lesson.location.id}).append(
                     $('<img/>',{src:lesson.location.profile_picture,class:'locationTableImg',tooltip:lesson.location[`name_${window.lang}`]}),
                     $('<div/>',{class:'fs08 tnw',text:`${lesson.location[`name_${lang}`]}-${lesson.court}`})
                 ),
                 $('<td/>',{}).append(
                     $('<div/>',{class:`fs08 ${lesson.status}`,text:text.calendar[lesson.status]})
                 ),
-                $('<td/>',{class:'fs08',text:starts_at}),
+                $('<td/>',{class:'fs08',text:`${start_at}~${end_at}`}),
                 $('<td/>',{class:''}).append(
                     $('<div/>',{class:`row wrap alnC jstfyS lessonTableRow_coaches-${lesson.id}`}),
                 ),
@@ -104,7 +105,7 @@ draw_calendarDay_lesson_coaches = function(container,coahces,lesson){
             $('<div/>',{class:'lessonTable_coachTag'}).append(
                 $('<img/>',{class:'lessonTable_coachTagImg',src:coach.profile_picture}),
                 $('<div/>',{class:'fs08 mX5',text:coach[`name_${window.lang}`]}),
-                $('<button/>',{class:`removeCoachFromLesson ${lesson.status == 'finished' || lesson.status == 'canceled' ? 'none' : ''} ${!window.accessibility.lesson_remove_add_coach_player ? 'none' : ''}`,tooltip:text.main.remove,lesson:lesson.id,coach:coach.id}).append($('<div/>',{class:'ico-close-white h15 w15'}))
+                $('<button/>',{class:`removeCoachFromLesson removeCoachFromLesson_icon ${lesson.status == 'finished' || lesson.status == 'canceled' ? 'none' : ''} ${!window.accessibility.lesson_remove_add_coach_player ? 'none' : ''}`,tooltip:text.main.remove,lesson:lesson.id,coach:coach.id}).append($('<div/>',{class:'ico-close-white h15 w15'}))
             )
         )
     }

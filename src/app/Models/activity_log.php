@@ -18,8 +18,10 @@ class activity_log extends Model
         'payment_id','lesson_id','description'
     ];
 
-    public function coach(){
-        return $this->belongsTo(coach::class,'created_by','id');
+    // public function coach(){
+    //     return $this->belongsTo(coach::class,'created_by','id');
+    // }
+    public function coaches(){
+        return $this->hasOne(coach::class,'id','created_by');
     }
-
 }

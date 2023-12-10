@@ -82,7 +82,7 @@
     cursor: auto;
 }
 .lessonTable_coachTag:hover{
-    .removeCoachFromLesson{display: block;}
+    .removeCoachFromLesson_icon{display: block;}
 }
 .lessonTable_coachTagImg{
     width:25px;
@@ -90,7 +90,7 @@
     object-fit: cover;
     border-radius: 50%;
 }
-.removeCoachFromLesson{
+.removeCoachFromLesson_icon{
     padding:5px;
     position: absolute;
     right:1px;
@@ -101,7 +101,7 @@
     outline: none;
     border:none;;
 }
-.removeCoachFromLesson:disabled{cursor:not-allowed;}
+.removeCoachFromLesson_icon:disabled{cursor:not-allowed;}
 ////
 .lessonTable_playerTag{
     display: flex;

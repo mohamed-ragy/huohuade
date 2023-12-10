@@ -2,6 +2,12 @@ $('html,body').on('click','.addCoachToLesson',function(e){
     e.stopImmediatePropagation();
     let lesson_id = $(this).attr('lesson');
     let coaches_container;
+    let lesson;
+    if(window.history.state.page == 'lesson'){
+        lesson = window.lesson;
+    }else if(window.history.state.page == 'calendar_day'){
+        lesson = window.lessons.find(item=>item.id == lesson_id)
+    }
     $('.popupTitle').text(text.calendar.addCoachToLesson);
     $('.popupBody').addClass('w100p').text('').append(
         $('<div/>',{class:'btn_container m20'}).append(
@@ -13,7 +19,7 @@ $('html,body').on('click','.addCoachToLesson',function(e){
     for(const key in coaches){
         let coach = coaches[key];
         if(!coach.is_deleted){
-            if(typeof(window.lessons.find(item=>item.id == lesson_id).coaches.find(item2=>item2.id === coach.id)) === 'undefined'){
+            if(typeof(lesson.coaches.find(item2=>item2.id === coach.id)) === 'undefined'){
                 coaches_container.append(
                     $('<div/>',{class:'row alnC jstfySB w100p pY5 pointer addCoachToLessonCoachElem',coach_name:coach[`name_${window.lang}`]}).append(
                         $('<div/>',{class:'row alnC jstfyS'}).append(
@@ -73,11 +79,24 @@ $('html,body').on('click','#addCoachToLesson_confirm',function(e){
         },success:function(r){
             hideLoadingBar($('#loading'))
             if(r.stats == 1){
-                for(const key in r.coaches){
-                    window.lessons.find(item=>item.id == lesson_id).coaches.push(r.coaches[key]);
+                if(window.history.state.page == 'lesson'){
+                    for(const key in r.coaches){
+                        r.coaches[key].pivot = {
+                            'is_attend':null,
+                            'attend_at':null,
+                            'finish_at':null,
+                        }
+                        window.lesson.coaches.push(r.coaches[key]);
+                    }
+                    draw_lesson_coaches_table();
+                }else if(window.history.state.page == 'calendar_day'){
+                    for(const key in r.coaches){
+                        window.lessons.find(item=>item.id == lesson_id).coaches.push(r.coaches[key]);
+                    }
+                    let lesson = window.lessons.find(item=>item.id == lesson_id)
+                    draw_calendarDay_lesson_coaches($(`.lessonTableRow_coaches-${lesson_id}`),lesson.coaches,lesson)
                 }
-                let lesson = window.lessons.find(item=>item.id == lesson_id)
-                draw_calendarDay_lesson_coaches($(`.lessonTableRow_coaches-${lesson_id}`),lesson.coaches,lesson)
+
             }
 
         }

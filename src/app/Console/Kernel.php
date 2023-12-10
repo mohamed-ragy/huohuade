@@ -22,7 +22,10 @@ class Kernel extends ConsoleKernel
                 'status' => 'upcoming'
             ])->where('date','<',Carbon::today()->timestamp)->get();
             foreach($unfinished_lessons as $lesson){
-                lesson::where('id',$lesson->id)->update(['status' => 'canceled']);
+                lesson::where('id',$lesson->id)->update([
+                    'status' => 'canceled',
+                    'cancelation_reason' => '--',
+                ]);
                 activity_log::create([
                     'code' => 'lesson.cancel',
                     'created_at' => Carbon::now()->timestamp,
@@ -30,7 +33,6 @@ class Kernel extends ConsoleKernel
                     'created_by_name_en' => 'The system',
                     'created_by_name_ch' => '系统',
                     'lesson_id' => $lesson->id,
-                    'description' => 'not_started'
                 ]);
             }
 

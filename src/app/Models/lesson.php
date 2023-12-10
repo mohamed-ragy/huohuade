@@ -13,7 +13,9 @@ class lesson extends Model
     public $timestamps = false;
     protected $fillable = [
         'status',
-        'date',
+        'cancelation_reason',
+        'start_at',
+        'end_at',
         'started_at',
         'ended_at',
         'location_id',

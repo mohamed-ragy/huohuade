@@ -2,7 +2,7 @@ $(document).on('click',function(e){
     // if($('.btn_confirm').is(':hover')){return;}
     $('.btn_confirm').removeClass('btn_confirm')
 })
-
+//
 $('html,body').on('click','.showPage',function(e){
     e.stopImmediatePropagation();
     // if($(this).attr('page') == window.history.state.page){
@@ -39,7 +39,7 @@ $(window).on('popstate',(e)=>{
     // e.stopImmediatePropagation();
     showPage(window.history.state.page)
 });
-
+//
 $('html,body').on('click','.switch_lang_ch',function(e){
     e.stopImmediatePropagation();
     window.location.href = `../ch?page=${window.history.state.page}`
