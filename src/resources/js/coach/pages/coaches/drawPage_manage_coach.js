@@ -3,6 +3,7 @@ drawPage_manage_coach = function(coach_id,tab){
     if(typeof(coach) === 'undefined'){
         window.history.pushState({page:'coaches'},'',`/${window.lang}/?page=coaches`)
         showPage('coaches')
+        return;
     }
     $('.pageContainerTree').text('').append(
         $('<span/>',{class:'pointer c_huohuade bold500 showPage',page:'coaches',text:text.menu.coaches}),
@@ -59,13 +60,13 @@ draw_edit_coach_profile = function(coach,tab){
                 $('<div/>',{class:'edit_coach_error edit_coach_name_ch_error fs08 mX5 c_red',text:''})
             ),
             $('<div/>',{class:'m20 zx20 relative'}).append(
-                $('<div/>',{class:'mX10 fs09',text:text.coaches.gender}),
+                $('<div/>',{class:'mX10 fs09',text:text.main.gender}),
                 $('<div/>',{class:'inputSelectContainer'}).append(
                     $('<div/>',{class:'inputSelectArrow ico-arrow-down'}),
-                    $('<input/>',{class:'inputText inputSelect edit_coach_input',id:'edit_coach_gender',readonly:true,value:text.coaches[coach.gender],key:coach.gender}),
+                    $('<input/>',{class:'inputText inputSelect edit_coach_input',id:'edit_coach_gender',readonly:true,value:text.main[coach.gender],key:coach.gender}),
                     $('<div/>',{class:'inputSelectList none'}).append(
-                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.male,key:'male'}),
-                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.female,key:'female'}),
+                        $('<div/>',{class:'inputSelectListItem',text:text.main.male,key:'male'}),
+                        $('<div/>',{class:'inputSelectListItem',text:text.main.female,key:'female'}),
                     )
                 ),
                 $('<div/>',{class:'edit_coach_error edit_coach_gender_error fs08 mX5 c_red',text:''})

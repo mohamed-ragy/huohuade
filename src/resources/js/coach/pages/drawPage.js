@@ -55,6 +55,18 @@ showPage = function(page){
                 drawPage_manage_coach(window.history.state.coach,'edit_coach_profile');
             break;
             /////////////////////////////////////
+            case 'players':
+                tab = 'players';
+                drawPage_players();
+            break;
+            case 'create_new_player':
+                tab = 'players';
+                drawPage_create_new_player();
+            break;
+            case 'manage_player':
+                tab = 'players';
+                drawPage_manage_player(window.history.state.player);
+            break;
             default:
             break;
         }

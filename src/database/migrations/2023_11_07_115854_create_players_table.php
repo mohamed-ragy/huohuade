@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('profile_picture')->nullable();
             $table->string('name_en');
             $table->string('name_ch');
-            $table->date('birthdate');
+            $table->string('birthdate');
             $table->string('gender');
+            $table->string('phone');
             $table->string('created_at');
             $table->boolean('is_deleted')->default(false);
         });

@@ -34,7 +34,7 @@ drawPage_locations = function(){
                         $('<div/>',{location:location.id,class:`${location.is_deleted ? 'none' : ''} ico-settings mX10 w25 h25 pointer showPage`,page:'manage_location',tooltip:text.main.manage}),
                         $('<div/>',{location:location.id,class:`${location.is_deleted ? 'none' : ''} soft_delete_location ico-delete mX10 w25 h25 pointer`,tooltip:text.main.delete}),
                         $('<div/>',{location:location.id,class:`${!location.is_deleted ? 'none' : ''} recover_location ico-recover mX10 w25 h25 pointer`,tooltip:text.main.recover}),
-                        $('<div/>',{location:location.id,class:`${!location.is_deleted ? 'none' : ''} delete_location ico-delete mX10 w25 h25 pointer`,tooltip:`<span class="c_red">${text.main.deletePermanently}</span>`}),
+                        // $('<div/>',{location:location.id,class:`${!location.is_deleted ? 'none' : ''} delete_location ico-delete mX10 w25 h25 pointer`,tooltip:`<span class="c_red">${text.main.deletePermanently}</span>`}),
                     )
                 )
             )

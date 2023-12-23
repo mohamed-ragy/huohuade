@@ -767,6 +767,237 @@ class coachController extends Controller
             return response(['location'=>$location]);
         }
     }
+    public function player(Request $request){
+        if($request->has('soft_delete_player')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+            $player = player::where('id',$request->player_id)->first();
+            $delete = player::where('id',$request->player_id)->update(['is_deleted'=>true]);
+            if($delete){
+                activity_log::create([
+                    'code' => 'player.soft_delete',
+                    'created_at' => Carbon::now()->timestamp,
+                    'created_by' => Auth::guard('coach')->user()->id,
+                    'created_by_name_en' => Auth::guard('coach')->user()->name_en,
+                    'created_by_name_ch' => Auth::guard('coach')->user()->name_ch,
+                    'player_id' => $player->id,
+                    'player_name_en' => $player->name_en,
+                    'player_name_ch' => $player->name_ch,
+                ]);
+                return response(['stats' => 1]);
+            }
+        }else if($request->has('recover_player')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+            $player = player::where('id',$request->player_id)->first();
+            $recover = player::where('id',$request->player_id)->update(['is_deleted'=>false]);
+            if($recover){
+                activity_log::create([
+                    'code' => 'player.recover',
+                    'created_at' => Carbon::now()->timestamp,
+                    'created_by' => Auth::guard('coach')->user()->id,
+                    'created_by_name_en' => Auth::guard('coach')->user()->name_en,
+                    'created_by_name_ch' => Auth::guard('coach')->user()->name_ch,
+                    'player_id' => $player->id,
+                    'player_name_en' => $player->name_en,
+                    'player_name_ch' => $player->name_ch,
+                ]);
+                return response(['stats' => 1]);
+            }
+        }else if($request->has('create_player')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+            $validation = Validator::make([
+                'name_en' => strip_tags($request->name_en),
+                'name_ch' => strip_tags($request->name_ch),
+                'gender' => strtolower(strip_tags($request->gender)),
+                'phone' => strip_tags($request->phone),
+                'birthdate_day' => strip_tags($request->birthdate_day),
+                'birthdate_month' => strip_tags($request->birthdate_month),
+                'birthdate_year' => strip_tags($request->birthdate_year),
+            ],[
+                'name_en' => 'required',
+                'name_ch' => 'required',
+                'gender' => ['required',Rule::in(['male', 'female'])],
+                'phone' => 'required',
+                'birthdate_day' => 'required|integer|max:31|min:1',
+                'birthdate_month' => 'required|integer|max:12|min:1',
+                'birthdate_year' => 'required|integer|digits:4',
+            ],[
+                'name_en.required' => Lang::get('coach/coach.players.name_en_required'),
+                'name_ch.required' => Lang::get('coach/coach.players.name_ch_required'),
+
+                'gender.required' => Lang::get('coach/coach.players.gender_required'),
+                'gender.in' => Lang::get('coach/coach.players.gender_required'),
+
+                'phone.required' => Lang::get('coach/coach.players.phone_required'),
+
+                'birthdate_day.required' => Lang::get('coach/coach.players.birthdate_required'),
+                'birthdate_day.integer' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_day.max' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_day.min' => Lang::get('coach/coach.players.birthdate_wrong'),
+
+                'birthdate_month.required' => Lang::get('coach/coach.players.birthdate_required'),
+                'birthdate_month.integer' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_month.max' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_month.min' => Lang::get('coach/coach.players.birthdate_wrong'),
+
+                'birthdate_year.required' => Lang::get('coach/coach.players.birthdate_required'),
+                'birthdate_year.integer' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_year.digits' => Lang::get('coach/coach.players.birthdate_wrong'),
+
+            ]);
+            $profile_picture = '../storage/imgs/profile_'.strip_tags($request->gender).'.png';
+            $file = $request->file('profile_picture');
+            if($file != null){
+                $validation2 = Validator::make([
+                    'profile_picture' => $request->profile_picture,
+                ],[
+                    'profile_picture' => 'mimes:jpg,png,jpeg,bmp,webp,gif'
+                ]);
+                if($validation2->fails()){
+                    $validation->getMessageBag()->add('profile_picture', Lang::get('coach/coach.players.profile_picture_mimes'));
+                    return response(['status'=>0, 'errors'=>$validation->errors()]);
+                }
+
+            }
+
+            if($validation->fails()){
+                return response(['status'=>0,'errors' => $validation->errors()]);
+            }
+            $create_player = player::create([
+                'profile_picture' => $profile_picture,
+                'name_en' => strip_tags($request->name_en),
+                'name_ch' => strip_tags($request->name_ch),
+                'gender' => strtolower(strip_tags($request->gender)),
+                'phone' => strip_tags($request->phone),
+                'birthdate' => strip_tags($request->birthdate_year).'-'.strip_tags($request->birthdate_month).'-'.strip_tags($request->birthdate_day),
+                'created_at' => Carbon::now()->timestamp,
+            ]);
+            if($file != null){
+                $fileExtention = $file->guessExtension();
+                $profile_picture = '../storage/imgs/players/player_'.$create_player->id .'.'.$fileExtention;
+                File::delete('storage/imgs/players/player_'.$create_player->id.'.png',
+                'storage/imgs/players/player_'.$create_player->id.'.jpg',
+                'storage/imgs/players/player_'.$create_player->id.'.jpeg',
+                'storage/imgs/players/player_'.$create_player->id.'.gif',
+                'storage/imgs/players/player_'.$create_player->id.'.webp',
+                'storage/imgs/players/player_'.$create_player->id.'.bmp');
+                // return response($fileExtention);
+                $thumbnail = Image::make($file);
+                $thumbnail->resize(800, 800, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
+                $thumbnail->save( public_path('storage/imgs/players/player_'). $create_player->id .'.'.$fileExtention);
+                $create_player->update(['profile_picture'=>$profile_picture]);
+            }
+
+            activity_log::create([
+                'code' => 'player.create',
+                'created_at' => Carbon::now()->timestamp,
+                'created_by' => Auth::guard('coach')->user()->id,
+                'created_by_name_en' => Auth::guard('coach')->user()->name_en,
+                'created_by_name_ch' => Auth::guard('coach')->user()->name_ch,
+                'player_id' => $create_player->id,
+                'player_name_en' => $create_player->name_en,
+                'player_name_ch' => $create_player->name_ch,
+            ]);
+            ///create activity
+            return response(['status'=>1,'player' => $create_player]);
+        }else if($request->has('edit_player')){
+            if(Auth::guard('coach')->user()->coach_level !== 0){return;}
+
+            $validation = Validator::make([
+                'name_en' => strip_tags($request->name_en),
+                'name_ch' => strip_tags($request->name_ch),
+                'gender' => strtolower(strip_tags($request->gender)),
+                'phone' => strip_tags($request->phone),
+                'birthdate_day' => strip_tags($request->birthdate_day),
+                'birthdate_month' => strip_tags($request->birthdate_month),
+                'birthdate_year' => strip_tags($request->birthdate_year),
+            ],[
+                'name_en' => 'required',
+                'name_ch' => 'required',
+                'gender' => ['required',Rule::in(['male', 'female'])],
+                'phone' => 'required',
+                'birthdate_day' => 'required|integer|max:31|min:1',
+                'birthdate_month' => 'required|integer|max:12|min:1',
+                'birthdate_year' => 'required|integer|digits:4',
+
+            ],[
+                'name_en.required' => Lang::get('coach/coach.players.name_en_required'),
+                'name_ch.required' => Lang::get('coach/coach.players.name_ch_required'),
+
+                'gender.required' => Lang::get('coach/coach.players.gender_required'),
+                'gender.in' => Lang::get('coach/coach.players.gender_required'),
+
+                'phone.required' => Lang::get('coach/coach.players.phone_required'),
+
+                'birthdate_day.required' => Lang::get('coach/coach.players.birthdate_required'),
+                'birthdate_day.integer' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_day.max' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_day.min' => Lang::get('coach/coach.players.birthdate_wrong'),
+
+                'birthdate_month.required' => Lang::get('coach/coach.players.birthdate_required'),
+                'birthdate_month.integer' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_month.max' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_month.min' => Lang::get('coach/coach.players.birthdate_wrong'),
+
+                'birthdate_year.required' => Lang::get('coach/coach.players.birthdate_required'),
+                'birthdate_year.integer' => Lang::get('coach/coach.players.birthdate_wrong'),
+                'birthdate_year.digits' => Lang::get('coach/coach.players.birthdate_wrong'),
+            ]);
+            $player = player::where('id',$request->player_id)->first();
+
+            $profile_picture = '../storage/imgs/profile_'.strip_tags($request->gender).'.png';
+            $file = $request->file('profile_picture');
+            if($file == null){
+                $profile_picture = $player->profile_picture;
+            }else{
+                $validation2 = Validator::make([
+                    'profile_picture' => $request->profile_picture,
+                ],[
+                    'profile_picture' => 'mimes:jpg,png,jpeg,bmp,webp,gif'
+                ]);
+                if($validation2->fails()){
+                    $validation->getMessageBag()->add('profile_picture', Lang::get('coach/coach.players.profile_picture_mimes'));
+                    return response(['status'=>0, 'errors'=>$validation->errors()]);
+                }
+            }
+            if($validation->fails()){
+                return response(['status'=>0,'errors' => $validation->errors()]);
+            }
+
+            if($file != null){
+                $fileExtention = $file->guessExtension();
+                $profile_picture = '../storage/imgs/players/player_'.$player->id .'.'.$fileExtention;
+                File::delete('storage/imgs/players/player_'.$player->id.'.png',
+                'storage/imgs/players/player_'.$player->id.'.jpg',
+                'storage/imgs/players/player_'.$player->id.'.jpeg',
+                'storage/imgs/players/player_'.$player->id.'.gif',
+                'storage/imgs/players/player_'.$player->id.'.webp',
+                'storage/imgs/players/player_'.$player->id.'.bmp');
+                $thumbnail = Image::make($file);
+                $thumbnail->resize(800, 800, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
+                $thumbnail->save( public_path('storage/imgs/players/player_'). $player->id .'.'.$fileExtention);
+            }
+            $player->update([
+                'profile_picture' => $profile_picture,
+                'name_en' => strip_tags($request->name_en),
+                'name_ch' => strip_tags($request->name_ch),
+                'gender' => strtolower(strip_tags($request->gender)),
+                'phone' => strip_tags($request->phone),
+                'birthdate' => strip_tags($request->birthdate_year).'-'.strip_tags($request->birthdate_month).'-'.strip_tags($request->birthdate_day),
+            ]);
+            activity_log::create([
+                'code' => 'player.edit_profile',
+                'created_at' => Carbon::now()->timestamp,
+                'created_by' => Auth::guard('coach')->user()->id,
+                'created_by_name_en' => Auth::guard('coach')->user()->name_en,
+                'created_by_name_ch' => Auth::guard('coach')->user()->name_ch,
+                'player_id' => $player->id,
+                'player_name_en' => $player->name_en,
+                'player_name_ch' => $player->name_ch,
+            ]);
+            return response(['status'=>1,'player' => $player]);
+
+        }
+    }
     public function calendar(Request $request){
         if($request->has('getCalendar')){
             $coach = Auth::guard('coach')->user();

@@ -3,21 +3,23 @@
     padding:40px 0 ;
 }
 .calendar_row{
-    width:1050px;
+    margin-inline-start: 10px;;
+    width:fit-content;
+    // width:1050px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .calendar_row_head{
-    width:150px;
+    width: 136px;
     margin:10px 0 ;
     position: relative;
     text-align: center;
 }
 .calendar_dayCard{
     padding:10px;
-    margin:10px;
+    margin:2px;
     width:110px;
     height:110px;
     position: relative;

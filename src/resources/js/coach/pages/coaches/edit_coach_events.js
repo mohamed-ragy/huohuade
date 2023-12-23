@@ -2,7 +2,6 @@ $('html,body').on('click','#edit_coach_img_btn',function(e){
     e.stopImmediatePropagation();
     $('#edit_coach_img_input').trigger('click')
 })
-
 $('html,body').on('change','#edit_coach_img_input',function(e){
     e.stopImmediatePropagation();
     var image = document.getElementById('output');
@@ -35,7 +34,6 @@ $('html,body').on('click','#edit_coach_btn',function(e){
         cache: false,
         data:formData,
         success:function(r){
-            console.log(r)
             $('.edit_coach_input').prop('disabled',false);
             hideLoadingBar($('#loading'))
             if(r.status == 1){

@@ -28,6 +28,10 @@ return[
         "profile_picture" => "Profile picture",
         "name_en" => "Name in English",
         "name_ch" => "Name in Chinese",
+        "gender" => "Gender",
+        "male" => "Male",
+        "female" => "Female",
+        "birthdate" => "Birthdate",
         "zoomIn" => "Zoom in",
         "zoomOut" => "Zoom out",
         "currentLocation" => "Current location",
@@ -144,9 +148,6 @@ return[
         "loginName" => "Login name",
         "password" => "Password",
         "passwordConfirm" => "Confirm password",
-        "gender" => "Gender",
-        "male" => "Male",
-        "female" => "Female",
         "job_title" => "Job title",
         "salary" => "Salary",
         "salary_currency" => "Salary currency",
@@ -205,5 +206,17 @@ return[
         "deletelocationContactConfirmMsg" => "Are you sure you want to delete :contact:'s contact information?",
         "seeDeletedLocations" => "Show deleted locations",
     ],
+    "players" => [
+        "createNewPlayer" => "Create new player",
+        "seeDeletedplyaers" => "See deleted players",
+        "deletePlayerConfirmMsg" => "Are you sure you want to delete :name:'s account?",
+        "name_en_required" => "Please enter the player's name in English.",
+        "name_ch_required" => "Please enter the player's name in Chinese.",
+        "gender_required" => "Please select the player's gender.",
+        "phone_required" => "Please enter the player's phone number.",
+        "birthdate_required" => "Please enter the player's birthdate.",
+        "birthdate_wrong" => "the birthdate you entered is incorrect.",
+        "profile_picture_mimes" => "The profile picture must be a file of type: jpg, png, jpeg, bmp, webp.",
+    ]
 ];
 

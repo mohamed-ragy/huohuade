@@ -90,51 +90,51 @@ $('html,body').on('click','.recover_location',function(e){
     })
 })
 //
-$('html,body').on('click','.delete_location',function(e){
-    e.stopImmediatePropagation();
-    let location = locations.find(item=>item.id == $(this).attr('location'));
-    $('.popupTitle').text(text.main.deleteConfirmation);
-    $('.popupBody').text('').append(
-        $('<div/>',{class:'column alnC jstfyC m10 p20 mB40 red_msg'}).append(
-            $('<div/>',{class:'w50 h50 ico-warning'}),
-            $('<div/>',{class:'c_red mT10 ',html:text.locations.deleteLocationConfirmMsg2.replace(':name:',location[`name_${lang}`])}),
-            $('<div/>',{class:'c_red mT10 bold600',html:text.locations.deleteLocationConfirmMsg3})
-        ),
-        $('<div/>',{class:'btn_container'}).append(
-            $('<button/>',{class:'btn btn_cancel popupClose mX5',text:'Cancel'}),
-            $('<button/>',{location:location.id,class:'btn btn_delete delete_location_confirm mX5',text:text.main.delete}),
+// $('html,body').on('click','.delete_location',function(e){
+//     e.stopImmediatePropagation();
+//     let location = locations.find(item=>item.id == $(this).attr('location'));
+//     $('.popupTitle').text(text.main.deleteConfirmation);
+//     $('.popupBody').text('').append(
+//         $('<div/>',{class:'column alnC jstfyC m10 p20 mB40 red_msg'}).append(
+//             $('<div/>',{class:'w50 h50 ico-warning'}),
+//             $('<div/>',{class:'c_red mT10 ',html:text.locations.deleteLocationConfirmMsg2.replace(':name:',location[`name_${lang}`])}),
+//             $('<div/>',{class:'c_red mT10 bold600',html:text.locations.deleteLocationConfirmMsg3})
+//         ),
+//         $('<div/>',{class:'btn_container'}).append(
+//             $('<button/>',{class:'btn btn_cancel popupClose mX5',text:'Cancel'}),
+//             $('<button/>',{location:location.id,class:'btn btn_delete delete_location_confirm mX5',text:text.main.delete}),
 
-        ),
-        $('<div/>',{class:'loadingBar ',id:'deleteLocationLoadingBar'})
-    )
-    $('.popupContainer').removeClass('none')
-})
+//         ),
+//         $('<div/>',{class:'loadingBar ',id:'deleteLocationLoadingBar'})
+//     )
+//     $('.popupContainer').removeClass('none')
+// })
 
-$('html,body').on('click','.delete_location_confirm',function(e){
-    e.stopImmediatePropagation();
-    let location = locations.find(item=>item.id == $(this).attr('location'));
-    showLoadingBar($('#deleteLocationLoadingBar'))
-    $.ajax({
-        url:`/${lang}/api/location`,
-        type:'post',
-        data:{
-            _token:$('meta[name="csrf-token"]').attr('content'),
-            delete_location:true,
-            location_id:location.id,
-        },success:function(r){
-            if(r.stats == 1){
-                hideLoadingBar($('#deleteLocationLoadingBar'))
-                for(const key in window.locations){
-                    if(window.locations[key].id == location.id){
-                        window.locations.splice(key,1);
-                        showPage('locations');
-                        $('.popupContainer').addClass('none');
-                    }
-                }
-            }
-        }
-    })
-})
+// $('html,body').on('click','.delete_location_confirm',function(e){
+//     e.stopImmediatePropagation();
+//     let location = locations.find(item=>item.id == $(this).attr('location'));
+//     showLoadingBar($('#deleteLocationLoadingBar'))
+//     $.ajax({
+//         url:`/${lang}/api/location`,
+//         type:'post',
+//         data:{
+//             _token:$('meta[name="csrf-token"]').attr('content'),
+//             delete_location:true,
+//             location_id:location.id,
+//         },success:function(r){
+//             if(r.stats == 1){
+//                 hideLoadingBar($('#deleteLocationLoadingBar'))
+//                 for(const key in window.locations){
+//                     if(window.locations[key].id == location.id){
+//                         window.locations.splice(key,1);
+//                         showPage('locations');
+//                         $('.popupContainer').addClass('none');
+//                     }
+//                 }
+//             }
+//         }
+//     })
+// })
 //
 
 $('html,body').on('click','.deleted_locations_toggle',function(e){

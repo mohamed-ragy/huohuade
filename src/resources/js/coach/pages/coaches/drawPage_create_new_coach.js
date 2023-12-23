@@ -43,13 +43,13 @@ drawPage_create_new_coach = function(){
                 $('<div/>',{class:'create_coach_error create_coach_name_ch_error fs08 mX5 c_red',text:''})
             ),
             $('<div/>',{class:'m20 zx20 relative'}).append(
-                $('<div/>',{class:'mX10 fs09',text:text.coaches.gender}),
+                $('<div/>',{class:'mX10 fs09',text:text.main.gender}),
                 $('<div/>',{class:'inputSelectContainer'}).append(
                     $('<div/>',{class:'inputSelectArrow ico-arrow-down'}),
                     $('<input/>',{class:'inputText inputSelect create_coach_input',id:'create_new_coach_gender',readonly:true}),
                     $('<div/>',{class:'inputSelectList none'}).append(
-                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.male,key:'male'}),
-                        $('<div/>',{class:'inputSelectListItem',text:text.coaches.female,key:'female'}),
+                        $('<div/>',{class:'inputSelectListItem',text:text.main.male,key:'male'}),
+                        $('<div/>',{class:'inputSelectListItem',text:text.main.female,key:'female'}),
                     )
                 ),
                 $('<div/>',{class:'create_coach_error create_coach_gender_error fs08 mX5 c_red',text:''})

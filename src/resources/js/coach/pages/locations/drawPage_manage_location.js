@@ -3,6 +3,7 @@ drawPage_manage_location = function(location_id,tab){
     if(typeof(location) === 'undefined'){
         window.history.pushState({page:'locations'},'',`/${window.lang}/?page=locations`)
         showPage('locations')
+        return;
     }
     $('.pageContainerTree').text('').append(
         $('<span/>',{class:'pointer c_huohuade bold500 showPage',page:'locations',text:text.menu.locations}),

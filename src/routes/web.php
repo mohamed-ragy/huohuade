@@ -25,6 +25,7 @@ Route::domain('coach.'.env('APP_URL'))->group(function(){
 
 
     Route::post('{lang}/api/coach',[coachController::class,'coach']);
+    Route::post('{lang}/api/player',[coachController::class,'player']);
     Route::post('{lang}/api/location',[coachController::class,'location']);
     Route::post('{lang}/api/calendar',[coachController::class,'calendar']);
 });

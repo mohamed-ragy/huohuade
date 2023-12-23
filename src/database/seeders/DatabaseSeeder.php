@@ -171,8 +171,9 @@ class DatabaseSeeder extends Seeder
                 'profile_picture' => '../storage/imgs/players/player_'.$i.'.jpg',
                 'name_en' => $this->faker->firstName('male').' '.$this->faker->lastName('male'),
                 'name_ch' => $faker_ch->firstName('male').' '.$faker_ch->lastName('male'),
-                'birthdate' => Carbon::now()->subYear(random_int(10,25))->subDays(random_int(0,360)),
+                'birthdate' => Carbon::now()->subYear(random_int(10,25))->subDays(random_int(0,360))->toDateString(),
                 'gender' => 'male',
+                'phone' => '012345678',
                 'created_at' => Carbon::now()->subDays(random_int(0,100))->timestamp,
             ]);
         }
@@ -181,8 +182,9 @@ class DatabaseSeeder extends Seeder
                 'profile_picture' => '../storage/imgs/players/player_'.$i.'.jpg',
                 'name_en' => $this->faker->firstName('female').' '.$this->faker->lastName('male'),
                 'name_ch' => $faker_ch->firstName('female').' '.$faker_ch->lastName('male'),
-                'birthdate' => Carbon::now()->subYear(random_int(10,25))->subDays(random_int(0,360)),
+                'birthdate' => Carbon::now()->subYear(random_int(10,25))->subDays(random_int(0,360))->toDateString(),
                 'gender' => 'female',
+                'phone' => '012345678',
                 'created_at' => Carbon::now()->subDays(random_int(0,100))->timestamp,
             ]);
         }

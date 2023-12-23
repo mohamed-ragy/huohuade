@@ -29,11 +29,11 @@ drawbody = function(){
                 $('<div/>',{class:'menu_elem_img ico-coach'}),
                 $('<div/>',{text:text.menu.coaches,class:'menu_elem_txt_m'})
             ),
-            $('<div/>',{class:'showPage menu_elem_m',page:'locations',tab:'locations'}).append(
+            $('<div/>',{class:`showPage menu_elem_m ${!accessibility.locations_see ? 'none' : ''}`,page:'locations',tab:'locations'}).append(
                 $('<div/>',{class:'menu_elem_img ico-location'}),
                 $('<div/>',{text:text.menu.locations,class:'menu_elem_txt_m'})
             ),
-            $('<div/>',{class:'showPage menu_elem_m',page:'players',tab:'players'}).append(
+            $('<div/>',{class:`showPage menu_elem_m ${!accessibility.players_see ? 'none' : ''}`,page:'players',tab:'players'}).append(
                 $('<div/>',{class:'menu_elem_img ico-player'}),
                 $('<div/>',{text:text.menu.players,class:'menu_elem_txt_m'})
             ),
@@ -76,7 +76,7 @@ drawbody = function(){
                         $('<div/>',{tooltip:text.menu.locations,class:'menu_elem_img ico-location'}),
                         $('<div/>',{text:text.menu.locations,class:'menu_elem_txt'})
                     ),
-                    $('<div/>',{class:'showPage menu_elem',page:'players',tab:'players'}).append(
+                    $('<div/>',{class:`showPage menu_elem ${!accessibility.players_see ? 'none' : ''}`,page:'players',tab:'players'}).append(
                         $('<div/>',{tooltip:text.menu.players,class:'menu_elem_img ico-player'}),
                         $('<div/>',{text:text.menu.players,class:'menu_elem_txt'})
                     ),

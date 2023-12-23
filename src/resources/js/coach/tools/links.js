@@ -28,6 +28,9 @@ $('html,body').on('click','.showPage',function(e){
         case 'manage_location':
             window.history.pushState({page:$(this).attr('page'),location:$(this).attr('location')},'',`/${window.lang}/?page=${$(this).attr('page')}&location=${$(this).attr('location')}`)
         break;
+        case 'manage_player':
+            window.history.pushState({page:$(this).attr('page'),player:$(this).attr('player')},'',`/${window.lang}/?page=${$(this).attr('page')}&player=${$(this).attr('player')}`)
+        break;
         default:
             window.history.pushState({page:$(this).attr('page')},'',`/${window.lang}/?page=${$(this).attr('page')}`)
         break;

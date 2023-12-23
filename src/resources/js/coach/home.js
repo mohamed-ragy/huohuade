@@ -49,6 +49,9 @@ if(params.get('page') == null){
         case 'manage_location':
             window.history.replaceState({page:params.get('page'),location:params.get('location')},'',`/${window.lang}/?page=${params.get('page')}&location=${params.get('location')}`);
         break;
+        case 'manage_player':
+            window.history.replaceState({page:params.get('page'),player:params.get('player')},'',`/${window.lang}/?page=${params.get('page')}&player=${params.get('player')}`);
+        break;
         default:
             window.history.replaceState({page:params.get('page')},'',`/${window.lang}/?page=${params.get('page')}`);
         break;

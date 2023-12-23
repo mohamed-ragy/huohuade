@@ -15,6 +15,7 @@ class player extends Model
         'name_ch',
         'birthdate',
         'gender',
+        'phone',
         'created_at',
         'is_deleted'
     ];

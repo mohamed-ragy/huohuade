@@ -37,7 +37,7 @@ drawPage_coaches = function(){
                         $('<div/>',{coach:coach.id,class:`${coach.is_deleted ? 'none' : ''} ico-settings mX10 w25 h25 pointer showPage`,page:'manage_coach',tooltip:text.main.manage}),
                         $('<div/>',{coach:coach.id,class:`${coach.is_deleted ? 'none' : ''} ${window.coach.id == coach.id ? 'none' : ''} soft_delete_coach ico-delete mX10 w25 h25 pointer`,tooltip:text.main.delete}),
                         $('<div/>',{coach:coach.id,class:`${!coach.is_deleted ? 'none' : ''} recover_coach ico-recover mX10 w25 h25 pointer`,tooltip:text.main.recover}),
-                        $('<div/>',{coach:coach.id,class:`${!coach.is_deleted ? 'none' : ''} delete_coach ico-delete mX10 w25 h25 pointer`,tooltip:`<span class="c_red">${text.main.deletePermanently}</span>`}),
+                        // $('<div/>',{coach:coach.id,class:`${!coach.is_deleted ? 'none' : ''} delete_coach ico-delete mX10 w25 h25 pointer`,tooltip:`<span class="c_red">${text.main.deletePermanently}</span>`}),
                     )
                 )
             )

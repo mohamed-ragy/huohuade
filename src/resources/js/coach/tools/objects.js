@@ -7,7 +7,8 @@ switch (coach.coach_level) {
             'coaches_manage':true,
             'locations_see':true,
             'locations_manage':true,
-
+            'players_see':true,
+            'players_manage':true,
             'lessons_create':true,
             'lesson_remove_add_coach_player':true,
             'lesson_manage_status':true,
@@ -20,7 +21,8 @@ switch (coach.coach_level) {
             'coaches_manage':false,
             'locations_see':true,
             'locations_manage':false,
-
+            'players_see':true,
+            'players_manage':false,
             'lessons_create':true,
             'lesson_remove_add_coach_player':true,
             'lesson_manage_status':true,
@@ -33,7 +35,8 @@ switch (coach.coach_level) {
             'coaches_manage':false,
             'locations_see':false,
             'locations_manage':false,
-
+            'players_see':false,
+            'players_manage':false,
             'lessons_create':false,
             'lesson_remove_add_coach_player':false,
             'lesson_manage_status':true,
@@ -46,7 +49,8 @@ switch (coach.coach_level) {
             'coaches_manage':false,
             'locations_see':false,
             'locations_manage':false,
-
+            'players_see':false,
+            'players_manage':false,
             'lessons_create':false,
             'lesson_remove_add_coach_player':false,
             'lesson_manage_status':false,
@@ -59,7 +63,8 @@ switch (coach.coach_level) {
             'coaches_manage':false,
             'locations_see':false,
             'locations_manage':false,
-
+            'players_see':false,
+            'players_manage':false,
             'lessons_create':false,
             'lesson_remove_add_coach_player':false,
             'lesson_manage_status':false,
